@@ -1,16 +1,19 @@
 <script>
   export let data
+  const {
+    pageCollection: { items },
+  } = data
+  const { name, url, sectionsCollection } = items[0]
 </script>
 
+<svelte:head>
+  <title>{name}</title>
+</svelte:head>
+
 <div>
-  <h1>
-    Nothing
-    <p>sdadas</p>
-  </h1>
+  <p>{JSON.stringify(sectionsCollection)}</p>
 </div>
 
-<style lang="scss">
-  h1 {
-    font-size: 120px;
-  }
+<style global>
+  @import 'destyle.css/destyle.css';
 </style>

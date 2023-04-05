@@ -1,45 +1,40 @@
 import { error } from '@sveltejs/kit'
-import contentfulFetch from '$lib/contentful-fetch'
+import contentfulFetch from '$lib/server/contentful-fetch'
+
+const query = (slug) => `
+{
+  pageCollection(where: {
+    url: "${slug}"
+  } limit: 1) {
+    items {
+      name
+      url
+      sectionsCollection (limit:100) {
+        items {
+          logo {
+            url
+          }
+          navigationCollection (limit: 15) {
+            items {
+              noFollow
+              link
+              title
+            }
+          }
+        }
+      }
+    }
+  }
+}
+`
 
 export async function load({ params }) {
-  console.log(params)
-  //   const response = await contentfulFetch(query)
-  //   if (!response.ok) {
-  //     return {
-  //       employees: [],
-  //     }
-  //   }
+  const response = await contentfulFetch(query(`/${params.slug}`))
+  console.log(response)
+  if (!response.ok) {
+    return {}
+  }
 
-  //   const { data } = await response.json()
-  //   const { items } = data.employeeCollection
-  //   return {
-  //     employees: items?.map((e) => {
-  //       const options = { month: 'long', year: 'numeric' }
-  //       const date = new Date(e.startDate)
-  //       const formattedStartDate = new Intl.DateTimeFormat('en-US', options).format(date)
-
-  //       return {
-  //         ...e,
-  //         startDate: formattedStartDate,
-  //       }
-  //     }),
-  //   }
+  const { data } = await response.json()
+  return data
 }
-
-// const query = `
-// {
-// 	employeeCollection{
-//     items{
-//       name,
-//       jobTitle
-//       startDate
-//       photo {
-//         url(transform: {
-//           format: AVIF
-//         })
-//         description
-//       }
-//     }
-//   }
-// }
-// `

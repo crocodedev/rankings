@@ -11,7 +11,6 @@ const contentfulFetch = async (query) => {
     },
     body: JSON.stringify({ query }),
   })
-
   return response
 }
 
