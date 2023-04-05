@@ -1,16 +1,16 @@
 <script>
-	export let data;
+  export let data
 </script>
 
 <div>
-<h1>Nothing</h1>
+  <h1>
+    Nothing
+    <p>sdadas</p>
+  </h1>
 </div>
 
 <style lang="scss">
-div {
-	& > h1 {
-		display: none;
-	}
-}
-
+  h1 {
+    font-size: 120px;
+  }
 </style>
