@@ -13,10 +13,10 @@
   "devDependencies": {
     "contentful-import": "^8.5.31",
     "dotenv": "^16.0.3",
-    "prettier": "^2.8.4",
     "eslint": "^8.28.0",
     "eslint-config-prettier": "^8.5.0",
     "eslint-plugin-svelte3": "^4.0.0",
+    "prettier": "^2.8.4",
     "prettier-plugin-svelte": "^2.8.1",
     "sass": "^1.59.3",
     "svelte-preprocess": "^5.0.3",
