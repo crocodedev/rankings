@@ -1,6 +1,8 @@
 import { error } from '@sveltejs/kit'
 import contentfulFetch from '$lib/server/contentful-fetch'
 
+import { heroQuery } from '$lib/graphql'
+
 const query = (slug) => `
 {
   pageCollection(where: {
@@ -10,17 +12,7 @@ const query = (slug) => `
       name
       url
       sectionsCollection (limit:100) {
-        items {
-          logo {
-            url
-          }
-          navigationCollection (limit: 15) {
-            items {
-              noFollow
-              link
-              title
-            }
-          }
+          ${heroQuery}
         }
       }
     }

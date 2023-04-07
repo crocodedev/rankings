@@ -1,5 +1,10 @@
+<script>
+  import Container from '$lib/components/container.svelte'
+</script>
+
+<!-- svelte-ignore a11y-invalid-attribute -->
 <header class="header">
-  <div class="container">
+  <Container>
     <div class="header__wrapper">
       <div class="header__logotype">Rankings</div>
       <nav class="header__nav-list">
@@ -10,16 +15,10 @@
         <a href="#" class="header__nav-item">Contact us</a>
       </nav>
     </div>
-  </div>
+  </Container>
 </header>
 
-<style global lang="scss">
-  @import url('https://fonts.googleapis.com/css2?family=Lexend:wght@400;600;700&display=swap');
-
-  * {
-    font-family: 'Lexend', sans-serif;
-  }
-
+<style lang="scss">
   .header {
     &__wrapper {
       display: flex;
@@ -37,18 +36,14 @@
       }
     }
 
+    &__nav-item:hover {
+      font-weight: 600;
+    }
+
     &__logotype {
       color: #07124a;
       font-size: 24px;
       font-weight: 600;
     }
-  }
-
-  .container {
-    max-width: 1366px;
-    margin-left: auto;
-    margin-right: auto;
-    padding-left: 50px;
-    padding-right: 50px;
   }
 </style>
