@@ -5,11 +5,16 @@
   // } = data
   // const { name, url, sectionsCollection } = items[0]
 
-  import Breadcrumps from '$lib/components/breadcrumps.svelte'
+  import Breadcrumps from '$lib/components/Breadcrumps.svelte'
   import Header from '$lib/sections/header.svelte'
-  import Container from '../../lib/components/container.svelte'
-  import Stage from '$lib/components/stage.svelte'
-  import Indicator from '$lib/components/indicator.svelte'
+  import Container from '$lib/components/Container.svelte'
+  import Stage from '$lib/components/Stage.svelte'
+  import Indicator from '$lib/components/Indicator.svelte'
+  import Card from '$lib/components/Card.svelte'
+  import Seoitem from '$lib/components/Seoitem.svelte'
+  import Imagewithtext from '$lib/sections/imagewithtext.svelte'
+  import Ourmethods from '../../lib/sections/ourmethods.svelte'
+  import Faq from '../../lib/sections/faq.svelte'
 </script>
 
 <svelte:head>
@@ -26,10 +31,33 @@
     <Stage />
   </div>
 
+  <Container>
+    <div style="flex-wrap:wrap;display:flex;gap:50px">
+      <Card />
+      <Card />
+      <Card />
+      <Card />
+    </div>
+  </Container>
+
+  <Container>
+    <Seoitem />
+  </Container>
+
+  <Container>
+    <Imagewithtext />
+  </Container>
+
+  <Container>
+    <Ourmethods />
+  </Container>
+
+  <Container><Faq /></Container>
   <div class="container">
     <h1 class="hero__title">RESULTS-DRIVEN MARKETING</h1>
     <img src="Graphs.svg" alt="" /> <img src="Graphs.svg" alt="" /> <img src="Graphs.svg" alt="" />
   </div>
+
   <!-- <p>{JSON.stringify(sectionsCollection)}</p> -->
 </div>
 

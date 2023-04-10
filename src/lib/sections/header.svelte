@@ -1,5 +1,5 @@
 <script>
-  import Container from '$lib/components/container.svelte'
+  import Container from '$lib/components/Container.svelte'
 </script>
 
 <!-- svelte-ignore a11y-invalid-attribute -->
