@@ -1,9 +1,7 @@
-<script>
-  let stages
-  console.log(stages)
+<!-- <script>
 </script>
 
-<div class="stage" bind:this={stages}>
+<div class="stage">
   <div class="stage__wrapper">
     <div class="stage__text">
       We developed a set of solutions that increased sales three times sadas
@@ -14,7 +12,7 @@
     <div class="stage__name">Stage name</div>
   </div>
 </div>
-<div class="stage" bind:this={stages}>
+<div class="stage">
   <div class="stage__wrapper">
     <div class="stage__text">Start you project now and you can see</div>
     <div class="stage__bar">
@@ -23,7 +21,7 @@
     <div class="stage__name">Stage name</div>
   </div>
 </div>
-<div class="stage" bind:this={stages}>
+<div class="stage">
   <div class="stage__wrapper">
     <div class="stage__text">We developed web-sites so fast and smart</div>
     <div class="stage__bar">
@@ -32,7 +30,7 @@
     <div class="stage__name">Stage name</div>
   </div>
 </div>
-<div class="stage" bind:this={stages}>
+<div class="stage">
   <div class="stage__wrapper">
     <div class="stage__text">We developed a set of solutions that increased sales three times</div>
     <div class="stage__bar">
@@ -41,11 +39,11 @@
     <div class="stage__name">Stage name</div>
   </div>
 </div>
-<div class="stage" bind:this={stages}>
+<div class="stage">
   <div class="stage__wrapper">
     <div class="stage__text">We developed a set of solutions that increased sales three times</div>
     <div class="stage__bar">
-      <div class="stage__number">04.</div>
+      <div class="stage__number">05.</div>
     </div>
     <div class="stage__name">Stage name</div>
   </div>
@@ -67,9 +65,8 @@
     }
 
     &__number {
-      writing-mode: vertical-rl;
       color: white;
-      transform: rotateZ(180deg);
+      transform: rotateZ(-90deg);
       font-size: 72px;
       font-weight: bold;
     }
@@ -103,4 +100,4 @@
       text-align: center;
     }
   }
-</style>
+</style> -->

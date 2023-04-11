@@ -1,16 +1,16 @@
-export const footerQuery = `... on SectionFooter {
+export const footerQuery = ` ... on SectionFooter{
+  position
   component
   footerRights
-  socialLinksCollection {
-    items {
-      title
-      link
+  socialLinksCollection{
+    items{
       socialIcon
+      link
       noFollow
     }
   }
-  footerTermsPolicyCollection {
-    items {
+  footerTermsPolicyCollection{
+    items{
       title
       link
       noFollow

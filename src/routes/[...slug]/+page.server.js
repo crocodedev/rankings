@@ -1,7 +1,7 @@
 import { error } from '@sveltejs/kit'
 import contentfulFetch from '$lib/server/contentful-fetch'
-
-import { heroQuery } from '$lib/graphql'
+import { stagesQuery } from '../../lib/graphql/sections/stages'
+// import { heroQuery } from '../../lib/graphql/sections/hero'
 
 const query = (slug) => `
 {
@@ -12,7 +12,8 @@ const query = (slug) => `
       name
       url
       sectionsCollection (limit:100) {
-          ${heroQuery}
+         items{
+          ${stagesQuery}
         }
       }
     }
@@ -22,11 +23,10 @@ const query = (slug) => `
 
 export async function load({ params }) {
   const response = await contentfulFetch(query(`/${params.slug}`))
-  console.log(response)
   if (!response.ok) {
-    return {}
+    return console.log(error)
   }
 
   const { data } = await response.json()
-  return data
+  return data.pageCollection.items[0]
 }

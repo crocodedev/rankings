@@ -34,7 +34,6 @@
     color: white;
     border-radius: 10px;
     overflow: hidden;
-    width: 48%;
 
     &__wrapper {
       background-color: #46506f;

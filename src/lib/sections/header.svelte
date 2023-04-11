@@ -1,5 +1,7 @@
 <script>
   import Container from '$lib/components/Container.svelte'
+
+  export let data = {}
 </script>
 
 <!-- svelte-ignore a11y-invalid-attribute -->

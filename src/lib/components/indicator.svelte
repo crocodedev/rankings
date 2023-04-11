@@ -4,7 +4,8 @@
     <span class="indicator__value">+34.5m</span>
   </div>
 </div>
-<div class="indicator">
+
+<!-- <div class="indicator">
   <div class="indicator__wrapper">
     <span class="indicator__fact">Some fact about case</span>
     <span class="indicator__value"> > 4 years</span>
@@ -21,8 +22,7 @@
     <span class="indicator__fact">Some fact about case</span>
     <span class="indicator__value">2.1k</span>
   </div>
-</div>
-
+</div> -->
 <style lang="scss">
   .indicator {
     width: 220px;
