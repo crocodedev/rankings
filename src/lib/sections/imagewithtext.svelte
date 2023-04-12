@@ -1,19 +1,23 @@
+<script>
+  export let data = {}
+  import Container from '$lib/components/Container.svelte'
+</script>
+
 <section class="imagewithtext">
-  <div class="imagewithtext__wrapper">
-    <div class="imagewithtext__image-wrapper">
-      <img src="Group 11.svg" alt="" />
-    </div>
-    <div class="imagewithtext__inner">
-      <div class="imagewithtext__text-wrapper">
-        <h3 class="imagewithtext__title">WHAT’S YOUR MOST WICKED BUSINESS CHALLENGE?</h3>
-        <p>
-          We go there. It might get uncomfortable. Growth often is. But using strategy and consumer
-          research, we’ll find truths in places you wouldn’t expect. We’re up for it if you are.
-        </p>
+  <Container>
+    <div class="imagewithtext__wrapper">
+      <div class="imagewithtext__image-wrapper">
+        <img src={data.image.url} alt="" />
       </div>
-      <a href="#" class="imagewithtext__btn">GET A PROPSAL</a>
+      <div class="imagewithtext__inner">
+        <div class="imagewithtext__text-wrapper">
+          <h3 class="imagewithtext__title">{data.imageTextTitle}</h3>
+          <p>{data.imageTextText}</p>
+        </div>
+        <a href={data.buttonLink} class="imagewithtext__btn">{data.buttonText}</a>
+      </div>
     </div>
-  </div>
+  </Container>
 </section>
 
 <style lang="scss">
@@ -24,6 +28,7 @@
 
     &__image-wrapper {
       width: 50%;
+      height: 270px;
       justify-content: center;
       display: flex;
     }
@@ -49,6 +54,7 @@
       width: 65%;
       display: flex;
       flex-direction: column;
+      gap: 35px;
       justify-content: space-between;
     }
 
@@ -59,7 +65,8 @@
       text-transform: uppercase;
       padding: 10px 20px;
       background-color: #0077ff;
-      height: max-content;
+      width: 32%;
+      text-align: center;
       border-radius: 5px;
     }
   }
