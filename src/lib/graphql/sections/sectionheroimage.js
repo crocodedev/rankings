@@ -6,7 +6,7 @@ export const sectionHeroImageQuery = `... on SectionHeroImage{
     }
     title
     text
-    buttonListCollection{
+    buttonListCollection(limit: 10) {
       items{
         title
         link

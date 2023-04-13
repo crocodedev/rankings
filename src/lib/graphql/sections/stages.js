@@ -3,7 +3,7 @@ export const stagesQuery = `... on SectionStages{
   component
   stagesTitle
   stagesSubtitle
-  stagesListCollection{
+  stagesListCollection(limit: 10) {
     items{
       blockTitle
       stagesText

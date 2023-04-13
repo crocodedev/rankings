@@ -1,11 +1,14 @@
 import { error } from '@sveltejs/kit'
 import contentfulFetch from '$lib/server/contentful-fetch'
+
 import { stagesQuery } from '$lib/graphql/sections/stages'
 import { heroQuery } from '$lib/graphql/sections/hero'
-
 import { SectionImageWithTextQuery } from '$lib/graphql/sections/sectionimagewithtext'
 import { sectionTextContentImageQuery } from '../../lib/graphql/sections/textcontentimage'
 import { headerQuery } from '../../lib/graphql/sections/header'
+import { footerQuery } from '../../lib/graphql/sections/footer'
+import { gridContentQuery } from '../../lib/graphql/sections/gridContent'
+
 const query = (slug) => `
 {
   pageCollection(where: {
@@ -14,9 +17,9 @@ const query = (slug) => `
     items {
       name
       url
-      sectionsCollection (limit:1) {
+      sectionsCollection (limit:100) {
          items{
-          ${headerQuery}
+          ${gridContentQuery}
         }
       }
     }
@@ -26,6 +29,7 @@ const query = (slug) => `
 
 export async function load({ params }) {
   const response = await contentfulFetch(query(`/${params.slug}`))
+
   if (!response.ok) {
     return console.log(error)
   }

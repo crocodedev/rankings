@@ -4,6 +4,8 @@ import Ourmethods from '$lib/sections/ourmethods.svelte'
 import Faq from '$lib/sections/faq.svelte'
 import Hero from '$lib/sections/hero.svelte'
 import Stages from '$lib/sections/stages.svelte'
+import Footer from '$lib/sections/Footer.svelte'
 import TextContentImage from '$lib/sections/TextContentImage.svelte'
+import Cards from '$lib/sections/GridContent.svelte'
 
-export { Header, Ourmethods, Faq, Stages, ImageWithText, Hero, TextContentImage }
+export { Header, Footer, Ourmethods, Faq, Stages, ImageWithText, Hero, TextContentImage, Cards }

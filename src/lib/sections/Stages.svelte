@@ -69,7 +69,6 @@
       color: #07124a;
       font-size: 16px;
       height: 135px;
-      text-align: center;
     }
 
     .stages__item-bar {

@@ -4,42 +4,54 @@
   export let data = {}
 </script>
 
-<!-- svelte-ignore a11y-invalid-attribute -->
 <header class="header">
   <Container>
     <div class="header__wrapper">
       <div class="header__logotype">Rankings</div>
       <nav class="header__nav-list">
-        <a href="#" class="header__nav-item">{data.navigationCollection.items[0].title}</a>
-        <a href="#" class="header__nav-item">{data.navigationCollection.items[0].title}</a>
-        <a href="#" class="header__nav-item">Blog</a>
-        <a href="#" class="header__nav-item">About us</a>
-        <a href="#" class="header__nav-item">Contact us</a>
+        {#each data.navigationCollection.items as item}
+          <a href="#" class="header__nav-item">{item.title}</a>
+          {#if item.subItemsCollection.items}
+            <ul class="header__nav-item-stack">
+              {#each item.subItemsCollection.items as subitem}
+                <a href="#" class="header__nav-item">{subitem.title}</a>
+              {/each}
+            </ul>
+          {/if}
+        {/each}
       </nav>
     </div>
   </Container>
 </header>
 
 <style lang="scss">
-  .header div {
+  .header * {
     .header__wrapper {
       display: flex;
       justify-content: space-between;
       align-items: center;
       padding: 35px 0;
+      z-index: 2;
+      position: relative;
     }
 
     .header__nav-list {
       display: flex;
       gap: 60px;
+    }
 
-      a {
-        color: #07124a;
-      }
+    .header__nav-item {
+      color: #07124a;
     }
 
     .header__nav-item:hover {
-      font-weight: 600;
+      text-shadow: 0 0 1px #07124a;
+    }
+
+    .header__nav-item-stack {
+      position: absolute;
+      backdrop-filter: blur(10px);
+      top: 100%;
     }
 
     .header__logotype {

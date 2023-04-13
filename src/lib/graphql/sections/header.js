@@ -7,7 +7,7 @@ export const headerQuery = `... on Header {
   logo {
     url
   }
-  navigationCollection {
+  navigationCollection(limit: 7) {
     items {
       title
       socialIcon{
@@ -15,7 +15,7 @@ export const headerQuery = `... on Header {
       }
       link
       noFollow
-      subItemsCollection {
+      subItemsCollection(limit: 9) {
         items {
           title
           link

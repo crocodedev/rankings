@@ -2,8 +2,9 @@
   import * as Sections from '$lib/sections'
 
   export let data
-  console.log(data)
+
   const sections = data.sectionsCollection.items
+  console.log(data)
 </script>
 
 <svelte:head>
