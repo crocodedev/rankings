@@ -1,6 +1,6 @@
 <script>
   import * as Sections from '$lib/sections'
-
+  import '$lib/css/style.css'
   export let data
 
   const sections = data.sectionsCollection.items
@@ -20,10 +20,6 @@
 <style global lang="scss">
   @import 'destyle.css/destyle.css';
   @import url('https://fonts.googleapis.com/css2?family=Lexend:wght@400;600;700&display=swap');
-
-  * {
-    font-family: 'Lexend', sans-serif;
-  }
 
   .hero {
     &__title {

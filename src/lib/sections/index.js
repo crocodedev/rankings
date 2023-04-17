@@ -7,5 +7,17 @@ import Stages from '$lib/sections/stages.svelte'
 import Footer from '$lib/sections/Footer.svelte'
 import TextContentImage from '$lib/sections/TextContentImage.svelte'
 import Cards from '$lib/sections/GridContent.svelte'
+import Form from '$lib/sections/Form.svelte'
 
-export { Header, Footer, Ourmethods, Faq, Stages, ImageWithText, Hero, TextContentImage, Cards }
+export {
+  Header,
+  Footer,
+  Form,
+  Ourmethods,
+  Faq,
+  Stages,
+  ImageWithText,
+  Hero,
+  TextContentImage,
+  Cards,
+}

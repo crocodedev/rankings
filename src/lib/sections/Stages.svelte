@@ -7,7 +7,7 @@
   <Container>
     <div class="stages__wrapper">
       <div class="stages__title-wrapper">
-        <h2 class="stages__title">{data.stagesTitle}</h2>
+        <h2 class="h2">{data.stagesTitle}</h2>
         <p class="stages__subtitle">{data.stagesSubtitle}</p>
       </div>
       <div class="stages__items">

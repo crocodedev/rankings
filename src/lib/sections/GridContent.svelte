@@ -16,9 +16,9 @@
             <div class="card__wrapper">
               <div class="card__image-wrapper">
                 <img src={item.imageCard.url} alt="card" class="card__image" />
-                <a href="#"
-                  ><img src="feather-external-link.svg" alt="" class="card__image-icon" /></a
-                >
+                <a href="#">
+                  <img src="feather-external-link.svg" alt="" class="card__image-icon" />
+                </a>
               </div>
               <div class="card__text-wrapper">
                 <div class="card__generaly-info">
@@ -26,7 +26,7 @@
                   <p class="card__company">{item.titleCard}</p>
                   <div class="card__categories-list">
                     {#each item.categoriesListCollection.items as category}
-                      <a href="#" class="card__category">
+                      <a href={category.url} class="card__category">
                         {category.tagName}
                       </a>
                     {/each}
@@ -40,6 +40,12 @@
           </div>
         {/each}
       </div>
+      {#if data.seeMoreText}
+        <a href="#" class="grid-content__show-wrapper">
+          <p class="grid-content__show-text">{data.seeMoreText}</p>
+          <span><img src="Group 109.svg" alt="arrow" class="grid-content__show-icon" /></span>
+        </a>
+      {/if}
     </div>
   </Container>
 </section>
@@ -54,10 +60,22 @@
       flex-direction: column;
       gap: 50px;
     }
+
     &__items {
       display: grid;
-      grid-template-columns: repeat(2, 1fr);
       gap: 50px;
+    }
+
+    @media (min-width: 768px) and (max-width: 993px) {
+      &__items {
+        gap: 25px;
+      }
+    }
+
+    @media (min-width: 768px) {
+      &__items {
+        grid-template-columns: repeat(2, 1fr);
+      }
     }
 
     &__title-wrapper {
@@ -69,12 +87,31 @@
 
     &__title {
       font-size: 32px;
+      font-weight: bold;
       color: #07124a;
     }
 
     &__subtitle {
       font-size: 18px;
       color: #07124a;
+    }
+
+    &__show-wrapper {
+      display: flex;
+      align-self: flex-end;
+      align-items: center;
+      gap: 10px;
+    }
+
+    &__show-text {
+      display: flex;
+      flex-direction: column;
+      color: #97a2b6;
+      font-size: 14px;
+    }
+
+    &__show-icon {
+      filter: opacity(25%);
     }
   }
   .card {
@@ -83,9 +120,9 @@
     border-radius: 10px;
     overflow: hidden;
     height: 100%;
+    background-color: #46506f;
 
     &__wrapper {
-      background-color: #46506f;
       display: flex;
       flex-direction: column;
     }
@@ -96,6 +133,12 @@
       border-radius: 10px;
       overflow: hidden;
       position: relative;
+    }
+
+    @media (max-width: 768px) {
+      &__image-wrapper {
+        height: 200px;
+      }
     }
 
     &__image-icon {
@@ -113,20 +156,38 @@
     &__text-wrapper {
       display: flex;
       gap: 40px;
-      height: 100%;
       padding: 50px 20px 20px;
     }
 
+    @media (max-width: 992px) {
+      &__text-wrapper {
+        padding: 20px;
+        flex-direction: column;
+        gap: 20px;
+      }
+    }
+
     &__text {
-      width: 45%;
       font-size: 18px;
     }
 
+    @media (min-width: 993px) {
+      &__text {
+        padding-top: 26px;
+        width: 45%;
+      }
+    }
+
     &__generaly-info {
-      width: 55%;
       display: flex;
       flex-direction: column;
       gap: 10px;
+    }
+
+    @media (min-width: 993px) {
+      &__generaly-info {
+        width: 55%;
+      }
     }
 
     &__name-wrapper {
@@ -136,10 +197,15 @@
     }
 
     &__categories-list {
-      padding-top: 30px;
       display: flex;
       flex-wrap: wrap;
       gap: 10px;
+    }
+
+    @media (min-width: 993px) {
+      &__categories-list {
+        padding-top: 30px;
+      }
     }
 
     &__category {

@@ -11,7 +11,7 @@
       </div>
       <div class="imagewithtext__inner">
         <div class="imagewithtext__text-wrapper">
-          <h3 class="imagewithtext__title">{data.imageTextTitle}</h3>
+          <h3 class="h2">{data.imageTextTitle}</h3>
           <p>{data.imageTextText}</p>
         </div>
         <a href={data.buttonLink} class="imagewithtext__btn">{data.buttonText}</a>

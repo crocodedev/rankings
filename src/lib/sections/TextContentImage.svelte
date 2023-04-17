@@ -14,7 +14,7 @@
   <Container>
     <div class="textContent__wrapper">
       <div class="textContent__title-wrapper {data.textAlign}">
-        <h2 class="textContent__title">{data.title}</h2>
+        <h2 class="h2">{data.title}</h2>
         <p class="textContent__text">{data.text}</p>
       </div>
       <div class="textContent__image-wrapper" on:mousemove={handleMousemove}>

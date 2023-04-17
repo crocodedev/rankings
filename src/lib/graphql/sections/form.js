@@ -3,7 +3,7 @@ export const formQuery = `... on SectionForm {
     component
     formTitle
     workingEmail
-    formNavigationCollection{
+    formNavigationCollection (limit:7){
       items{
         title
         link
@@ -11,6 +11,8 @@ export const formQuery = `... on SectionForm {
       }
     }
     formLink
+    buttonText
+    policyText
     inputName
     inputEmail
     inputMessage

@@ -8,6 +8,7 @@ import { sectionTextContentImageQuery } from '../../lib/graphql/sections/textcon
 import { headerQuery } from '../../lib/graphql/sections/header'
 import { footerQuery } from '../../lib/graphql/sections/footer'
 import { gridContentQuery } from '../../lib/graphql/sections/gridContent'
+import { formQuery } from '../../lib/graphql/sections'
 
 const query = (slug) => `
 {
@@ -19,7 +20,14 @@ const query = (slug) => `
       url
       sectionsCollection (limit:100) {
          items{
+          ${headerQuery}
+          ${heroQuery}
+          ${SectionImageWithTextQuery}
           ${gridContentQuery}
+          ${stagesQuery}
+          ${sectionTextContentImageQuery}
+          ${formQuery}
+          ${footerQuery}
         }
       }
     }

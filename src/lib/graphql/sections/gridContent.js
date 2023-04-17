@@ -3,6 +3,7 @@ export const gridContentQuery = `  ... on SectionGridContent {
   position
   title
   subtitle
+  seeMoreText
   contentListCollection(limit: 10) {
     items {
       ... on EntityCard {

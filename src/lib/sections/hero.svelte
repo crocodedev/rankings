@@ -7,7 +7,7 @@
   <Container>
     <div class="hero__wrapper">
       <div class="hero__leftside-inner">
-        <h1 class="hero__title">{data.titleHero}</h1>
+        <h1 class="h1">{data.titleHero}</h1>
         <div class="hero__arrow-animate">
           <img src="Arrow.svg" alt="" class="hero__arrow" />
         </div>
@@ -18,7 +18,7 @@
         </div>
         <div class="hero__text-wrapper">
           <p class="hero__text">{data.subtext}</p>
-          <a href={data.buttonLink} class="hero__button">{data.buttonText}</a>
+          <a href={data.buttonLink} class="btn">{data.buttonText}</a>
         </div>
       </div>
     </div>
@@ -26,38 +26,38 @@
 </section>
 
 <style lang="scss">
-  .hero {
-    &__title {
+  section * {
+    .hero__title {
       font-size: 72px;
       color: #07124a;
       text-transform: uppercase;
     }
 
-    &__wrapper {
+    .hero__wrapper {
       justify-content: space-between;
       display: flex;
       gap: 80px;
     }
 
-    &__leftside-inner,
-    &__rightside-inner {
+    .hero__leftside-inner,
+    .hero__rightside-inner {
       display: flex;
       flex-direction: column;
       gap: 130px;
     }
 
-    &__text-wrapper {
+    .hero__text-wrapper {
       display: flex;
       flex-direction: column;
       gap: 34px;
     }
 
-    &__text {
+    .hero__text {
       font-size: 18px;
       color: #07124a;
     }
 
-    &__button {
+    .hero__button {
       border-radius: 5px;
       background-color: #0077ff;
       color: white;
