@@ -3,7 +3,7 @@
   import Container from '$lib/components/Container.svelte'
 </script>
 
-<section class="hero">
+<section class="hero" style="padding-top:90px">
   <Container>
     <div class="hero__wrapper">
       <div class="hero__leftside-inner">

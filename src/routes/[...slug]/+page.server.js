@@ -22,9 +22,9 @@ const query = (slug) => `
          items{
           ${headerQuery}
           ${heroQuery}
+          ${stagesQuery}
           ${SectionImageWithTextQuery}
           ${gridContentQuery}
-          ${stagesQuery}
           ${sectionTextContentImageQuery}
           ${formQuery}
           ${footerQuery}
