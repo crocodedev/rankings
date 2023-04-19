@@ -7,10 +7,10 @@
     navItem.forEach((el) => {
       if (el.childNodes.length > 3) {
         el.addEventListener('mouseover', () => {
-          header.style.height = '232px'
+          header.style.paddingBottom = '143px'
         })
         el.addEventListener('mouseout', () => {
-          header.style.height = 'fit-content'
+          header.style.paddingBottom = '0px'
         })
       }
     })
@@ -21,7 +21,7 @@
 
 <header
   class="header"
-  style=" position: fixed;top: 0;width: 100%;backdrop-filter: blur(5px);z-index: 5;transition:0.2s ease;margin-bottom:90px;"
+  style=" position: fixed;top: 0;width: 100%;backdrop-filter: blur(5px);z-index: 5;transition: 0.2s ease-in-out;"
   bind:this={header}
 >
   <Container>
@@ -46,6 +46,9 @@
 </header>
 
 <style lang="scss">
+  header {
+    transition: 1s ease-in-out;
+  }
   .header__general-wrapper {
     position: relative;
     z-index: 2;
@@ -72,15 +75,22 @@
 
     &:hover .header__nav-item-stack {
       display: grid;
-      transition-delay: 1s;
+      opacity: 1;
+      left: 0;
+      pointer-events: all;
+    }
+
+    &:hover .header__nav-item-stack::after {
+      left: 0;
+      width: 100%;
     }
   }
 
   .header__nav-item-stack {
     position: absolute;
-    border-top: 1px solid #0077ff;
-    display: none;
-    left: 0;
+    opacity: 0;
+    display: grid;
+    left: -100%;
     top: 100%;
     width: 100%;
     padding-top: 15px;
@@ -89,6 +99,20 @@
     grid-template-rows: repeat(3, 1fr);
     grid-template-columns: repeat(4, 1fr);
     gap: 15px;
+    transition: 0.2s ease-in-out;
+    pointer-events: none;
+
+    &::after {
+      z-index: 10;
+      position: absolute;
+      content: '';
+      transition: 0.2s ease-in-out;
+      background-color: #0077ff;
+      height: 1px;
+      width: 200%;
+      left: -100%;
+      top: 0;
+    }
   }
 
   .header__nav-subitem {

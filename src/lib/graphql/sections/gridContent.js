@@ -1,4 +1,4 @@
-export const gridContentQuery = `  ... on SectionGridContent {
+export const gridContentQuery = `... on SectionGridContent {
   component
   position
   title
@@ -14,13 +14,20 @@ export const gridContentQuery = `  ... on SectionGridContent {
         }
         textCard
         contentTypeCard
-        categoriesListCollection(limit:7){
-          items{
+        categoriesListCollection(limit: 7) {
+          items {
             tagName
             url
             pageName
           }
         }
+      }
+      ... on BlockListItem {
+        icon{
+          url
+        }
+        title
+        text
       }
     }
   }

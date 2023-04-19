@@ -20,13 +20,11 @@ const query = (slug) => `
       url
       sectionsCollection (limit:100) {
          items{
-          ${headerQuery}
           ${heroQuery}
+          ${headerQuery}
           ${stagesQuery}
-          ${SectionImageWithTextQuery}
           ${gridContentQuery}
           ${sectionTextContentImageQuery}
-          ${formQuery}
           ${footerQuery}
         }
       }
