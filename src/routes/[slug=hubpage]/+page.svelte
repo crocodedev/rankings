@@ -2,12 +2,13 @@
   import * as Sections from '$lib/sections'
   import '$lib/css/style.css'
   export let data
-
+  // console.log(data)
+  console.log('HUB-PAGE')
   $: sections = data.sectionsCollection.items
 </script>
 
 <svelte:head>
-  <title>{data.name}</title>
+  <title>{data.pageName}</title>
 </svelte:head>
 
 <div>

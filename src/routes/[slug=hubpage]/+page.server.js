@@ -4,22 +4,23 @@ import contentfulFetch from '$lib/server/contentful-fetch'
 import { stagesQuery } from '$lib/graphql/sections/stages'
 import { heroQuery } from '$lib/graphql/sections/hero'
 import { SectionImageWithTextQuery } from '$lib/graphql/sections/sectionimagewithtext'
-import { sectionTextContentImageQuery } from '../../lib/graphql/sections/textcontentimage'
-import { headerQuery } from '../../lib/graphql/sections/header'
-import { footerQuery } from '../../lib/graphql/sections/footer'
-import { gridContentQuery } from '../../lib/graphql/sections/gridContent'
-import { formQuery } from '../../lib/graphql/sections'
+import { sectionTextContentImageQuery } from '$lib/graphql/sections/textcontentimage'
+import { headerQuery } from '$lib/graphql/sections/header'
+import { footerQuery } from '$lib/graphql/sections/footer'
+import { gridContentQuery } from '$lib/graphql/sections/gridContent'
+import { formQuery } from '$lib/graphql/sections'
 
 const query = (slug) => `
 {
-  pageCollection(where: {
+	entityContentCategoryCollection(where: {
     url: "${slug}"
   } limit: 1) {
-    items {
-      name
+  	items {
+      pageName
       url
-      sectionsCollection (limit:100) {
-         items{
+      contentType
+      sectionsCollection (limit:100){
+        items {
           ${heroQuery}
           ${headerQuery}
           ${stagesQuery}
@@ -35,9 +36,17 @@ const query = (slug) => `
 }
 `
 
+const cardsQuery = () => `
+
+`
+
+const chooseCorrectType = {
+  Blog: 'blogCard',
+  Case: 'caseCard',
+  Service: 'serviceCard',
+}
+
 export async function load({ params, url }) {
-  // console.log(params.slug)
-  // console.log(url.pathname)
   const response = await contentfulFetch(query(`/${params.slug}`))
 
   if (!response.ok) {
@@ -45,5 +54,10 @@ export async function load({ params, url }) {
   }
 
   const { data } = await response.json()
-  return data.pageCollection.items[0]
+
+  const categoryType = chooseCorrectType[data.entityContentCategoryCollection.items[0].contentType]
+  console.log(categoryType)
+  // const cards = await (contentfulFetch(cardsQuery()))
+
+  return data.entityContentCategoryCollection.items[0]
 }

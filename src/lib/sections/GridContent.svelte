@@ -1,6 +1,16 @@
 <script>
   export let data = {}
   import Container from '$lib/components/Container.svelte'
+
+  let faqItems = []
+  let faqText = []
+  setTimeout(() => {
+    faqItems.forEach((el, index) => {
+      el.addEventListener('click', () => {
+        faqText[index].classList.toggle('faq__answer--active')
+      })
+    })
+  }, 100)
 </script>
 
 {#if data.component == 'Cards'}
@@ -27,9 +37,9 @@
                     <p class="card__company">{item.titleCard}</p>
                     <div class="card__categories-list">
                       {#each item.categoriesListCollection.items as category}
-                        <a href={category.url} class="card__category">
+                        <p class="card__category">
                           {category.tagName}
-                        </a>
+                        </p>
                       {/each}
                     </div>
                   </div>
@@ -116,6 +126,30 @@
             </div>
           </div>
         {/each}
+      </div>
+    </Container>
+  </section>
+{/if}
+
+{#if data.component == 'Faq'}
+  <section class="faq">
+    <Container>
+      <div class="faq__wrapper">
+        <h2 class="h2 faq__title">{data.title}</h2>
+        <div class="faq__items">
+          {#each data.contentListCollection.items as item, index}
+            <div class="faq__item" bind:this={faqItems[index]}>
+              <div class="faq__question-wrapper">
+                <span class="faq__num">0{index + 1}.</span>
+                <p class="faq__question">{item.title}</p>
+                <span class="faq__icon"><img src="Group 109.svg" alt="" /></span>
+              </div>
+              <p class="faq__answer" bind:this={faqText[index]}>
+                {item.text}
+              </p>
+            </div>
+          {/each}
+        </div>
       </div>
     </Container>
   </section>
@@ -426,13 +460,23 @@
 
   .indicator {
     width: 220px;
+    position: relative;
+
+    &::before {
+      position: absolute;
+      content: '';
+      background-image: url('Graph 3.svg');
+      width: 60px;
+      height: 100%;
+      left: 100%;
+      top: 0;
+    }
 
     &__fact {
       font-size: 14px;
       color: #46506f;
     }
     &__wrapper {
-      background-color: rgba(255, 0, 0, 0.205);
       padding-left: 20px;
       height: 270px;
       padding-top: 70px;
@@ -446,6 +490,64 @@
       font-size: 72px;
       letter-spacing: -4.32px;
       line-height: 48px;
+    }
+  }
+
+  .faq {
+    &__title {
+      font-size: 32px;
+      font-weight: bold;
+      color: #07124a;
+      width: 341px;
+    }
+    &__wrapper {
+      display: flex;
+      flex-direction: column;
+      gap: 75px;
+    }
+
+    &__question {
+      font-size: 24px;
+      color: #07124a;
+    }
+
+    &__items {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+
+    &__question-wrapper {
+      position: relative;
+      display: flex;
+      align-items: flex-end;
+      gap: 20px;
+      padding: 30px 35px;
+      padding-right: 100px;
+      border: 1px solid #46506f;
+      border-radius: 10px;
+    }
+
+    &__icon {
+      position: absolute;
+      right: 30px;
+    }
+
+    &__num {
+      font-size: 14px;
+      color: #97a2b6;
+    }
+
+    &__answer {
+      display: none;
+      padding-top: 15px;
+      text-indent: 40px;
+      color: #46506f;
+      width: 608px;
+    }
+
+    &__answer--active {
+      display: block;
     }
   }
 </style>

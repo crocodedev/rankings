@@ -21,7 +21,7 @@
 
 <header
   class="header"
-  style=" position: fixed;top: 0;width: 100%;backdrop-filter: blur(5px);z-index: 5;transition: 0.2s ease-in-out;"
+  style=" position: fixed;top: 0;width: 100%;backdrop-filter: blur(10px);z-index: 5;transition: 0.2s ease-in-out;"
   bind:this={header}
 >
   <Container>

@@ -12,24 +12,20 @@ import { formQuery } from '../../lib/graphql/sections'
 
 const query = (slug) => `
 {
-  pageCollection(where: {
-    url: "${slug}"
-  } limit: 1) {
+  entityCardCollection {
     items {
-      name
-      url
-      sectionsCollection (limit:100) {
-         items{
-          ${heroQuery}
-          ${headerQuery}
-          ${stagesQuery}
-          ${gridContentQuery}
-          ${sectionTextContentImageQuery}
-          ${SectionImageWithTextQuery}
-          ${formQuery}
-          ${footerQuery}
+      titleCard
+      subtitleCard
+      imageCard {
+        url
+      }
+      categoriesListCollection {
+        items {
+          url
+					tagName
         }
       }
+      contentTypeCard
     }
   }
 }
@@ -43,7 +39,6 @@ export async function load({ params, url }) {
   if (!response.ok) {
     return console.log(error)
   }
-
   const { data } = await response.json()
-  return data.pageCollection.items[0]
+  return {} // data.entityCardCollection.items[0]
 }

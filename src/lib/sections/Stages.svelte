@@ -1,5 +1,6 @@
 <script>
   export let data = {}
+
   import Container from '$lib/components/Container.svelte'
 </script>
 
