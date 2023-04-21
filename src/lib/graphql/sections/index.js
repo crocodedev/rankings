@@ -9,6 +9,7 @@ import { sectionHeroImageQuery } from './sectionheroimage'
 import { sectionImageWithTextQuery } from './sectionimagewithtext'
 import { stagesQuery } from './stages'
 import { sectionTextContentImageQuery } from './textcontentimage'
+import { heroImageQuery } from './heroImage'
 
 export {
   faqQuery,
@@ -21,5 +22,6 @@ export {
   sectionHeroImageQuery,
   sectionImageWithTextQuery,
   stagesQuery,
+  heroImageQuery,
   sectionTextContentImageQuery,
 }

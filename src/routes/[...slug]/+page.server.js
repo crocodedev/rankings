@@ -8,7 +8,7 @@ import { sectionTextContentImageQuery } from '../../lib/graphql/sections/textcon
 import { headerQuery } from '../../lib/graphql/sections/header'
 import { footerQuery } from '../../lib/graphql/sections/footer'
 import { gridContentQuery } from '../../lib/graphql/sections/gridContent'
-import { formQuery } from '../../lib/graphql/sections'
+import { breadcrumpsQuery, formQuery, heroImageQuery } from '../../lib/graphql/sections'
 
 const query = (slug) => `
 {
@@ -23,10 +23,12 @@ const query = (slug) => `
           ${heroQuery}
           ${headerQuery}
           ${stagesQuery}
+          ${heroImageQuery}
           ${gridContentQuery}
           ${sectionTextContentImageQuery}
           ${SectionImageWithTextQuery}
           ${formQuery}
+          ${breadcrumpsQuery}
           ${footerQuery}
         }
       }
@@ -36,8 +38,6 @@ const query = (slug) => `
 `
 
 export async function load({ params, url }) {
-  // console.log(params.slug)
-  // console.log(url.pathname)
   const response = await contentfulFetch(query(`/${params.slug}`))
 
   if (!response.ok) {

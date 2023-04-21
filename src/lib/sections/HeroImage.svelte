@@ -1,0 +1,87 @@
+<script>
+  import Container from '$lib/components/Container.svelte'
+  export let data = {}
+</script>
+
+<section class="hero-image">
+  <Container>
+    <div class="hero-image__wrapper">
+      <div class="hero-image__text-wrapper">
+        <h1 class="h1 hero-image__title">{data.title}</h1>
+        <p class="hero-image__text">{data.text}</p>
+        <a href={data.linkData.link} class="hero-image__link">{data.linkData.title}</a>
+        <div class="hero-image__categories">
+          <p class="hero-image__category">Branding</p>
+          <p class="hero-image__category">Packaging</p>
+          <p class="hero-image__category">SEO optimisation</p>
+        </div>
+      </div>
+      <div class="hero-image__image-wrapper">
+        <img src={data.image.url} alt="" class="hero-image__image" />
+      </div>
+    </div>
+  </Container>
+</section>
+
+<style lang="scss">
+  .hero-image {
+    &__wrapper {
+      display: flex;
+      justify-content: space-between;
+    }
+
+    &__title {
+      width: max-content;
+    }
+
+    &__text-wrapper {
+      display: flex;
+      width: 48%;
+      flex-direction: column;
+      gap: 20px;
+    }
+
+    &__text {
+      display: flex;
+      font-size: 18px;
+      color: #97a2b6;
+      width: 61%;
+    }
+
+    &__link {
+      position: relative;
+      color: #97a2b6;
+      font-size: 14px;
+      width: max-content;
+
+      &::after {
+        position: absolute;
+        content: '';
+        right: -30px;
+        width: 18px;
+        height: 15px;
+        object-fit: cover;
+        background-size: cover;
+        opacity: 0.3;
+        background-image: url('Group 109.svg');
+      }
+    }
+
+    &__category {
+      width: max-content;
+    }
+
+    &__image-wrapper {
+      width: 48%;
+      height: 377px;
+      overflow: hidden;
+      border-radius: 10px;
+    }
+
+    &__image {
+      object-fit: cover;
+      width: 100%;
+      height: 100%;
+    }
+  }
+</style>

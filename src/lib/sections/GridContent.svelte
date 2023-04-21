@@ -2,15 +2,15 @@
   export let data = {}
   import Container from '$lib/components/Container.svelte'
 
-  let faqItems = []
-  let faqText = []
-  setTimeout(() => {
-    faqItems.forEach((el, index) => {
-      el.addEventListener('click', () => {
-        faqText[index].classList.toggle('faq__answer--active')
-      })
-    })
-  }, 100)
+  let activeQuestions = []
+
+  function toggleActive(index) {
+    if (activeQuestions.includes(index)) {
+      activeQuestions = activeQuestions.filter((item) => item !== index)
+    } else {
+      activeQuestions = [...activeQuestions, index]
+    }
+  }
 </script>
 
 {#if data.component == 'Cards'}
@@ -138,13 +138,22 @@
         <h2 class="h2 faq__title">{data.title}</h2>
         <div class="faq__items">
           {#each data.contentListCollection.items as item, index}
-            <div class="faq__item" bind:this={faqItems[index]}>
-              <div class="faq__question-wrapper">
+            <!-- svelte-ignore a11y-click-events-have-key-events -->
+            <div class="faq__item">
+              <div
+                class={activeQuestions.includes(index)
+                  ? 'faq__question-wrapper active'
+                  : 'faq__question-wrapper'}
+                on:click={() => toggleActive(index)}
+              >
                 <span class="faq__num">0{index + 1}.</span>
                 <p class="faq__question">{item.title}</p>
-                <span class="faq__icon"><img src="Group 109.svg" alt="" /></span>
+                <span
+                  class={activeQuestions.includes(index) ? 'faq__icon active' : 'faq__icon'}
+                  on:click={() => toggleActive(index)}><img src="Group 109.svg" alt="" /></span
+                >
               </div>
-              <p class="faq__answer" bind:this={faqText[index]}>
+              <p class={activeQuestions.includes(index) ? 'faq__answer active' : 'faq__answer'}>
                 {item.text}
               </p>
             </div>
@@ -508,13 +517,13 @@
 
     &__question {
       font-size: 24px;
-      color: #07124a;
     }
 
     &__items {
       display: flex;
       flex-direction: column;
       gap: 20px;
+      // transition: 0.5s ease-in-out;
     }
 
     &__question-wrapper {
@@ -522,15 +531,18 @@
       display: flex;
       align-items: flex-end;
       gap: 20px;
+      cursor: pointer;
+      // transition: 0.5s ease-in-out;
+      color: #07124a;
       padding: 30px 35px;
       padding-right: 100px;
       border: 1px solid #46506f;
       border-radius: 10px;
     }
 
-    &__icon {
-      position: absolute;
-      right: 30px;
+    &__question-wrapper.active {
+      background-color: #414c6d;
+      color: white;
     }
 
     &__num {
@@ -539,15 +551,32 @@
     }
 
     &__answer {
-      display: none;
-      padding-top: 15px;
+      opacity: 0;
+      height: 0;
+      transform: translateY(-100px);
       text-indent: 40px;
       color: #46506f;
       width: 608px;
+      position: relative;
+      z-index: -10;
     }
 
-    &__answer--active {
-      display: block;
+    &__icon {
+      align-self: center;
+      position: absolute;
+      right: 30px;
+    }
+
+    &__icon.active {
+      transform: rotate(90deg);
+    }
+
+    &__answer.active {
+      padding-top: 15px;
+      opacity: 1;
+      transform: translateY(0);
+      height: fit-content;
+      z-index: 1;
     }
   }
 </style>
