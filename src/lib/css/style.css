@@ -44,14 +44,14 @@
 }
 
 section:not(.contact-form) {
-  margin-top: 75px;
-  margin-bottom: 75px;
+  padding-top: 75px;
+  padding-bottom: 75px;
 }
 
 section:is(.contact-form) {
-  margin-top: 75px;
+  padding-top: 75px;
 }
 
 section:first-of-type {
-  margin-top: 90px;
+  padding-top: 90px;
 }

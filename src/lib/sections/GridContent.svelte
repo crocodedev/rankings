@@ -27,7 +27,7 @@
               <div class="card__wrapper">
                 <div class="card__image-wrapper">
                   <img src={item.imageCard.url} alt="card" class="card__image" />
-                  <a href="#">
+                  <a href={item.url}>
                     <img src="feather-external-link.svg" alt="" class="card__image-icon" />
                   </a>
                 </div>
@@ -36,11 +36,13 @@
                     <span class="card__industry">{item.subtitleCard}</span>
                     <p class="card__company">{item.titleCard}</p>
                     <div class="card__categories-list">
-                      {#each item.categoriesListCollection.items as category}
-                        <p class="card__category">
-                          {category.tagName}
-                        </p>
-                      {/each}
+                      {#if item.tagList}
+                        {#each item.tagList as tag}
+                          <p class="card__category">
+                            {tag}
+                          </p>
+                        {/each}
+                      {/if}
                     </div>
                   </div>
                   <p class="card__text">

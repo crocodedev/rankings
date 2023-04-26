@@ -3,6 +3,6 @@
 // }
 
 export function match(param) {
-  console.log('hubpage => ', param)
+  console.log('hubpage => ', param, 'match => ', /(cases|blog|services)(\/[\w-]*)*$/.test(param))
   return /(cases|blog|services)(\/[\w-]*)*$/.test(param)
 }

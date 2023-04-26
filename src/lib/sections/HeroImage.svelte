@@ -67,21 +67,37 @@
       }
     }
 
+    &__categories {
+      display: flex;
+      gap: 10px;
+    }
+
     &__category {
+      font-size: 14px;
+      padding: 5px 15px;
+      background-color: #07124a;
+      border-radius: 5px;
+      color: white;
       width: max-content;
     }
 
     &__image-wrapper {
       width: 48%;
-      height: 377px;
+      height: 500px;
       overflow: hidden;
       border-radius: 10px;
     }
 
+    &__image-wrapper:hover &__image {
+      height: 100%;
+    }
+
     &__image {
+      transition: 0.3s ease-in-out;
+      border-radius: 10px;
       object-fit: cover;
       width: 100%;
-      height: 100%;
+      height: 75.4%;
     }
   }
 </style>

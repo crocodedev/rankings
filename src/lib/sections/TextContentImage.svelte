@@ -17,10 +17,12 @@
         <h2 class="h2">{data.title}</h2>
         <p class="textContent__text">{data.text}</p>
       </div>
-      <div class="textContent__image-wrapper" on:mousemove={handleMousemove}>
-        <div class="textContent__cursor" style="left:{m.x}px;top:{m.y}px" />
-        <img src={data.image.url} alt="" class="textContent__image" />
-      </div>
+      {#if data.image}
+        <div class="textContent__image-wrapper" on:mousemove={handleMousemove}>
+          <div class="textContent__cursor" style="left:{m.x}px;top:{m.y}px" />
+          <img src={data.image.url} alt="" class="textContent__image" />
+        </div>
+      {/if}
     </div>
   </Container>
 </section>

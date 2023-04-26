@@ -8,7 +8,7 @@ import { sectionTextContentImageQuery } from '$lib/graphql/sections/textcontenti
 import { headerQuery } from '$lib/graphql/sections/header'
 import { footerQuery } from '$lib/graphql/sections/footer'
 import { gridContentQuery } from '$lib/graphql/sections/gridContent'
-import { formQuery } from '$lib/graphql/sections'
+import { breadcrumpsQuery, formQuery, heroImageQuery } from '$lib/graphql/sections'
 
 const query = (slug) => `
 {
@@ -22,6 +22,8 @@ const query = (slug) => `
       sectionsCollection (limit:100){
         items {
           ${heroQuery}
+          ${heroImageQuery}
+          ${breadcrumpsQuery}
           ${headerQuery}
           ${stagesQuery}
           ${gridContentQuery}
@@ -36,8 +38,22 @@ const query = (slug) => `
 }
 `
 
-const cardsQuery = () => `
-
+const cardsQuery = (categoryType) => `
+{
+  entityCardCollection(where: {
+    contentTypeCard: "${categoryType}"
+  }) {
+    items {
+      titleCard
+      textCard
+      subtitleCard
+      tagList
+      imageCard {
+        url
+      }
+    }
+  }
+}
 `
 
 const chooseCorrectType = {
@@ -56,8 +72,9 @@ export async function load({ params, url }) {
   const { data } = await response.json()
 
   const categoryType = chooseCorrectType[data.entityContentCategoryCollection.items[0].contentType]
-  console.log(categoryType)
-  // const cards = await (contentfulFetch(cardsQuery()))
+  const cards = await contentfulFetch(cardsQuery(categoryType))
+    .then((res) => res.json())
+    .then((res) => res.data.entityCardCollection.items)
 
-  return data.entityContentCategoryCollection.items[0]
+  return { pageData: data.entityContentCategoryCollection.items[0], cards }
 }

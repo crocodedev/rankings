@@ -9,18 +9,13 @@ export const gridContentQuery = `... on SectionGridContent {
       ... on EntityCard {
         titleCard
         subtitleCard
+        url
         imageCard {
           url
         }
         textCard
         contentTypeCard
-        categoriesListCollection(limit: 7) {
-          items {
-            tagName
-            url
-            pageName
-          }
-        }
+        tagList
       }
       ... on BlockListItem {
         icon{

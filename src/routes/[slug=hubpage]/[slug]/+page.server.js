@@ -12,24 +12,24 @@ import { breadcrumpsQuery, formQuery, heroImageQuery } from '$lib/graphql/sectio
 
 const query = (slug) => `
 {
-  pageCollection(where: {
+  entityCardCollection(limit: 1, where: {
     url: "${slug}"
-  } limit: 1) {
+  }) {
     items {
-      name
-      url
-      sectionsCollection (limit:100) {
-         items{
-          ${heroQuery}
-          ${headerQuery}
-          ${stagesQuery}
+      pageTitle
+      tagList
+      sectionsCollection(limit: 100) {
+        items {
           ${heroImageQuery}
-          ${gridContentQuery}
-          ${sectionTextContentImageQuery}
-          ${SectionImageWithTextQuery}
-          ${formQuery}
           ${breadcrumpsQuery}
+          ${stagesQuery}
+          ${heroQuery}
+          ${SectionImageWithTextQuery}
+          ${sectionTextContentImageQuery}
+          ${headerQuery}
           ${footerQuery}
+          ${gridContentQuery}
+          ${formQuery}
         }
       }
     }
@@ -38,13 +38,12 @@ const query = (slug) => `
 `
 
 export async function load({ params, url }) {
-  const response = await contentfulFetch(query(`/${params.slug}`))
+  const response = await contentfulFetch(query(url.pathname))
 
   if (!response.ok) {
     return console.log(error)
   }
-
   const { data } = await response.json()
 
-  return data.pageCollection.items[0]
+  return data.entityCardCollection.items[0]
 }

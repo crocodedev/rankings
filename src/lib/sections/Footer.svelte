@@ -6,14 +6,17 @@
 <footer class="footer">
   <Container>
     <div class="footer__wrapper">
-      <p class="footer__rights-text">{data.footerRights}</p>
-      <div class="footer__links-wrapper">
-        {#each data.socialLinksCollection.items as item}
-          <a href={item.link} class="footer__link">
-            <img src={item.socialIcon.url} alt="" class="footer__link-icon" />
-          </a>
-        {/each}
+      <div class="footer__inner">
+        <p class="footer__rights-text">{data.footerRights}</p>
+        <div class="footer__links-wrapper">
+          {#each data.socialLinksCollection.items as item}
+            <a href={item.link} class="footer__link">
+              <img src={item.socialIcon.url} alt="" class="footer__link-icon" />
+            </a>
+          {/each}
+        </div>
       </div>
+
       <div class="footer__terms-wrapper">
         {#each data.footerTermsPolicyCollection.items as item}
           <a href={item.link} class="footer__terms">{item.title}</a>
@@ -26,6 +29,11 @@
 <style lang="scss">
   footer.footer * {
     color: #07124a;
+
+    .footer__inner {
+      display: flex;
+      gap: 100px;
+    }
     .footer__wrapper {
       position: relative;
       width: 100%;
@@ -36,9 +44,6 @@
     }
 
     .footer__links-wrapper {
-      position: absolute;
-      left: 50%;
-      transform: translateX(-50%);
       display: flex;
       gap: 25px;
     }

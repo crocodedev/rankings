@@ -2,19 +2,20 @@
   import * as Sections from '$lib/sections'
   import '$lib/css/style.css'
   export let data
-  console.log('CARD-PAGE')
-  // $: sections = data.sectionsCollection.items
+
+  $: sections = data.sectionsCollection.items
 </script>
 
-<!-- <svelte:head>
-  <title>{data.name}</title>
-</svelte:head> -->
+<svelte:head>
+  <title>{data.pageTitle}</title>
+</svelte:head>
 
-<!-- <div>
+<div>
   {#each sections as section}
     <svelte:component this={Sections[section?.component]} data={section} />
   {/each}
-</div> -->
+</div>
+
 <style global lang="scss">
   @import 'destyle.css/destyle.css';
   @import url('https://fonts.googleapis.com/css2?family=Lexend:wght@400;600;700&display=swap');
