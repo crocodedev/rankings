@@ -476,7 +476,7 @@
     &::before {
       position: absolute;
       content: '';
-      background-image: url('Graph 3.svg');
+      background-image: url('/static/Graph 3.svg');
       width: 60px;
       height: 100%;
       left: 100%;

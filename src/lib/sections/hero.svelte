@@ -39,6 +39,16 @@
       gap: 80px;
     }
 
+    .hero__arrow-animate {
+      width: 100%;
+      height: 300px;
+    }
+
+    .hero__arrow {
+      width: 100%;
+      height: 100%;
+    }
+
     .hero__leftside-inner,
     .hero__rightside-inner {
       display: flex;

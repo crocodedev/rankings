@@ -39,20 +39,35 @@
         <Container>
           <div class="cases__wrapper">
             <h1 class="cases__title h1">{section.title}</h1>
-            <div class="cases__tags">
-              {#each section.tags as tag}
-                <div class="cases__tag">{tag}</div>
-              {/each}
-            </div>
+            {#if section.section == 'BlogList'}
+              <div class="cases__tags" style="justify-content:center">
+                <a href="#" class="cases__tag cases__tag--active">All projects</a>
+                {#each section.tags as tag}
+                  <a href="#" class="cases__tag">{tag}</a>
+                {/each}
+              </div>
+            {/if}
+            {#if section.section == 'CaseList'}
+              <div class="cases__tags">
+                <a href="#" class="cases__tag cases__tag--active">All projects</a>
+                {#each section.tags as tag}
+                  <a href="#" class="cases__tag">{tag}</a>
+                {/each}
+              </div>
+            {/if}
+
             <div class="cases__items">
               {#each section.cards as card}
-                <div class="cases__item">
+                <div class="cases__item {card.blogCardVariation}">
                   <div class="cases__item-image-wrapper">
                     <img src={card.imageCard.url} alt="" class="cases__item-image" />
+                    <a href={card.url}>
+                      <img src="feather-external-link.svg" alt="" class="card__image-icon" />
+                    </a>
                   </div>
                   <div class="cases__text-wrapper">
-                    <a href="/" class="cases__item-name">{card.titleCard}</a>
-                    <a href="/" class="cases__item-category">{card.subtitleCard}</a>
+                    <a href={card.url} class="cases__item-name">{card.titleCard}</a>
+                    <a href={card.url} class="cases__item-category">{card.subtitleCard}</a>
                     <div class="cases__item-tags">
                       {#if card.tagList}
                         {#each card.tagList as tag}
@@ -83,6 +98,12 @@
     }
   }
 
+  .card__image-icon {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+  }
+
   .cases {
     &__title {
       padding-bottom: 150px;
@@ -103,10 +124,15 @@
       cursor: pointer;
     }
 
+    &__tag--active {
+      color: white;
+      background-color: #07124a;
+    }
+
     &__items {
       padding-top: 50px;
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
+      display: flex;
+      flex-wrap: wrap;
       column-gap: 50px;
       row-gap: 150px;
     }
@@ -115,13 +141,16 @@
       display: flex;
       flex-direction: column;
       gap: 10px;
+      width: 48%;
     }
 
     &__item-image-wrapper {
+      position: relative;
       width: 100%;
       height: 500px;
       border-radius: 10px;
       overflow: hidden;
+      transition: 0.3s ease-in-out;
     }
 
     &__item-image {
@@ -158,6 +187,28 @@
       border: 1px solid #07124a;
       color: #07124a;
       padding: 5px 15px;
+    }
+
+    &__item:is(.HalfHeight) {
+      .cases__item-image-wrapper {
+        height: 50%;
+      }
+    }
+
+    &__item:is(.FullWidth) {
+      width: 100%;
+    }
+
+    &__item:is(.FullWidth):hover {
+      .cases__item-image-wrapper {
+        width: 48%;
+      }
+    }
+
+    &__item:is(.HalfHeight):hover {
+      .cases__item-image-wrapper {
+        height: 100%;
+      }
     }
   }
 </style>

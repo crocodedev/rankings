@@ -48,9 +48,11 @@ const cardsQuery = (categoryType) => `
       textCard
       subtitleCard
       tagList
+      url
       imageCard {
         url
       }
+      blogCardVariation
     }
   }
 }
