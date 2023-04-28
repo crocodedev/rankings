@@ -7,6 +7,20 @@ export const headerQuery = `... on Header {
   logo {
     url
   }
+  socialsCollection (limit:7){
+    items{
+      link
+      socialIcon{
+        url
+      }
+    }
+  }
+  mobileMenuLinksCollection(limit:5){
+    items{
+      title
+      link
+    }
+  }
   navigationCollection(limit: 7) {
     items {
       title
@@ -24,5 +38,5 @@ export const headerQuery = `... on Header {
       }
     }
   }
-} 
+}
 `

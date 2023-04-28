@@ -7,7 +7,7 @@
   <Container>
     <div class="imagewithtext__wrapper">
       <div class="imagewithtext__image-wrapper">
-        <img src={data.image.url} alt="" />
+        <img src={data.image.url} alt="" class="imagewithtext__image" />
       </div>
       <div class="imagewithtext__inner">
         <div class="imagewithtext__text-wrapper">
@@ -26,17 +26,46 @@
       display: flex;
     }
 
+    @media (max-width: 992px) {
+      &__wrapper {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 40px;
+      }
+
+      &__image {
+        width: 100%;
+      }
+    }
+
     &__image-wrapper {
-      width: 50%;
       height: 270px;
       justify-content: center;
       display: flex;
     }
 
+    @media (min-width: 992px) {
+      &__image-wrapper {
+        width: 50%;
+      }
+    }
+
     &__inner {
       display: flex;
-      width: 50%;
       gap: 39px;
+    }
+
+    @media (min-width: 992px) {
+      &__inner {
+        width: 50%;
+      }
+    }
+
+    @media (max-width: 992px) {
+      &__inner {
+        flex-direction: column;
+      }
     }
 
     &__title {
@@ -51,23 +80,45 @@
     }
 
     &__text-wrapper {
-      width: 65%;
       display: flex;
       flex-direction: column;
       gap: 35px;
       justify-content: space-between;
     }
 
+    @media (min-width: 992px) {
+      &__text-wrapper {
+        width: 65%;
+      }
+    }
+
+    @media (max-width: 992px) {
+      &__text-wrapper {
+        text-align: center;
+      }
+    }
+
     &__btn {
-      align-self: flex-end;
       color: white;
       font-size: 18px;
       text-transform: uppercase;
       padding: 10px 20px;
       background-color: #0077ff;
-      width: 32%;
       text-align: center;
       border-radius: 5px;
+    }
+
+    @media (min-width: 992px) {
+      &__btn {
+        align-self: flex-end;
+        width: 32%;
+      }
+    }
+
+    @media (max-width: 992px) {
+      &__btn {
+        align-self: center;
+      }
     }
   }
 </style>

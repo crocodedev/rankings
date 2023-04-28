@@ -1,34 +1,58 @@
 <script>
   import Container from '$lib/components/Container.svelte'
+
+  import { onMount } from 'svelte'
+
+  let screenWidth
+
+  // onMount(() => {
+  //   screenWidth = window.innerWidth
+  //   window.addEventListener('resize', () => {
+  //     screenWidth = window.innerWidth
+  //   })
+  // })
+
   let navItem = []
   let header
 
-  setTimeout(() => {
+  $: if (navItem.length > 0) {
     navItem.forEach((el) => {
       if (el.childNodes.length > 3) {
         el.addEventListener('mouseover', () => {
+          console.log(1)
           header.style.paddingBottom = '143px'
         })
         el.addEventListener('mouseout', () => {
+          console.log(2)
           header.style.paddingBottom = '0px'
         })
       }
     })
-  }, 100)
+  }
+
+  let isMenuOpen = false
+
+  function toggleMenu() {
+    isMenuOpen = !isMenuOpen
+  }
 
   export let data = {}
 </script>
 
-<header
-  class="header"
-  style=" position: fixed;top: 0;width: 100%;backdrop-filter: blur(10px);z-index: 5;transition: 0.2s ease-in-out;"
-  bind:this={header}
->
+<header class="header" bind:this={header}>
   <Container>
     <div class="header__wrapper">
-      <a href="/" class="header__logotype">Rankings</a>
-      <nav class="header__nav-list">
-        <span class="header__cross" />
+      <a
+        href="/"
+        class={isMenuOpen ? 'header__logotype header__logotype--active' : 'header__logotype'}
+        >Rankings</a
+      >
+
+      <nav
+        class={isMenuOpen ? 'header__nav-list header__nav-list--active' : 'header__nav-list'}
+        bind
+      >
+        <span class="header__cross" on:click={toggleMenu} />
         {#each data.navigationCollection.items as item, i}
           <div class="header__nav-item" bind:this={navItem[i]}>
             <a href={item.link}>{item.title} </a>
@@ -41,11 +65,26 @@
             {/if}
           </div>
         {/each}
+        <div class="header__mobile">
+          <div class="header__icons">
+            {#each data.socialsCollection.items as item}
+              <a href={item.link}>
+                <img src={item.socialIcon.url} alt={item.socialIcon.title} />
+              </a>
+            {/each}
+          </div>
+          <div class="header__mobile-links">
+            {#each data.mobileMenuLinksCollection.items as item}
+              <a href={item.link} class="header__mobile-link">{item.title}</a>
+            {/each}
+          </div>
+        </div>
       </nav>
-      <button class="header__btn-menu" />
+      <button class="header__btn-menu" on:click={toggleMenu} />
     </div>
   </Container>
 </header>
+<div class={isMenuOpen ? 'header__background header__background--active' : 'header__background'} />
 
 <style lang="scss">
 </style>

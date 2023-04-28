@@ -14,7 +14,7 @@
       </div>
       <div class="hero__rightside-inner">
         <div class="hero__image-wrapper">
-          <img src="Graphs.svg" alt="" />
+          <img src="Graphs.svg" alt="" class="hero__image" />
         </div>
         <div class="hero__text-wrapper">
           <p class="hero__text">{data.subtext}</p>
@@ -26,54 +26,54 @@
 </section>
 
 <style lang="scss">
-  section * {
-    .hero__title {
-      font-size: 72px;
-      color: #07124a;
-      text-transform: uppercase;
-    }
+  // section * {
+  //   .hero__title {
+  //     font-size: 72px;
+  //     color: #07124a;
+  //     text-transform: uppercase;
+  //   }
 
-    .hero__wrapper {
-      justify-content: space-between;
-      display: flex;
-      gap: 80px;
-    }
+  //   .hero__wrapper {
+  //     justify-content: space-between;
+  //     display: flex;
+  //     gap: 80px;
+  //   }
 
-    .hero__arrow-animate {
-      width: 100%;
-      height: 300px;
-    }
+  //   .hero__arrow-animate {
+  //     width: 100%;
+  //     height: 300px;
+  //   }
 
-    .hero__arrow {
-      width: 100%;
-      height: 100%;
-    }
+  //   .hero__arrow {
+  //     width: 100%;
+  //     height: 100%;
+  //   }
 
-    .hero__leftside-inner,
-    .hero__rightside-inner {
-      display: flex;
-      flex-direction: column;
-      gap: 130px;
-    }
+  //   .hero__leftside-inner,
+  //   .hero__rightside-inner {
+  //     display: flex;
+  //     flex-direction: column;
+  //     gap: 130px;
+  //   }
 
-    .hero__text-wrapper {
-      display: flex;
-      flex-direction: column;
-      gap: 34px;
-    }
+  //   .hero__text-wrapper {
+  //     display: flex;
+  //     flex-direction: column;
+  //     gap: 34px;
+  //   }
 
-    .hero__text {
-      font-size: 18px;
-      color: #07124a;
-    }
+  //   .hero__text {
+  //     font-size: 18px;
+  //     color: #07124a;
+  //   }
 
-    .hero__button {
-      border-radius: 5px;
-      background-color: #0077ff;
-      color: white;
-      text-transform: uppercase;
-      padding: 10px 20px;
-      width: max-content;
-    }
-  }
+  //   .hero__button {
+  //     border-radius: 5px;
+  //     background-color: #0077ff;
+  //     color: white;
+  //     text-transform: uppercase;
+  //     padding: 10px 20px;
+  //     width: max-content;
+  //   }
+  // }
 </style>
