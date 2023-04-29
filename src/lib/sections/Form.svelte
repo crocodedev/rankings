@@ -9,7 +9,7 @@
     <div class="contact-form__wrapper">
       <div class="contact-form__inner">
         <div class="contact-form__title-wrapper">
-          <h1 class="contact-form__title">{data.formTitle}</h1>
+          <h1 class="h1 contact-form__title">{data.formTitle}</h1>
           <a href="mailto:{data.workingEmail}" class="contact-form__email">{data.workingEmail}</a>
         </div>
         <nav class="contact-form__nav">
@@ -71,33 +71,59 @@
       justify-content: space-between;
       border-radius: 10px;
       background-color: #46506f;
-      padding: 75px 55px 87px 75px;
+    }
+
+    @media (min-width: 993px) {
+      &__wrapper {
+        padding: 75px 55px 87px 75px;
+      }
+    }
+
+    @media (max-width: 992px) {
+      &__wrapper {
+        flex-direction: column;
+        gap: 20px;
+        padding: 20px;
+      }
     }
 
     &__inner {
       display: flex;
       flex-direction: column;
       justify-content: space-between;
-      width: 45%;
+    }
+
+    @media (min-width: 993px) {
+      &__inner {
+        width: 45%;
+      }
     }
 
     &__title {
-      font-size: 72px;
-      font-weight: bold;
-      text-transform: uppercase;
       color: var(--primary-blue);
     }
 
     &__title-wrapper {
       display: flex;
       flex-direction: column;
-      width: 75%;
       gap: 20px;
+    }
+
+    @media (min-width: 993px) {
+      &__title-wrapper {
+        width: 75%;
+      }
     }
 
     &__nav {
       display: flex;
       justify-content: space-between;
+    }
+
+    @media (max-width: 992px) {
+      &__nav {
+        display: none;
+      }
     }
 
     &__nav-item {
@@ -106,13 +132,35 @@
 
     &__email {
       color: #ffffff;
-      font-size: 24px;
+    }
+
+    @media (min-width: 993px) {
+      &__email {
+        font-size: 24px;
+      }
+    }
+
+    @media (max-width: 992px) {
+      &__email {
+        font-size: 18px;
+      }
     }
 
     &__form {
       display: flex;
       flex-direction: column;
-      gap: 75px;
+    }
+
+    @media (max-width: 992px) {
+      &__form {
+        gap: 40px;
+      }
+    }
+
+    @media (min-width: 993px) {
+      &__form {
+        gap: 75px;
+      }
     }
 
     &__form-wrapper {
@@ -124,18 +172,82 @@
       }
     }
 
+    @media (min-width: 996px) and (max-width: 1100px) {
+      &__form-wrapper {
+        flex-direction: column;
+        gap: 40px;
+        justify-content: space-between;
+      }
+    }
+
+    @media (min-width: 541px) and (max-width: 996px) {
+      &__form-wrapper {
+        gap: 40px;
+        justify-content: space-between;
+      }
+    }
+
+    @media (max-width: 540px) {
+      &__form-wrapper {
+        flex-direction: column;
+        gap: 40px;
+      }
+    }
+
     &__button-wrapper {
       display: flex;
-      gap: 25px;
+    }
+
+    @media (max-width: 1280px) {
+      &__button-wrapper {
+        flex-wrap: wrap;
+      }
+    }
+
+    @media (max-width: 992px) {
+      &__button-wrapper {
+        flex-direction: column;
+        align-items: center;
+        gap: 20px;
+      }
+    }
+
+    @media (min-width: 993px) {
+      &__button-wrapper {
+        gap: 25px;
+      }
     }
 
     &__form-policy {
       color: #bfc8d6;
     }
 
+    @media (min-width: 993px) {
+      &__form-policy {
+        font-size: 14px;
+      }
+    }
+
+    @media (max-width: 992px) {
+      &__form-policy {
+        font-size: 10px;
+      }
+    }
+
     &__label {
-      font-size: 32px;
       color: white;
+    }
+
+    @media (min-width: 993px) {
+      &__label {
+        font-size: 32px;
+      }
+    }
+
+    @media (max-width: 992px) {
+      &__label {
+        font-size: 24px;
+      }
     }
 
     &__input {

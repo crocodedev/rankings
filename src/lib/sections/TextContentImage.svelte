@@ -29,23 +29,26 @@
 
 <style lang="scss">
   .textContent {
-    &__cursor {
-      cursor: none;
-      position: absolute;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      width: 136px;
-      height: 136px;
-      border-radius: 100%;
-      border: 1px solid #0077ff;
+    @media (min-width: 993px) {
+      &__cursor {
+        cursor: none;
+        position: absolute;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 136px;
+        height: 136px;
+        border-radius: 100%;
+        border: 1px solid #0077ff;
+      }
+
+      &__cursor::before {
+        content: 'CLICK';
+        color: #0077ff;
+        font-size: 18px;
+      }
     }
 
-    &__cursor::before {
-      content: 'CLICK';
-      color: #0077ff;
-      font-size: 18px;
-    }
     &__wrapper {
       display: flex;
       flex-direction: column;
@@ -55,9 +58,14 @@
     &__title-wrapper {
       display: flex;
       align-self: flex-start;
-      width: 48%;
       flex-direction: column;
       gap: 20px;
+    }
+
+    @media (min-width: 993px) {
+      &__title-wrapper {
+        width: 48%;
+      }
     }
 
     &__title-wrapper.right {
@@ -87,6 +95,7 @@
     &__image {
       width: 100%;
       height: 100%;
+      object-fit: cover;
     }
   }
 </style>

@@ -5,12 +5,18 @@
 
   let screenWidth
 
-  // onMount(() => {
-  //   screenWidth = window.innerWidth
-  //   window.addEventListener('resize', () => {
-  //     screenWidth = window.innerWidth
-  //   })
-  // })
+  let isMenuOpen = false
+
+  function toggleMenu() {
+    isMenuOpen = !isMenuOpen
+  }
+
+  onMount(() => {
+    screenWidth = window.innerWidth
+    window.addEventListener('resize', () => {
+      screenWidth = window.innerWidth
+    })
+  })
 
   let navItem = []
   let header
@@ -19,21 +25,13 @@
     navItem.forEach((el) => {
       if (el.childNodes.length > 3) {
         el.addEventListener('mouseover', () => {
-          console.log(1)
           header.style.paddingBottom = '143px'
         })
         el.addEventListener('mouseout', () => {
-          console.log(2)
           header.style.paddingBottom = '0px'
         })
       }
     })
-  }
-
-  let isMenuOpen = false
-
-  function toggleMenu() {
-    isMenuOpen = !isMenuOpen
   }
 
   export let data = {}
@@ -65,7 +63,9 @@
             {/if}
           </div>
         {/each}
-        <div class="header__mobile">
+      </nav>
+      {#if screenWidth && screenWidth <= 992}
+        <div class={isMenuOpen ? 'header__mobile header__mobile--active' : 'header__mobile'}>
           <div class="header__icons">
             {#each data.socialsCollection.items as item}
               <a href={item.link}>
@@ -79,7 +79,7 @@
             {/each}
           </div>
         </div>
-      </nav>
+      {/if}
       <button class="header__btn-menu" on:click={toggleMenu} />
     </div>
   </Container>

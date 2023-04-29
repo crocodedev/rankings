@@ -26,7 +26,7 @@
   text-transform: uppercase;
 }
 
-@media (min-width: 992px) {
+@media (min-width: 993px) {
   .h1 {
     font-size: 72px;
   }
@@ -38,7 +38,7 @@
   }
 }
 
-@media (min-width: 992px) {
+@media (min-width: 993px) {
   .h2 {
     font-size: 32px;
   }
@@ -101,13 +101,13 @@ section:first-of-type {
   }
 }
 
-@media (min-width: 992px) {
+@media (min-width: 993px) {
   .header__btn-menu {
     display: none;
   }
 }
 
-@media (min-width: 992px) {
+@media (min-width: 993px) {
   .header__cross {
     display: none;
   }
@@ -145,7 +145,7 @@ section:first-of-type {
     background-color: white;
   }
 }
-@media (min-width: 992px) {
+@media (min-width: 993px) {
   .header__mobile {
     display: none;
   }
@@ -154,12 +154,18 @@ section:first-of-type {
 @media (max-width: 992px) {
   .header__mobile {
     position: absolute;
-    bottom: 25px;
-    right: 25px;
+    top: calc(100vh - 125px);
+    right: -100%;
+    z-index: 11;
     display: flex;
     flex-direction: column;
     gap: 40px;
     align-items: flex-end;
+    transition: 0.3s ease-in-out;
+  }
+
+  .header__mobile--active {
+    right: 0;
   }
 }
 
@@ -212,7 +218,7 @@ header {
   display: flex;
 }
 
-@media (min-width: 992px) {
+@media (min-width: 993px) {
   .header__nav-list {
     position: relative;
     gap: 60px;
@@ -243,7 +249,7 @@ header {
   }
 }
 
-@media (min-width: 992px) {
+@media (min-width: 993px) {
   .header__background {
     display: none;
   }
@@ -265,7 +271,7 @@ header {
   }
 }
 
-@media (min-width: 992px) {
+@media (min-width: 993px) {
   .header__nav-item {
     color: #07124a;
     padding-bottom: 35px;
@@ -337,8 +343,10 @@ header {
   transition: 0.3s ease-in-out;
 }
 
-.header__logotype--active {
-  filter: blur(20px);
+@media (max-width: 992px) {
+  .header__logotype--active {
+    filter: blur(20px);
+  }
 }
 
 /* herooo */
@@ -366,7 +374,7 @@ header {
   flex-direction: column;
 }
 
-@media (min-width: 992px) {
+@media (min-width: 993px) {
   .hero__leftside-inner,
   .hero__rightside-inner {
     gap: 130px;
@@ -384,7 +392,7 @@ header {
   }
 }
 
-@media (min-width: 992px) {
+@media (min-width: 993px) {
   .hero__leftside-inner {
     width: 52%;
   }
@@ -428,7 +436,7 @@ header {
   width: 100%;
 }
 
-@media (min-width: 992px) {
+@media (min-width: 993px) {
   .hero__arrow-animate,
   .hero__arrow,
   .hero__image-wrapper {

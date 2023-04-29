@@ -45,7 +45,7 @@
       display: flex;
     }
 
-    @media (min-width: 992px) {
+    @media (min-width: 993px) {
       &__image-wrapper {
         width: 50%;
       }
@@ -56,7 +56,7 @@
       gap: 39px;
     }
 
-    @media (min-width: 992px) {
+    @media (min-width: 993px) {
       &__inner {
         width: 50%;
       }
@@ -86,7 +86,7 @@
       justify-content: space-between;
     }
 
-    @media (min-width: 992px) {
+    @media (min-width: 993px) {
       &__text-wrapper {
         width: 65%;
       }
@@ -108,7 +108,7 @@
       border-radius: 5px;
     }
 
-    @media (min-width: 992px) {
+    @media (min-width: 993px) {
       &__btn {
         align-self: flex-end;
         width: 32%;
