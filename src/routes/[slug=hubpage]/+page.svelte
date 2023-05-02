@@ -4,6 +4,7 @@
   import Container from '$lib/components/Container.svelte'
 
   export let data
+  $: activeTags = []
   $: sections = [
     ...data.pageData.sectionsCollection.items,
     {
@@ -21,7 +22,14 @@
       ],
     },
   ].sort((a, b) => a.position - b.position)
-  $: console.log(sections)
+
+  const clearActive = () => (activeTags = [])
+
+  const handleTogleActive = (tag) => {
+    activeTags = activeTags.includes(tag)
+      ? activeTags.filter((el) => el !== tag)
+      : [...activeTags, tag]
+  }
 </script>
 
 <svelte:head>
@@ -41,42 +49,67 @@
             <h1 class="cases__title h1">{section.title}</h1>
             {#if section.section == 'BlogList'}
               <div class="cases__tags" style="justify-content:center">
-                <a href="#" class="cases__tag cases__tag--active">All projects</a>
+                <button
+                  on:click={clearActive}
+                  class={`cases__tag ${activeTags.length === 0 ? 'cases__tag--active' : ''}`}
+                  >All topics</button
+                >
                 {#each section.tags as tag}
-                  <a href="#" class="cases__tag">{tag}</a>
+                  <button
+                    on:click={() => handleTogleActive(tag)}
+                    class={`cases__tag ${activeTags.includes(tag) ? 'cases__tag--active' : ''}`}
+                    >{tag}</button
+                  >
                 {/each}
               </div>
             {/if}
+
             {#if section.section == 'CaseList'}
               <div class="cases__tags">
-                <a href="#" class="cases__tag cases__tag--active">All projects</a>
+                <button
+                  on:click={clearActive}
+                  type="button"
+                  class={`cases__tag ${activeTags.length === 0 ? 'cases__tag--active' : ''}`}
+                  >All projects</button
+                >
                 {#each section.tags as tag}
-                  <a href="#" class="cases__tag">{tag}</a>
+                  <button
+                    type="button"
+                    on:click={() => handleTogleActive(tag)}
+                    class={`cases__tag ${activeTags.includes(tag) ? 'cases__tag--active' : ''}`}
+                    >{tag}</button
+                  >
                 {/each}
               </div>
             {/if}
 
             <div class="cases__items">
               {#each section.cards as card}
-                <div class="cases__item {card.blogCardVariation}">
-                  <div class="cases__item-image-wrapper">
-                    <img src={card.imageCard.url} alt="" class="cases__item-image" />
-                    <a href={card.url}>
-                      <img src="feather-external-link.svg" alt="" class="card__image-icon" />
-                    </a>
-                  </div>
-                  <div class="cases__text-wrapper">
-                    <a href={card.url} class="cases__item-name">{card.titleCard}</a>
-                    <a href={card.url} class="cases__item-category">{card.subtitleCard}</a>
-                    <div class="cases__item-tags">
-                      {#if card.tagList}
-                        {#each card.tagList as tag}
-                          <div class="cases__item-tag">{tag}</div>
-                        {/each}
+                {#if activeTags.length === 0 || card.tagList?.some((el) => activeTags.includes(el))}
+                  <div class="cases__item {card.blogCardVariation}">
+                    <div class="cases__item-image-wrapper">
+                      <img src={card.imageCard.url} alt="" class="cases__item-image" />
+                      <a href={card.url}>
+                        <img src="feather-external-link.svg" alt="" class="card__image-icon" />
+                      </a>
+                    </div>
+                    <div class="cases__text-wrapper">
+                      <a href={card.url} class="cases__item-name">{card.titleCard}</a>
+                      {#if card.subtitleCard != null}
+                        <a href={card.url} class="cases__item-category">{card.subtitleCard}</a>
                       {/if}
+                      <div class="cases__item-tags">
+                        {#if section.section == 'CaseList'}
+                          {#if card.tagList}
+                            {#each card.tagList as tag}
+                              <div class="cases__item-tag">{tag}</div>
+                            {/each}
+                          {/if}
+                        {/if}
+                      </div>
                     </div>
                   </div>
-                </div>
+                {/if}
               {/each}
             </div>
           </div>
@@ -245,6 +278,7 @@
 
     &__item-tags {
       display: flex;
+      flex-wrap: wrap;
       gap: 10px;
     }
 

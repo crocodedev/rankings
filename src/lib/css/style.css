@@ -59,13 +59,26 @@
   font-weight: 600;
 }
 
-section:not(.contact-form) {
-  padding-top: 75px;
-  padding-bottom: 75px;
+@media (min-width: 993px) {
+  section:not(.contact-form) {
+    padding-top: 75px;
+    padding-bottom: 75px;
+  }
+
+  section:is(.contact-form) {
+    padding-top: 75px;
+  }
 }
 
-section:is(.contact-form) {
-  padding-top: 75px;
+@media (max-width: 992px) {
+  section:not(.contact-form) {
+    padding-top: 50px;
+    padding-bottom: 50px;
+  }
+
+  section:is(.contact-form) {
+    padding-top: 50px;
+  }
 }
 
 section:first-of-type {
@@ -382,9 +395,12 @@ header {
 }
 
 @media (max-width: 992px) {
-  .hero__leftside-inner,
   .hero__rightside-inner {
     gap: 40px;
+  }
+
+  .hero__leftside-inner {
+    gap: 140px;
   }
 
   .hero__rightside-inner {
@@ -424,16 +440,19 @@ header {
   width: max-content;
 }
 
-.hero__arrow-animate {
-  width: 100%;
-}
-
 .hero__arrow {
   width: 100%;
 }
 
 .hero__image-wrapper {
   width: 100%;
+}
+
+.hero__arrow-animate {
+  width: 100%;
+  display: flex;
+  justify-content: flex-end;
+  position: relative;
 }
 
 @media (min-width: 993px) {
@@ -453,4 +472,96 @@ header {
 .hero__image {
   width: 100%;
   height: 100%;
+}
+
+.hero__image-white {
+  position: absolute;
+  /* width: 100%; */
+  background-color: rgb(255, 255, 255);
+  animation: 3s linear 1s running bounce;
+}
+
+@media (min-width: 481px) {
+  .hero__image-white {
+    top: -20px;
+    height: 100%;
+  }
+}
+
+@media (min-width: 481px) and (max-width: 600px) {
+  .hero__image-white {
+    top: -108px;
+    height: 180%;
+    right: -20px;
+  }
+}
+
+@media (max-width: 480px) {
+  .hero__image-white {
+    top: -100px;
+    height: 180%;
+  }
+}
+
+@keyframes bounce {
+  from {
+    width: 100%;
+  }
+  to {
+    width: 0;
+  }
+}
+
+.arrow__points {
+  position: absolute;
+  display: flex;
+  justify-content: space-evenly;
+  width: 100%;
+  height: 100%;
+  top: -110px;
+  left: -20px;
+  transform: rotate(-15deg);
+}
+
+.arrow__point {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  align-items: center;
+  gap: 18px;
+  width: 120px;
+  transform: rotate(15deg);
+  justify-content: center;
+}
+
+.arrow__point-num {
+  display: flex;
+  justify-content: center;
+  position: relative;
+  color: #0077ff;
+}
+
+.arrow__point-num::before {
+  position: absolute;
+  content: '';
+  width: 35px;
+  align-self: center;
+  justify-self: center;
+  height: 35px;
+  border-radius: 100%;
+  border: 1px solid #07124a;
+}
+
+.arrow__point-num::after {
+  position: absolute;
+  content: '';
+  width: 1px;
+  top: 100%;
+  height: 80px;
+  background-color: #07124a;
+}
+
+.arrow__point-text {
+  font-size: 16px;
+  color: #07124a;
 }

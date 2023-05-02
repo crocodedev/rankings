@@ -69,6 +69,10 @@
       gap: 50px;
     }
 
+    .footer__rights-text {
+      text-align: center;
+    }
+
     @media (min-width: 993px) and (max-width: 1100px) {
       .footer__inner {
         gap: 20px;

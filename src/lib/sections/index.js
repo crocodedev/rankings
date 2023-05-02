@@ -11,6 +11,7 @@ import Seo from '$lib/sections/GridContent.svelte'
 import Indicator from '$lib/sections/GridContent.svelte'
 import Methods from '$lib/sections/GridContent.svelte'
 import Form from '$lib/sections/Form.svelte'
+import RichText from '$lib/sections/RichText.svelte'
 import Breadcrumps from '$lib/sections/Breadcrumps.svelte'
 import HeroImage from '$lib/sections/HeroImage.svelte'
 
@@ -19,6 +20,7 @@ export {
   Footer,
   Breadcrumps,
   Form,
+  RichText,
   Indicator,
   Seo,
   HeroImage,

@@ -1,6 +1,8 @@
 <script>
   import Container from '$lib/components/Container.svelte'
   export let data = {}
+
+  console.log(data)
 </script>
 
 <section class="hero-image">
@@ -11,7 +13,9 @@
         <p class="hero-image__text">{data.text}</p>
         <a href={data.linkData.link} class="hero-image__link">{data.linkData.title}</a>
         <div class="hero-image__categories">
-          <p class="hero-image__category">Branding</p>
+          <!-- {#each data.tagList as tag}
+            <p class="hero-image__category">{tag}</p>
+          {/each} -->
           <p class="hero-image__category">Packaging</p>
           <p class="hero-image__category">SEO optimisation</p>
         </div>
@@ -30,22 +34,51 @@
       justify-content: space-between;
     }
 
+    @media (max-width: 768px) {
+      &__wrapper {
+        flex-direction: column;
+        gap: 20px;
+      }
+    }
+
     &__title {
       width: max-content;
     }
 
     &__text-wrapper {
       display: flex;
-      width: 48%;
       flex-direction: column;
       gap: 20px;
+    }
+
+    @media (min-width: 769px) {
+      &__text-wrapper {
+        width: 48%;
+      }
     }
 
     &__text {
       display: flex;
       font-size: 18px;
       color: #97a2b6;
-      width: 61%;
+    }
+
+    @media (min-width: 769px) and (max-width: 992px) {
+      &__text {
+        width: 80%;
+      }
+    }
+
+    @media (min-width: 993px) {
+      &__text {
+        width: 61%;
+      }
+    }
+
+    @media (max-width: 769px) {
+      &__text {
+        font-size: 14px;
+      }
     }
 
     &__link {
@@ -67,8 +100,15 @@
       }
     }
 
+    @media (max-width: 768px) {
+      &__link {
+        order: 4;
+      }
+    }
+
     &__categories {
       display: flex;
+      flex-wrap: wrap;
       gap: 10px;
     }
 
@@ -82,14 +122,28 @@
     }
 
     &__image-wrapper {
-      width: 48%;
-      height: 500px;
       overflow: hidden;
       border-radius: 10px;
     }
 
-    &__image-wrapper:hover &__image {
-      height: 100%;
+    @media (min-width: 769px) {
+      &__image-wrapper {
+        width: 48%;
+        height: 500px;
+      }
+    }
+
+    @media (max-width: 768px) {
+      &__image-wrapper {
+        width: 100%;
+        height: 267px;
+      }
+    }
+
+    @media (min-width: 769px) {
+      &__image-wrapper:hover &__image {
+        height: 100%;
+      }
     }
 
     &__image {
@@ -97,7 +151,18 @@
       border-radius: 10px;
       object-fit: cover;
       width: 100%;
-      height: 75.4%;
+    }
+
+    @media (min-width: 769px) {
+      &__image {
+        height: 75.4%;
+      }
+    }
+
+    @media (max-width: 768px) {
+      &__image {
+        height: 100%;
+      }
     }
   }
 </style>

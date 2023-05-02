@@ -123,6 +123,9 @@
         {#each data.contentListCollection.items as item}
           <div class="indicator">
             <div class="indicator__wrapper">
+              <!-- <div class="indicator__image-wrapper">
+                <img src="Graph 3.svg" alt="" />
+              </div> -->
               <span class="indicator__fact">{item.title}</span>
               <span class="indicator__value">{item.text}</span>
             </div>
@@ -152,7 +155,7 @@
                 <p class="faq__question">{item.title}</p>
                 <span
                   class={activeQuestions.includes(index) ? 'faq__icon active' : 'faq__icon'}
-                  on:click={() => toggleActive(index)}><img src="Group 109.svg" alt="" /></span
+                  on:click={() => toggleActive(index)}><img src="../Group 109.svg" alt="" /></span
                 >
               </div>
               <p class={activeQuestions.includes(index) ? 'faq__answer active' : 'faq__answer'}>
@@ -578,20 +581,27 @@
     &__wrapper {
       display: flex;
       justify-content: space-between;
+      flex-wrap: wrap;
     }
   }
 
   .indicator {
-    width: 220px;
+    width: 280px;
     position: relative;
+
+    @media (max-width: 992px) {
+      & {
+        width: 150px;
+      }
+    }
 
     &::before {
       position: absolute;
       content: '';
-      background-image: url('/static/Graph 3.svg');
+      background-image: url('../Graph 3.svg');
       width: 60px;
       height: 100%;
-      left: 100%;
+      left: calc(100% - 60px);
       top: 0;
     }
 
@@ -601,18 +611,47 @@
     }
     &__wrapper {
       padding-left: 20px;
-      height: 270px;
       padding-top: 70px;
       display: flex;
       flex-direction: column;
       justify-content: space-between;
     }
 
+    @media (max-width: 769px) {
+      & {
+        padding-top: 50px;
+      }
+    }
+
+    @media (max-width: 992px) {
+      &__wrapper {
+        height: 217px;
+      }
+    }
+
+    @media (min-width: 993px) {
+      &__wrapper {
+        height: 270px;
+      }
+    }
+
     &__value {
       color: #07124a;
-      font-size: 72px;
+
       letter-spacing: -4.32px;
       line-height: 48px;
+    }
+
+    @media (min-width: 993px) {
+      &__value {
+        font-size: 72px;
+      }
+    }
+
+    @media (max-width: 992px) {
+      &__value {
+        font-size: 32px;
+      }
     }
   }
 
@@ -637,7 +676,6 @@
       display: flex;
       flex-direction: column;
       gap: 20px;
-      // transition: 0.5s ease-in-out;
     }
 
     &__question-wrapper {
@@ -646,7 +684,6 @@
       align-items: flex-end;
       gap: 20px;
       cursor: pointer;
-      // transition: 0.5s ease-in-out;
       color: #07124a;
       padding: 30px 35px;
       padding-right: 100px;

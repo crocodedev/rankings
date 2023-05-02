@@ -1,12 +1,12 @@
 <script>
   export let data = {}
   import Container from '$lib/components/Container.svelte'
-
+  let cursor
   let m = { x: 0, y: 0 }
 
   function handleMousemove(event) {
-    m.x = event.clientX - 116
-    m.y = event.clientY - 216
+    const rect = event.currentTarget.getBoundingClientRect()
+    m = { x: event.clientX - rect.left, y: event.clientY - rect.top }
   }
 </script>
 
@@ -19,7 +19,12 @@
       </div>
       {#if data.image}
         <div class="textContent__image-wrapper" on:mousemove={handleMousemove}>
-          <div class="textContent__cursor" style="left:{m.x}px;top:{m.y}px" />
+          <div
+            class="textContent__cursor"
+            style="left: {m.x - (cursor ? cursor.offsetWidth / 2 : 0)}px; top: {m.y -
+              (cursor ? cursor.offsetHeight / 2 : 0)}px;"
+            bind:this={cursor}
+          />
           <img src={data.image.url} alt="" class="textContent__image" />
         </div>
       {/if}
@@ -80,8 +85,18 @@
     }
 
     &__text {
-      font-size: 18px;
       color: #07124a;
+    }
+
+    @media (max-width: 768px) {
+      &__text {
+        font-size: 14px;
+      }
+    }
+    @media (min-width: 769px) {
+      &__text {
+        font-size: 18px;
+      }
     }
 
     &__image-wrapper {
