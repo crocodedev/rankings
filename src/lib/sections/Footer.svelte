@@ -22,7 +22,7 @@
         {#if screenWidth && screenWidth > 992}
           <div class="footer__links-wrapper">
             {#each data.socialLinksCollection.items as item}
-              <a href={item.link} class="footer__link">
+              <a href={item.globalLink} class="footer__link">
                 <img src={item.socialIcon.url} alt="" class="footer__link-icon" />
               </a>
             {/each}

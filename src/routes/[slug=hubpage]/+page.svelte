@@ -2,8 +2,12 @@
   import * as Sections from '$lib/sections'
   import '$lib/css/style.css'
   import Container from '$lib/components/Container.svelte'
-
+  import { onMount } from 'svelte'
+  //TODO!
+  import { goto } from '$app/navigation'
   export let data
+  console.log(data)
+
   $: activeTags = []
   $: sections = [
     ...data.pageData.sectionsCollection.items,
@@ -30,6 +34,15 @@
       ? activeTags.filter((el) => el !== tag)
       : [...activeTags, tag]
   }
+  $: url = data.pageData.url
+  //TODO!
+  onMount(() => {
+    const unsubscribe = goto(url, () => {
+      activeTags = []
+    })
+
+    return unsubscribe
+  })
 </script>
 
 <svelte:head>
@@ -145,7 +158,6 @@
       display: flex;
       flex-wrap: wrap;
 
-      border-bottom: 2px solid #0077ff;
       gap: 10px;
     }
 
@@ -185,6 +197,7 @@
       padding-top: 50px;
       display: flex;
       flex-wrap: wrap;
+      border-top: 2px solid #0077ff;
     }
 
     @media (max-width: 768px) {

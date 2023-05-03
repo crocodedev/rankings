@@ -51,40 +51,48 @@
         bind
       >
         <span class="header__cross" on:click={toggleMenu} />
-        {#each data.navigationCollection.items as item, i}
-          <div class="header__nav-item" bind:this={navItem[i]}>
-            <a href={item.link}>{item.title} </a>
-            {#if item.subItemsCollection.items && Object.keys(item.subItemsCollection.items).length != 0}
-              <ul class="header__nav-item-stack">
-                {#each item.subItemsCollection.items as subitem}
-                  <li class="header__nav-subitem"><a href={subitem.link}>{subitem.title}</a></li>
-                {/each}
-              </ul>
-            {/if}
-          </div>
-        {/each}
-      </nav>
-      {#if screenWidth && screenWidth <= 992}
-        <div class={isMenuOpen ? 'header__mobile header__mobile--active' : 'header__mobile'}>
-          <div class="header__icons">
-            {#each data.socialsCollection.items as item}
-              <a href={item.link}>
-                <img src={item.socialIcon.url} alt={item.socialIcon.title} />
-              </a>
-            {/each}
-          </div>
-          <div class="header__mobile-links">
-            {#each data.mobileMenuLinksCollection.items as item}
-              <a href={item.link} class="header__mobile-link">{item.title}</a>
-            {/each}
-          </div>
+        <div class="header__items">
+          {#each data.navigationCollection.items as item, i}
+            <div class="header__nav-item" bind:this={navItem[i]}>
+              <a href={item.link}>{item.title} </a>
+              {#if item.subItemsCollection.items && Object.keys(item.subItemsCollection.items).length != 0}
+                <ul class="header__nav-item-stack">
+                  {#each item.subItemsCollection.items as subitem}
+                    <li class="header__nav-subitem">
+                      <a href={subitem.link}>{subitem.title}</a>
+                    </li>
+                  {/each}
+                </ul>
+              {/if}
+            </div>
+          {/each}
         </div>
-      {/if}
+        {#if screenWidth && screenWidth <= 992}
+          <div class="header__mobile">
+            <div class="header__icons">
+              {#each data.socialsCollection.items as item}
+                <a href={item.link}>
+                  <img src={item.socialIcon.url} alt={item.socialIcon.title} />
+                </a>
+              {/each}
+            </div>
+            <div class="header__mobile-links">
+              {#each data.mobileMenuLinksCollection.items as item}
+                <a href={item.link} class="header__mobile-link">{item.title}</a>
+              {/each}
+            </div>
+          </div>
+        {/if}
+      </nav>
+
       <button class="header__btn-menu" on:click={toggleMenu} />
     </div>
   </Container>
 </header>
-<div class={isMenuOpen ? 'header__background header__background--active' : 'header__background'} />
+<div
+  class={isMenuOpen ? 'header__background header__background--active' : 'header__background'}
+  on:click={toggleMenu}
+/>
 
 <style lang="scss">
 </style>

@@ -155,7 +155,8 @@
                 <p class="faq__question">{item.title}</p>
                 <span
                   class={activeQuestions.includes(index) ? 'faq__icon active' : 'faq__icon'}
-                  on:click={() => toggleActive(index)}><img src="../Group 109.svg" alt="" /></span
+                  on:click={() => toggleActive(index)}
+                  ><img src="../Group 109.svg" alt="" class="faq__icon-img" /></span
                 >
               </div>
               <p class={activeQuestions.includes(index) ? 'faq__answer active' : 'faq__answer'}>
@@ -545,7 +546,18 @@
     &__wrapper {
       display: flex;
       flex-direction: column;
-      gap: 135px;
+
+      @media (min-width: 993px) {
+        & {
+          gap: 135px;
+        }
+      }
+
+      @media (max-width: 992px) {
+        & {
+          gap: 40px;
+        }
+      }
     }
 
     &__title-wrapper {
@@ -556,24 +568,68 @@
 
     &__subtitle {
       color: white;
+
+      @media (max-width: 992px) {
+        & {
+          text-indent: 50px;
+        }
+      }
     }
 
     &__items {
       display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      column-gap: 50px;
-      row-gap: 75px;
+
+      @media (min-width: 993px) {
+        & {
+          grid-template-columns: repeat(2, 1fr);
+          column-gap: 50px;
+          row-gap: 75px;
+        }
+      }
+
+      @media (max-width: 992px) {
+        & {
+          grid-template-columns: 1fr;
+          gap: 40px;
+        }
+      }
     }
 
     &__icon {
       display: flex;
+      width: 55px;
+      height: 55px;
+    }
+
+    &__icon-img {
+      width: 55px;
+      height: 55px;
     }
 
     &__item {
       display: flex;
-      text-indent: 50px;
-      gap: 100px;
+
       color: white;
+
+      @media (min-width: 993px) {
+        & {
+          text-indent: 50px;
+          gap: 100px;
+        }
+      }
+
+      @media (max-width: 992px) {
+        & {
+          gap: 35px;
+        }
+        &:nth-of-type(1n + 4) {
+          flex-direction: row-reverse;
+        }
+
+        &:nth-of-type(4n + 3) {
+          flex-direction: row;
+        }
+      }
     }
   }
 
@@ -669,7 +725,17 @@
     }
 
     &__question {
-      font-size: 24px;
+      @media (min-width: 769px) {
+        & {
+          font-size: 24px;
+        }
+      }
+
+      @media (max-width: 768px) {
+        & {
+          font-size: 18px;
+        }
+      }
     }
 
     &__items {
@@ -685,10 +751,22 @@
       gap: 20px;
       cursor: pointer;
       color: #07124a;
-      padding: 30px 35px;
-      padding-right: 100px;
       border: 1px solid #46506f;
       border-radius: 10px;
+
+      @media (min-width: 769px) {
+        & {
+          padding: 30px 35px;
+          padding-right: 100px;
+        }
+      }
+
+      @media (max-width: 768px) {
+        & {
+          padding: 14px 10px;
+          padding-right: 65px;
+        }
+      }
     }
 
     &__question-wrapper.active {
@@ -699,6 +777,12 @@
     &__num {
       font-size: 14px;
       color: #97a2b6;
+
+      @media (max-width: 768px) {
+        & {
+          align-self: flex-start;
+        }
+      }
     }
 
     &__answer {
@@ -707,15 +791,37 @@
       transform: translateY(-100px);
       text-indent: 40px;
       color: #46506f;
-      width: 608px;
       position: relative;
       z-index: -10;
+
+      @media (min-width: 769px) {
+        & {
+          width: 608px;
+          font-size: 18px;
+        }
+      }
+
+      @media (max-width: 768px) {
+        & {
+          width: 100%;
+          font-size: 14px;
+        }
+      }
     }
 
     &__icon {
       align-self: center;
       position: absolute;
       right: 30px;
+
+      @media (max-width: 768px) {
+        & {
+          right: 10px;
+        }
+        &-img {
+          width: 30px;
+        }
+      }
     }
 
     &__icon.active {

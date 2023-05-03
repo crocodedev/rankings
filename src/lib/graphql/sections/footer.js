@@ -9,6 +9,7 @@ export const footerQuery = `... on SectionFooter {
       }
       link
       noFollow
+      globalLink
     }
   }
   footerTermsPolicyCollection(limit: 10) {
