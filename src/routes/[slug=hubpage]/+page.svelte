@@ -2,9 +2,7 @@
   import * as Sections from '$lib/sections'
   import '$lib/css/style.css'
   import Container from '$lib/components/Container.svelte'
-  import { onMount } from 'svelte'
-  //TODO!
-  import { goto } from '$app/navigation'
+  import { page } from '$app/stores'
   export let data
   console.log(data)
 
@@ -34,15 +32,8 @@
       ? activeTags.filter((el) => el !== tag)
       : [...activeTags, tag]
   }
-  $: url = data.pageData.url
-  //TODO!
-  onMount(() => {
-    const unsubscribe = goto(url, () => {
-      activeTags = []
-    })
 
-    return unsubscribe
-  })
+  $: $page.url && clearActive()
 </script>
 
 <svelte:head>

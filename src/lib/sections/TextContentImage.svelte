@@ -1,6 +1,8 @@
 <script>
   export let data = {}
   import Container from '$lib/components/Container.svelte'
+  import { Lightbox } from 'svelte-lightbox'
+
   let cursor
   let m = { x: 0, y: 0 }
 
@@ -18,15 +20,17 @@
         <p class="textContent__text">{data.text}</p>
       </div>
       {#if data.image}
-        <div class="textContent__image-wrapper" on:mousemove={handleMousemove}>
-          <div
-            class="textContent__cursor"
-            style="left: {m.x - (cursor ? cursor.offsetWidth / 2 : 0)}px; top: {m.y -
-              (cursor ? cursor.offsetHeight / 2 : 0)}px;"
-            bind:this={cursor}
-          />
-          <img src={data.image.url} alt="" class="textContent__image" />
-        </div>
+        <Lightbox description={data.title}>
+          <div class="textContent__image-wrapper" on:mousemove={handleMousemove}>
+            <div
+              class="textContent__cursor"
+              style="left: {m.x - (cursor ? cursor.offsetWidth / 2 : 0)}px; top: {m.y -
+                (cursor ? cursor.offsetHeight / 2 : 0)}px;"
+              bind:this={cursor}
+            />
+            <img src={data.image.url} alt="" class="textContent__image" />
+          </div>
+        </Lightbox>
       {/if}
     </div>
   </Container>
@@ -100,6 +104,7 @@
     }
 
     &__image-wrapper {
+      cursor: none;
       position: relative;
       width: 100%;
       height: 416px;
@@ -112,5 +117,13 @@
       height: 100%;
       object-fit: cover;
     }
+  }
+
+  .svelte-lightbox-body .textContent__image-wrapper .textContent__cursor {
+    display: none;
+  }
+
+  .svelte-lightbox-body .textContent__image-wrapper {
+    cursor: default;
   }
 </style>

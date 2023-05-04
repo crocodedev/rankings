@@ -2,7 +2,6 @@
   import * as Sections from '$lib/sections'
   import '$lib/css/style.css'
   export let data
-
   $: sections = data.sectionsCollection.items
 </script>
 

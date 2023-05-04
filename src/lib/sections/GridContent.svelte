@@ -28,7 +28,7 @@
                 <div class="card__image-wrapper">
                   <img src={item.imageCard.url} alt="card" class="card__image" />
                   <a href={item.url}>
-                    <img src="feather-external-link.svg" alt="" class="card__image-icon" />
+                    <img src="../feather-external-link.svg" alt="" class="card__image-icon" />
                   </a>
                 </div>
                 <div class="card__text-wrapper">
@@ -712,6 +712,8 @@
   }
 
   .faq {
+    z-index: 0;
+    position: relative;
     &__title {
       font-size: 32px;
       font-weight: bold;
@@ -751,8 +753,10 @@
       gap: 20px;
       cursor: pointer;
       color: #07124a;
+      background-color: white;
       border: 1px solid #46506f;
       border-radius: 10px;
+      transition: 0.5s ease;
 
       @media (min-width: 769px) {
         & {
@@ -793,7 +797,7 @@
       color: #46506f;
       position: relative;
       z-index: -10;
-
+      transition: 0.5s ease;
       @media (min-width: 769px) {
         & {
           width: 608px;
@@ -813,7 +817,7 @@
       align-self: center;
       position: absolute;
       right: 30px;
-
+      transition: 0.5s ease;
       @media (max-width: 768px) {
         & {
           right: 10px;
@@ -825,6 +829,8 @@
     }
 
     &__icon.active {
+      filter: invert(1);
+      mix-blend-mode: color-dodge;
       transform: rotate(90deg);
     }
 

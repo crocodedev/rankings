@@ -454,6 +454,7 @@ header {
 
 .hero__arrow {
   width: 100%;
+  z-index: 1;
 }
 
 .hero__image-wrapper {
@@ -475,6 +476,13 @@ header {
   }
 }
 
+@media (min-width: 600px) and (max-width: 992px) {
+  .hero__arrow-animate {
+    width: 75%;
+    align-self: center;
+  }
+}
+
 @media (max-width: 992px) {
   .hero__image-wrapper {
     transform: rotateX(180deg);
@@ -490,6 +498,7 @@ header {
   position: absolute;
   background-color: rgb(255, 255, 255);
   width: 100%;
+  z-index: 2;
   animation: 2s ease-in-out forwards fade;
 }
 
@@ -538,19 +547,26 @@ header {
   justify-content: space-evenly;
   width: 100%;
   height: 100%;
-  opacity: 0;
-  left: -20px;
+  opacity: 1;
+  top: -110px;
   transform: rotate(-15deg);
-  animation: 1s ease-in-out 2s forwards down;
 }
 
-@keyframes down {
-  0% {
-    top: -200px;
+@media (max-width: 992px) {
+  .arrow__points {
+    left: 0;
   }
-  100% {
-    top: -110px;
-    opacity: 1;
+}
+
+@media (min-width: 993px) {
+  .arrow__points {
+    left: -20px;
+  }
+}
+
+@media (max-width: 480px) {
+  .arrow__points {
+    top: -115px;
   }
 }
 
@@ -562,7 +578,59 @@ header {
   gap: 18px;
   width: 120px;
   transform: rotate(15deg);
+  top: -100px;
+  left: 40px;
   justify-content: center;
+  opacity: 0;
+  position: relative;
+}
+
+.arrow__point-1 {
+  animation: 1s ease-in-out 0.5s forwards down-point-1;
+}
+
+.arrow__point-2 {
+  animation: 1s ease-in-out 0.75s forwards down-point-2;
+}
+
+.arrow__point-3 {
+  animation: 1s ease-in-out 1s forwards down-point-3;
+}
+
+@keyframes down-point-1 {
+  0% {
+    left: 40px;
+    top: -200px;
+  }
+  100% {
+    left: -15px;
+    top: 0px;
+    opacity: 1;
+  }
+}
+
+@keyframes down-point-2 {
+  0% {
+    left: 40px;
+    top: -200px;
+  }
+  100% {
+    left: -15px;
+    top: 0px;
+    opacity: 1;
+  }
+}
+
+@keyframes down-point-3 {
+  0% {
+    left: 40px;
+    top: -200px;
+  }
+  100% {
+    left: -15px;
+    top: 0px;
+    opacity: 1;
+  }
 }
 
 .arrow__point-num {
