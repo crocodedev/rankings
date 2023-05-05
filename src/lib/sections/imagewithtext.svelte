@@ -1,26 +1,57 @@
 <script>
   export let data = {}
   import Container from '$lib/components/Container.svelte'
+  import { beforeUpdate } from 'svelte'
+
+  let page = ''
+
+  beforeUpdate(() => {
+    let pathname = window.location.pathname
+    page = pathname.substring(pathname.lastIndexOf('/') + 1)
+  })
 </script>
 
-<section class="imagewithtext">
-  <Container>
-    <div class="imagewithtext__wrapper">
-      <div class="imagewithtext__image-wrapper">
-        <img src={data.image.url} alt="" class="imagewithtext__image" />
-      </div>
-      <div class="imagewithtext__inner">
-        <div class="imagewithtext__text-wrapper">
-          <h3 class="h2">{data.imageTextTitle}</h3>
-          <p>{data.imageTextText}</p>
+{#if page == 'contact-us'}
+  <section class="imagewithtext imagewithtext--contact">
+    <Container>
+      <div class="imagewithtext__wrapper">
+        <div class="imagewithtext__image-wrapper">
+          <img src={data.image.url} alt="" class="imagewithtext__image" />
         </div>
-        <a href={data.buttonLink} class="imagewithtext__btn">{data.buttonText}</a>
+        <div class="imagewithtext__inner">
+          <div class="imagewithtext__text-wrapper">
+            <h3 class="h2 white">{data.imageTextTitle}</h3>
+            <p class="white">{data.imageTextText}</p>
+          </div>
+          <a href={data.buttonLink} class="imagewithtext__btn">{data.buttonText}</a>
+        </div>
       </div>
-    </div>
-  </Container>
-</section>
+    </Container>
+  </section>
+{/if}
+{#if page != 'contact-us'}
+  <section class="imagewithtext">
+    <Container>
+      <div class="imagewithtext__wrapper">
+        <div class="imagewithtext__image-wrapper">
+          <img src={data.image.url} alt="" class="imagewithtext__image" />
+        </div>
+        <div class="imagewithtext__inner">
+          <div class="imagewithtext__text-wrapper">
+            <h3 class="h2">{data.imageTextTitle}</h3>
+            <p>{data.imageTextText}</p>
+          </div>
+          <a href={data.buttonLink} class="imagewithtext__btn">{data.buttonText}</a>
+        </div>
+      </div>
+    </Container>
+  </section>
+{/if}
 
 <style lang="scss">
+  .imagewithtext--contact {
+    background-color: #46506f;
+  }
   .imagewithtext {
     &__wrapper {
       display: flex;
@@ -77,6 +108,10 @@
     p {
       font-size: 18px;
       color: #07124a;
+    }
+
+    .white {
+      color: white;
     }
 
     &__text-wrapper {

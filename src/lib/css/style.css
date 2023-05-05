@@ -96,6 +96,19 @@ section:first-of-type {
     background-color: #07124a;
   }
 
+  .header__btn-menu--contact {
+    background-color: white;
+  }
+
+  .header__btn-menu.header__btn-menu--contact::after,
+  .header__btn-menu.header__btn-menu--contact::before {
+    content: '';
+    position: absolute;
+    width: 100%;
+    background-color: white;
+    height: 100%;
+  }
+
   .header__btn-menu::after,
   .header__btn-menu::before {
     content: '';
@@ -214,7 +227,12 @@ header {
   justify-content: space-between;
   align-items: center;
   z-index: 2;
+  color: #07124a;
   position: relative;
+}
+
+.header__wrapper--contact {
+  color: white;
 }
 
 @media (max-width: 992px) {
@@ -298,7 +316,6 @@ header {
 
 @media (min-width: 993px) {
   .header__nav-item {
-    color: #07124a;
     padding-bottom: 35px;
     padding-top: 35px;
   }
@@ -358,11 +375,16 @@ header {
   width: max-content;
 }
 
+@media (min-width: 993px) {
+  .header__nav-subitem--contact {
+    color: white;
+  }
+}
+
 .header__nav-item:hover {
   text-shadow: 0 0 1px #07124a;
 }
 .header__logotype {
-  color: #07124a;
   font-size: 24px;
   font-weight: 600;
   transition: 0.3s ease-in-out;
@@ -664,3 +686,5 @@ header {
   font-size: 16px;
   color: #07124a;
 }
+
+/* footer */
