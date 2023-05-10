@@ -75,11 +75,10 @@
               <div class="seotext__name-wrapper">
                 <p class="seotext__name">
                   {#if item.title == null}
-                    {(item.title = '  ')}
+                    {(item.title = ' ')}
                   {/if}
                   {item.title}
                 </p>
-
                 <span class="seotext__bar" />
               </div>
               <p class="seotext__text">

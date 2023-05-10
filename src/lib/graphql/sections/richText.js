@@ -1,9 +1,26 @@
-export const sectionRichTextQuery = `... on SectionRichText{
-    position
-    component
-    title
-    richText{
-        __typename
+export const sectionRichTextQuery = `... on SectionRichText {
+  component
+  position
+  title
+  richText {
+    json
+    links {
+      assets {
+        block {
+          url
+          sys {
+            id
+          }
+        }
+      }
+      entries {
+        block {
+          sys {
+            id
+          }
+        }
+      }
     }
   }
+}
 `

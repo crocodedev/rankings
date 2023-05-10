@@ -1,23 +1,20 @@
 <script>
   import Container from '$lib/components/Container.svelte'
   export let data = {}
-
-  console.log(data)
 </script>
 
 <section class="hero-image">
   <Container>
     <div class="hero-image__wrapper">
       <div class="hero-image__text-wrapper">
-        <h1 class="h1 hero-image__title">{data.title}</h1>
+        <h1 class="h1">{data.title}</h1>
         <p class="hero-image__text">{data.text}</p>
         <a href={data.linkData.link} class="hero-image__link">{data.linkData.title}</a>
+
         <div class="hero-image__categories">
-          <!-- {#each data.tagList as tag}
-            <p class="hero-image__category">{tag}</p>
-          {/each} -->
-          <p class="hero-image__category">Packaging</p>
-          <p class="hero-image__category">SEO optimisation</p>
+          {#each data.tagListCollection.items as tag}
+            <p class="hero-image__category">{tag.title}</p>
+          {/each}
         </div>
       </div>
       <div class="hero-image__image-wrapper">
@@ -39,10 +36,6 @@
         flex-direction: column;
         gap: 20px;
       }
-    }
-
-    &__title {
-      width: max-content;
     }
 
     &__text-wrapper {
@@ -96,7 +89,7 @@
         object-fit: cover;
         background-size: cover;
         opacity: 0.3;
-        background-image: url('Group 109.svg');
+        background-image: url('../Group 109.svg');
       }
     }
 

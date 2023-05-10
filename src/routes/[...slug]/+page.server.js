@@ -9,6 +9,7 @@ import { headerQuery } from '$lib/graphql/sections/header'
 import { footerQuery } from '$lib/graphql/sections/footer'
 import { gridContentQuery } from '$lib/graphql/sections/gridContent'
 import { breadcrumpsQuery, formQuery, heroImageQuery } from '$lib/graphql/sections'
+import { sectionRichTextQuery } from '../../lib/graphql/sections/richText'
 
 const query = (slug) => `
 {
@@ -18,13 +19,15 @@ const query = (slug) => `
     items {
       name
       url
-      sectionsCollection (limit:100) {
+      sectionsCollection (limit:10) {
          items{
           ${headerQuery}
           ${heroQuery}
           ${stagesQuery}
           ${heroImageQuery}
           ${gridContentQuery}
+          ${sectionRichTextQuery}
+
           ${sectionTextContentImageQuery}
           ${SectionImageWithTextQuery}
           ${formQuery}

@@ -10,8 +10,6 @@
     let pathname = window.location.pathname
     page = pathname.substring(pathname.lastIndexOf('/') + 1)
   })
-
-  console.log(data)
 </script>
 
 {#if page == 'contact-us'}
@@ -20,7 +18,7 @@
       <div class="contact-form__wrapper contact-form__wrapper--contact">
         <div class="contact-form__inner">
           <div class="contact-form__title-wrapper">
-            <h1 class="h1 contact-form__title">{data.formTitle}</h1>
+            <h1 class="h1 contact-form__title">Contact <span class="highlight">us</span></h1>
           </div>
           <nav class="contact-form__nav">
             {#each data.formNavigationCollection.items as items}
@@ -56,7 +54,7 @@
           {/each}
         </div>
       </div>
-      <div class="contact-form__wrapper contact-form__wrapper--contact">
+      <div class="contact-form__wrapper contact-form__wrapper--arrow">
         <div class="contact-form__inscription">
           <h2 class="h2 contact-form__title">Start a <br /> converstation</h2>
           <div class="contact-form__arrow">
@@ -119,7 +117,7 @@
       <div class="contact-form__wrapper">
         <div class="contact-form__inner">
           <div class="contact-form__title-wrapper">
-            <h1 class="h1 contact-form__title">{data.formTitle}</h1>
+            <h1 class="h1 contact-form__title">Contact <span class="highlight">us</span></h1>
             <a href="mailto:{data.workingEmail}" class="contact-form__email">{data.workingEmail}</a>
           </div>
           <nav class="contact-form__nav">
@@ -176,6 +174,9 @@
 {/if}
 
 <style lang="scss">
+  .highlight {
+    color: #0077ff;
+  }
   .contact-form {
     &__inscription {
       display: flex;
@@ -211,9 +212,17 @@
     }
 
     .contact-form__arrow-1 {
-      width: 85px;
-      height: 22px;
       background-color: #97a2b6;
+
+      @media (min-width: 993px) {
+        width: 85px;
+        height: 22px;
+      }
+
+      @media (max-width: 992px) {
+        width: 42px;
+        height: 10px;
+      }
     }
 
     .contact-form__arrow-2 {
@@ -225,25 +234,49 @@
       height: 41px;
       transform: matrix(1, 0, -1, 1, 0, 0);
 
-      &::before {
-        position: absolute;
-        content: '';
-        top: 20.5px;
-        width: 100%;
-        height: 100%;
-        background-color: #97a2b6;
-        left: 16px;
-      }
+      @media (min-width: 993px) {
+        &::before {
+          position: absolute;
+          content: '';
+          top: 20.5px;
+          width: 100%;
+          height: 100%;
+          background-color: #97a2b6;
+          left: 16px;
+        }
 
-      &::after {
-        position: absolute;
-        content: '';
-        top: -20.5px;
-        width: 100%;
-        height: 100%;
-        background-color: #97a2b6;
-        transform: matrix(1, 0, 2, 1, 0, 0);
-        right: 25px;
+        &::after {
+          position: absolute;
+          content: '';
+          top: -20.5px;
+          width: 100%;
+          height: 100%;
+          background-color: #97a2b6;
+          transform: matrix(1, 0, 2, 1, 0, 0);
+          right: 25px;
+        }
+      }
+      @media (max-width: 992px) {
+        &::before {
+          position: absolute;
+          content: '';
+          top: 13.5px;
+          width: 50%;
+          height: 50%;
+          background-color: #97a2b6;
+          left: 16px;
+        }
+
+        &::after {
+          position: absolute;
+          content: '';
+          top: -7.5px;
+          width: 50%;
+          height: 50%;
+          background-color: #97a2b6;
+          transform: matrix(1, 0, 2, 1, 0, 0);
+          right: 21px;
+        }
       }
     }
 
@@ -251,30 +284,59 @@
       position: absolute;
       width: 31px;
       transform: rotate(45deg);
-      left: calc(100% + 31px);
       top: -9px;
       height: 41px;
       transform: matrix(1, 0, -1, 1, 0, 0);
 
-      &::before {
-        position: absolute;
-        content: '';
-        top: 20.5px;
-        width: 100%;
-        height: 100%;
-        background-color: #97a2b6;
-        left: 16px;
-      }
+      @media (min-width: 993px) {
+        & {
+          left: calc(100% + 31px);
+        }
+        &::before {
+          position: absolute;
+          content: '';
+          top: 20.5px;
+          width: 100%;
+          height: 100%;
+          background-color: #97a2b6;
+          left: 16px;
+        }
 
-      &::after {
-        position: absolute;
-        content: '';
-        top: -20.5px;
-        width: 100%;
-        height: 100%;
-        background-color: #97a2b6;
-        transform: matrix(1, 0, 2, 1, 0, 0);
-        right: 25px;
+        &::after {
+          position: absolute;
+          content: '';
+          top: -20.5px;
+          width: 100%;
+          height: 100%;
+          background-color: #97a2b6;
+          transform: matrix(1, 0, 2, 1, 0, 0);
+          right: 25px;
+        }
+      }
+      @media (max-width: 992px) {
+        & {
+          left: calc(100% + 10px);
+        }
+        &::before {
+          position: absolute;
+          content: '';
+          top: 13.5px;
+          width: 50%;
+          height: 50%;
+          background-color: #97a2b6;
+          left: 13px;
+        }
+
+        &::after {
+          position: absolute;
+          content: '';
+          top: -7.5px;
+          width: 50%;
+          height: 50%;
+          background-color: #97a2b6;
+          transform: matrix(1, 0, 2, 1, 0, 0);
+          right: 25px;
+        }
       }
     }
 
@@ -342,7 +404,15 @@
       }
 
       &__wrapper--contact {
-        padding: 75px 0;
+        padding: 75px 0 0 0;
+      }
+
+      &__wrapper--contact:last-of-type {
+        padding-top: 30px;
+      }
+
+      &__wrapper--arrow {
+        padding: 0;
       }
     }
 
@@ -351,6 +421,15 @@
         flex-direction: column;
         gap: 20px;
         padding: 20px;
+      }
+
+      &__wrapper--contact {
+        padding: 20px 20px 0 20px;
+      }
+
+      &__wrapper--arrow {
+        padding-top: 80px;
+        padding-bottom: 34px;
       }
     }
 

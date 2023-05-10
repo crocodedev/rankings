@@ -4,7 +4,6 @@
   import Container from '$lib/components/Container.svelte'
   import { page } from '$app/stores'
   export let data
-  console.log(data)
 
   $: activeTags = []
   $: sections = [
@@ -32,7 +31,6 @@
       ? activeTags.filter((el) => el !== tag)
       : [...activeTags, tag]
   }
-
   $: $page.url && clearActive()
 </script>
 

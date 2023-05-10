@@ -2,7 +2,7 @@
   import * as Sections from '$lib/sections'
   import '$lib/css/style.css'
   export let data
-
+  console.log(data)
   $: sections = data.sectionsCollection.items
 </script>
 
@@ -18,7 +18,7 @@
 
 <style global lang="scss">
   @import 'destyle.css/destyle.css';
-  @import url('https://fonts.googleapis.com/css2?family=Lexend:wght@400;600;700&display=swap');
+  @import url('https://fonts.googleapis.com/css2?family=Lexend:wght@400;500;600;700&display=swap');
 
   .hero {
     &__title {

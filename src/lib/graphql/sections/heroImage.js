@@ -1,14 +1,19 @@
-export const heroImageQuery = `... on SectionHeroImage {
-    position
-    component
-    text
+export const heroImageQuery = ` ... on SectionHeroImage {
+  position
+  component
+  text
+  title
+  image {
+    url
+  }
+  linkData {
     title
-    image {
-      url
-    }
-    linkData {
+    link
+  }
+  tagListCollection{
+    items{
       title
-      link
     }
   }
+}
   `
