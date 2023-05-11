@@ -5,9 +5,18 @@
   import { onMount } from 'svelte'
 
   let screenWidth
+  let showStages = false
+  function checkVisibility() {
+    const element = document.querySelector('.stages')
+    const rect = element.getBoundingClientRect()
+    const windowHeight = window.innerHeight
+    showStages = rect.top < windowHeight
+  }
 
   onMount(() => {
+    checkVisibility
     screenWidth = window.innerWidth
+    window.addEventListener('scroll', checkVisibility)
     window.addEventListener('resize', () => {
       screenWidth = window.innerWidth
     })
@@ -23,20 +32,22 @@
       </div>
       <div class="stages__items">
         {#each data.stagesListCollection.items as item, index}
-          <div class="stages__item">
-            <div class="stages__item-text">
-              {item.stagesText}
-            </div>
-            <div class="stages__item-bar" style="--acc:{index}">
-              <div class="stages__item-number">{item.stagesNum}</div>
-              {#if screenWidth && screenWidth <= 992}
+          {#if showStages}
+            <div class="stages__item" style="--acc:{index}">
+              <div class="stages__item-text">
+                {item.stagesText}
+              </div>
+              <div class="stages__item-bar" style="--acc:{index}">
+                <div class="stages__item-number">{item.stagesNum}</div>
+                {#if screenWidth && screenWidth <= 992}
+                  <div class="stages__item-name">{item.stageName}</div>
+                {/if}
+              </div>
+              {#if screenWidth && screenWidth > 992}
                 <div class="stages__item-name">{item.stageName}</div>
               {/if}
             </div>
-            {#if screenWidth && screenWidth > 992}
-              <div class="stages__item-name">{item.stageName}</div>
-            {/if}
-          </div>
+          {/if}
         {/each}
       </div>
     </div>
@@ -88,8 +99,17 @@
       }
     }
 
+    @keyframes fdsseq {
+      100% {
+        opacity: 1;
+      }
+    }
+
     .stages__item {
       display: flex;
+      opacity: 0;
+      animation: fdsseq 0.7s forwards;
+      animation-delay: calc(0.7s * var(--acc));
     }
 
     @media (max-width: 992px) {

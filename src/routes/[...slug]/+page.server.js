@@ -19,7 +19,7 @@ const query = (slug) => `
     items {
       name
       url
-      sectionsCollection (limit:10) {
+      sectionsCollection (limit:100) {
          items{
           ${headerQuery}
           ${heroQuery}
@@ -27,7 +27,6 @@ const query = (slug) => `
           ${heroImageQuery}
           ${gridContentQuery}
           ${sectionRichTextQuery}
-
           ${sectionTextContentImageQuery}
           ${SectionImageWithTextQuery}
           ${formQuery}
@@ -40,14 +39,80 @@ const query = (slug) => `
 }
 `
 
+const richTextQuery = (id) => `
+{
+  sectionRichText(id: "${id}") {
+    component
+    position
+    title
+    sys {
+      id
+    }
+    richText {
+      json
+      links {
+        assets {
+          block {
+            url
+            sys {
+              id
+            }
+          }
+        }
+        entries {
+          block {
+            sys {
+              id
+            }
+          }
+        }
+      }
+    }
+  }
+}
+`
+
 export async function load({ params, url }) {
   const response = await contentfulFetch(query(`/${params.slug}`))
-
   if (!response.ok) {
     return console.log(error)
   }
 
-  const { data } = await response.json()
+  const {
+    data: {
+      pageCollection: { items },
+    },
+  } = await response.json()
 
-  return data.pageCollection.items[0]
+  let pageData = items[0]
+
+  const richTextSections = pageData.sectionsCollection.items.filter(
+    (el) => el.component === 'RichText'
+  )
+
+  if (richTextSections.length > 0) {
+    const richTextSectionsData = await Promise.allSettled(
+      richTextSections.map((el) =>
+        contentfulFetch(richTextQuery(el.sys.id)).then((el) => el.json())
+      )
+    ).then((el) => el.map((item) => item.value.data.sectionRichText))
+
+    pageData = {
+      ...pageData,
+      sectionsCollection: {
+        items: pageData.sectionsCollection.items.map((section) => {
+          const fullRichText = richTextSectionsData.find(
+            (richTextItem) => richTextItem?.sys?.id === section?.sys?.id
+          )
+          if (!fullRichText) return section
+          return {
+            ...section,
+            ...fullRichText,
+          }
+        }),
+      },
+    }
+  }
+
+  return pageData
 }
