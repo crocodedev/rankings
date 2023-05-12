@@ -1,4 +1,7 @@
 export const breadcrumpsQuery = `... on SectionBreadcrumps{
+    sys{
+      id
+    }
     component
     position
     breadcrumpsListCollection{

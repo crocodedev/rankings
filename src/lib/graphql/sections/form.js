@@ -1,4 +1,7 @@
 export const formQuery = `... on SectionForm {
+  sys{
+    id
+  }
   position
   component
   formTitle

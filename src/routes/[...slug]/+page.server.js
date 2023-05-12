@@ -9,7 +9,7 @@ import { headerQuery } from '$lib/graphql/sections/header'
 import { footerQuery } from '$lib/graphql/sections/footer'
 import { gridContentQuery } from '$lib/graphql/sections/gridContent'
 import { breadcrumpsQuery, formQuery, heroImageQuery } from '$lib/graphql/sections'
-import { sectionRichTextQuery } from '../../lib/graphql/sections/richText'
+import { sectionRichTextQuery } from '$lib/graphql/sections/richText'
 
 const query = (slug) => `
 {

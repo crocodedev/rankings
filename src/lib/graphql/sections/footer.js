@@ -1,4 +1,7 @@
 export const footerQuery = `... on SectionFooter {
+  sys{
+    id
+  }
   position
   component
   footerRights

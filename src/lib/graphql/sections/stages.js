@@ -1,4 +1,7 @@
 export const stagesQuery = `... on SectionStages{
+  sys{
+    id
+  }
   position
   component
   stagesTitle

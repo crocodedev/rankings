@@ -3,6 +3,7 @@
   import '$lib/css/style.css'
   export let data
   $: sections = data.sectionsCollection.items
+  console.log(data)
 </script>
 
 <svelte:head>

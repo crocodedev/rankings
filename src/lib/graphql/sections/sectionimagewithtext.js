@@ -1,4 +1,7 @@
 export const SectionImageWithTextQuery = `... on SectionImageWithText{
+    sys{
+      id
+    }
     position
     component
     imageTextTitle

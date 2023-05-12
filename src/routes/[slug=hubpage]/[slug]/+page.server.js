@@ -6,36 +6,10 @@ import { heroQuery } from '$lib/graphql/sections/hero'
 import { SectionImageWithTextQuery } from '$lib/graphql/sections/sectionimagewithtext'
 import { sectionTextContentImageQuery } from '$lib/graphql/sections/textcontentimage'
 import { headerQuery } from '$lib/graphql/sections/header'
+import { sectionRichTextQuery } from '$lib/graphql/sections/richText'
 import { footerQuery } from '$lib/graphql/sections/footer'
 import { gridContentQuery } from '$lib/graphql/sections/gridContent'
 import { breadcrumpsQuery, formQuery, heroImageQuery } from '$lib/graphql/sections'
-
-const query = (slug) => `
-{
-  entityCardCollection(limit: 1, where: {
-    url: "${slug}"
-  }) {
-    items {
-      pageTitle
-      tagList
-      sectionsCollection(limit: 100) {
-        items {
-          ${heroImageQuery}
-          ${breadcrumpsQuery}
-          ${stagesQuery}
-          ${heroQuery}
-          ${SectionImageWithTextQuery}
-          ${sectionTextContentImageQuery}
-          ${headerQuery}
-          ${footerQuery}
-          ${gridContentQuery}
-          ${formQuery}
-        }
-      }
-    }
-  }
-}
-`
 
 const richTextQuery = (id) => `
 {
@@ -70,6 +44,33 @@ const richTextQuery = (id) => `
 }
 `
 
+const query = (slug) => `
+{
+  entityCardCollection(limit: 1, where: {
+    url: "${slug}"
+  }) {
+    items {
+      pageTitle
+      tagList
+      sectionsCollection(limit: 100) {
+        items {
+          ${heroImageQuery}
+          ${breadcrumpsQuery}
+          ${stagesQuery}
+          ${heroQuery}
+          ${SectionImageWithTextQuery}
+          ${sectionTextContentImageQuery}
+          ${headerQuery}
+          ${footerQuery}
+          ${gridContentQuery}
+          ${formQuery}
+        }
+      }
+    }
+  }
+}
+`
+
 export async function load({ params, url }) {
   const response = await contentfulFetch(query(url.pathname))
 
@@ -94,7 +95,6 @@ export async function load({ params, url }) {
         contentfulFetch(richTextQuery(el.sys.id)).then((el) => el.json())
       )
     ).then((el) => el.map((item) => item.value.data.sectionRichText))
-
     pageData = {
       ...pageData,
       sectionsCollection: {
@@ -102,7 +102,9 @@ export async function load({ params, url }) {
           const fullRichText = richTextSectionsData.find(
             (richTextItem) => richTextItem?.sys?.id === section?.sys?.id
           )
+          console.log(fullRichText)
           if (!fullRichText) return section
+          console.log(fullRichText)
           return {
             ...section,
             ...fullRichText,

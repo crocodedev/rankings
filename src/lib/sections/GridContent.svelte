@@ -56,7 +56,9 @@
         {#if data.seeMoreText}
           <a href="#" class="grid-content__show-wrapper">
             <p class="grid-content__show-text">{data.seeMoreText}</p>
-            <span><img src="Group 109.svg" alt="arrow" class="grid-content__show-icon" /></span>
+            <span class="grid-content__show-icon"
+              ><img src="../Group 109.svg" alt="arrow" class="" /></span
+            >
           </a>
         {/if}
       </div>
@@ -268,6 +270,8 @@
     }
 
     &__show-icon {
+      width: 35px;
+      height: 35px;
       filter: opacity(25%);
     }
   }

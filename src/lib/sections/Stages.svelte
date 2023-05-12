@@ -3,14 +3,15 @@
 
   import Container from '$lib/components/Container.svelte'
   import { onMount } from 'svelte'
-
   let screenWidth
   let showStages = false
   function checkVisibility() {
-    const element = document.querySelector('.stages')
-    const rect = element.getBoundingClientRect()
-    const windowHeight = window.innerHeight
-    showStages = rect.top < windowHeight
+    if (showStages === false) {
+      const element = document.querySelector(`[data-id="${data.sys.id}"]`)
+      const rect = element.getBoundingClientRect()
+      const windowHeight = window.innerHeight
+      showStages = rect.top < windowHeight
+    }
   }
 
   onMount(() => {
@@ -23,7 +24,7 @@
   })
 </script>
 
-<section class="stages">
+<section class="stages" data-id={data.sys.id}>
   <Container>
     <div class="stages__wrapper">
       <div class="stages__title-wrapper">

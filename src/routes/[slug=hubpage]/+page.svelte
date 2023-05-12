@@ -298,8 +298,9 @@
       }
 
       &__item:is(.HalfHeight) {
+        min-height: 500px;
         .cases__item-image-wrapper {
-          height: 50%;
+          height: 250px;
         }
       }
       &__item:is(.FullWidth):hover {

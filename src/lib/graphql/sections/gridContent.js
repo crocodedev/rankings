@@ -1,4 +1,7 @@
 export const gridContentQuery = `... on SectionGridContent {
+  sys{
+    id
+  }
   component
   position
   title

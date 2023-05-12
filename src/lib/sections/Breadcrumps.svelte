@@ -1,20 +1,44 @@
 <script>
+  import { beforeUpdate, onMount } from 'svelte'
   export let data = {}
   import Container from '$lib/components/Container.svelte'
+
+  let page = ''
+
+  beforeUpdate(() => {
+    let pathname = window.location.pathname
+    page = pathname.substring(pathname.lastIndexOf('/') + 1)
+  })
 </script>
 
-<section class="breadcrumps">
-  <Container>
-    <div class="breadcrumps__wrapper">
-      {#each data.breadcrumpsListCollection.items as item}
-        <a href={item.link} class="breadcrumps__item">{item.title}</a>
-      {/each}
-    </div>
-  </Container>
-</section>
+{#if page == 'contact-us'}
+  <section class="breadcrumps breadcrumps--contact-us">
+    <Container>
+      <div class="breadcrumps__wrapper">
+        {#each data.breadcrumpsListCollection.items as item}
+          <a href={item.link} class="breadcrumps__item">{item.title}</a>
+        {/each}
+      </div>
+    </Container>
+  </section>
+{/if}
+{#if page != 'contact-us'}
+  <section class="breadcrumps">
+    <Container>
+      <div class="breadcrumps__wrapper">
+        {#each data.breadcrumpsListCollection.items as item}
+          <a href={item.link} class="breadcrumps__item">{item.title}</a>
+        {/each}
+      </div>
+    </Container>
+  </section>
+{/if}
 
 <style lang="scss">
   .breadcrumps {
+    &--contact-us {
+      background-color: #46506f;
+    }
     &__wrapper {
       display: flex;
     }
@@ -30,6 +54,10 @@
         content: '/';
         padding: 5px;
       }
+    }
+
+    &__item:last-of-type {
+      pointer-events: none;
     }
   }
 </style>

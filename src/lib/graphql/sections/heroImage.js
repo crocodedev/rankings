@@ -1,4 +1,7 @@
 export const heroImageQuery = ` ... on SectionHeroImage {
+  sys{
+    id
+  }
   position
   component
   text
