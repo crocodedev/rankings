@@ -18,5 +18,12 @@ export const heroImageQuery = ` ... on SectionHeroImage {
       title
     }
   }
+  buttonListCollection(limit:5){
+    items
+    {
+      title
+      link
+    }
+  }
 }
   `

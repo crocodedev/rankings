@@ -6,10 +6,28 @@ export const gridContentQuery = `... on SectionGridContent {
   position
   title
   subtitle
-  seeMoreText
+  linkMore{
+    title
+    link
+  }
   contentListCollection(limit: 10) {
     items {
       ... on EntityCard {
+        seo {
+          titleTemplate
+          title
+          description
+          keywords
+          image {
+            url
+            fileName
+            description
+            width
+            height
+          }
+          ogype
+          twittercard
+        }
         titleCard
         subtitleCard
         url

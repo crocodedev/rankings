@@ -3,8 +3,11 @@ import sveltePreprocess from 'svelte-preprocess'
 
 /** @type {import('@sveltejs/kit').Config} */
 const config = {
-  preprocess: [sveltePreprocess()],
+  preprocess: sveltePreprocess({
+    preserve: ['ld+json'],
+  }),
   kit: {
+    inlineStyleThreshold: Infinity,
     adapter: adapter(),
   },
 }

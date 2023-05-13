@@ -43,15 +43,30 @@ const richTextQuery = (id) => `
   }
 }
 `
-
 const query = (slug) => `
 {
   entityCardCollection(limit: 1, where: {
     url: "${slug}"
+    
   }) {
     items {
       pageTitle
       tagList
+      seo {
+        titleTemplate
+        title
+        description
+        keywords
+        image {
+          url
+          fileName
+          description
+          width
+          height
+        }
+        ogype
+        twittercard
+      }
       sectionsCollection(limit: 100) {
         items {
           ${heroImageQuery}
@@ -60,6 +75,7 @@ const query = (slug) => `
           ${heroQuery}
           ${SectionImageWithTextQuery}
           ${sectionTextContentImageQuery}
+          ${sectionRichTextQuery}
           ${headerQuery}
           ${footerQuery}
           ${gridContentQuery}
@@ -83,7 +99,7 @@ export async function load({ params, url }) {
     },
   } = await response.json()
 
-  const pageData = items[0]
+  let pageData = items[0]
 
   const richTextSections = pageData.sectionsCollection.items.filter(
     (el) => el.component === 'RichText'

@@ -53,9 +53,9 @@
             </div>
           {/each}
         </div>
-        {#if data.seeMoreText}
-          <a href="#" class="grid-content__show-wrapper">
-            <p class="grid-content__show-text">{data.seeMoreText}</p>
+        {#if data.linkMore}
+          <a href={data.linkMore.link} class="grid-content__show-wrapper">
+            <p class="grid-content__show-text">{data.linkMore.title}</p>
             <span class="grid-content__show-icon"
               ><img src="../Group 109.svg" alt="arrow" class="" /></span
             >
@@ -124,9 +124,6 @@
         {#each data.contentListCollection.items as item}
           <div class="indicator">
             <div class="indicator__wrapper">
-              <!-- <div class="indicator__image-wrapper">
-                <img src="Graph 3.svg" alt="" />
-              </div> -->
               <span class="indicator__fact">{item.title}</span>
               <span class="indicator__value">{item.text}</span>
             </div>
@@ -641,6 +638,18 @@
       display: flex;
       justify-content: space-between;
       flex-wrap: wrap;
+      border-bottom: 2px solid #0077ff;
+      @media (min-width: 993px) {
+        & {
+          padding-bottom: 155px;
+        }
+      }
+
+      @media (max-width: 992px) {
+        & {
+          padding-bottom: 70px;
+        }
+      }
     }
   }
 

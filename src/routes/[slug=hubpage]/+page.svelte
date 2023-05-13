@@ -36,6 +36,32 @@
 
 <svelte:head>
   <title>{data.pageData.pageName}</title>
+  {#if data.pageData.seo}
+    {#if data.pageData.seo.description}
+      <meta name="description" content={data.pageData.seo.description} />
+    {/if}
+    {#if data.pageData.seo.description}
+      <meta property="og:image:url" content={data.pageData.seo.image.url} />
+    {/if}
+    {#if data.pageData.seo.description}
+      <meta property="og:image:width" content={data.pageData.seo.image.width} />
+    {/if}
+    {#if data.pageData.seo.description}
+      <meta property="og:image:height" content={data.pageData.seo.image.height} />
+    {/if}
+    {#if data.pageData.seo.description}
+      <meta property="og:title" content={data.pageData.seo.title} />
+    {/if}
+    {#if data.pageData.seo.description}
+      <meta property="og:description" content={data.pageData.seo.description} />
+    {/if}
+    {#if data.pageData.seo.description}
+      <meta property="og:type" content={data.pageData.seo.ogype} />
+    {/if}
+    {#if data.pageData.seo.description}
+      <meta name="keywords" content={data.pageData.seo.keywords} />
+    {/if}
+  {/if}
 </svelte:head>
 
 <div>

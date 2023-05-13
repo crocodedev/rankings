@@ -1,34 +1,100 @@
 <script>
   import Container from '$lib/components/Container.svelte'
   export let data = {}
+
+  import { beforeUpdate } from 'svelte'
+
+  let page = ''
+
+  beforeUpdate(() => {
+    let pathname = window.location.pathname
+    let startIndex = pathname.indexOf('/') + 1
+    let endIndex = pathname.indexOf('/', startIndex)
+    page = pathname.substring(startIndex, endIndex)
+  })
 </script>
 
-<section class="hero-image">
-  <Container>
-    <div class="hero-image__wrapper">
-      <div class="hero-image__text-wrapper">
-        <h1 class="h1">{data.title}</h1>
-        <p class="hero-image__text">{data.text}</p>
-        <a href={data.linkData.link} class="hero-image__link">{data.linkData.title}</a>
-
-        <div class="hero-image__categories">
-          {#each data.tagListCollection.items as tag}
-            <p class="hero-image__category">{tag.title}</p>
-          {/each}
+{#if page != 'services'}
+  <section class="hero-image">
+    <Container>
+      <div class="hero-image__wrapper">
+        <div class="hero-image__text-wrapper">
+          <h1 class="h1">{data.title}</h1>
+          <p class="hero-image__text">{data.text}</p>
+          {#if data.linkData}
+            <a href={data.linkData.link} class="hero-image__link">{data.linkData.title}</a>
+          {/if}
+          <div class="hero-image__categories">
+            {#each data.tagListCollection.items as tag}
+              <p class="hero-image__category">{tag.title}</p>
+            {/each}
+          </div>
+        </div>
+        <div class="hero-image__image-wrapper hero-image__image-wrapper--hover">
+          <img src={data.image.url} alt="" class="hero-image__image" />
         </div>
       </div>
-      <div class="hero-image__image-wrapper">
-        <img src={data.image.url} alt="" class="hero-image__image" />
+    </Container>
+  </section>
+{/if}
+
+{#if page == 'services'}
+  <section class="hero-image">
+    <Container>
+      <div class="hero-image__wrapper hero-image__bottom">
+        <div class="hero-image__text-wrapper">
+          <h1 class="h1">{data.title}</h1>
+          <p class="hero-image__text">{data.text}</p>
+
+          <div class="hero-image__categories">
+            {#each data.buttonListCollection.items as button}
+              <a href={button.link} class="hero-image__button">{button.title}</a>
+            {/each}
+          </div>
+        </div>
+        <div class="hero-image__image-wrapper ">
+          <img src={data.image.url} alt="" class="hero-image__image" />
+        </div>
       </div>
-    </div>
-  </Container>
-</section>
+    </Container>
+  </section>
+{/if}
 
 <style lang="scss">
   .hero-image {
     &__wrapper {
       display: flex;
       justify-content: space-between;
+    }
+
+    &__button {
+      border: 1px solid #0077ff;
+      padding: 10px 20px;
+      border-radius: 5px;
+      text-transform: uppercase;
+
+      &:first-of-type {
+        background-color: #0077ff;
+        color: white;
+      }
+
+      &:last-of-type {
+        background-color: white;
+        color: #0077ff;
+      }
+    }
+
+    &__bottom {
+      border-bottom: 2px solid #0077ff;
+
+      @media (max-width: 768px) {
+        .hero-image__image-wrapper {
+          padding-top: 100px;
+        }
+        & {
+          padding-bottom: 105px;
+        }
+      }
     }
 
     @media (max-width: 768px) {
@@ -134,7 +200,7 @@
     }
 
     @media (min-width: 769px) {
-      &__image-wrapper:hover &__image {
+      &__image-wrapper--hover:hover &__image {
         height: 100%;
       }
     }

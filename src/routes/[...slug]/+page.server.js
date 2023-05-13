@@ -17,6 +17,21 @@ const query = (slug) => `
     url: "${slug}"
   } limit: 1) {
     items {
+      seo {
+        titleTemplate
+        title
+        description
+        keywords
+        image {
+          url
+          fileName
+          description
+          width
+          height
+        }
+        ogype
+        twittercard
+      }
       name
       url
       sectionsCollection (limit:100) {

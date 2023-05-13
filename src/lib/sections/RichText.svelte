@@ -11,8 +11,6 @@
       return []
     })
   }
-
-  console.log(data.variant)
 </script>
 
 <section>
