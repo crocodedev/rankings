@@ -634,6 +634,7 @@
   }
 
   .indicators {
+    padding-top: 0px;
     &__wrapper {
       display: flex;
       justify-content: space-between;

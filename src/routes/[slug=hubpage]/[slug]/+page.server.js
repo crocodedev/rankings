@@ -118,9 +118,7 @@ export async function load({ params, url }) {
           const fullRichText = richTextSectionsData.find(
             (richTextItem) => richTextItem?.sys?.id === section?.sys?.id
           )
-          console.log(fullRichText)
           if (!fullRichText) return section
-          console.log(fullRichText)
           return {
             ...section,
             ...fullRichText,

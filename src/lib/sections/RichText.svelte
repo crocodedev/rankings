@@ -36,7 +36,9 @@
           {#if paragraph.nodeType === 'embedded-asset-block'}
             {#each data.richText.links.assets.block as asset}
               {#if asset.sys.id === paragraph.data.target.sys.id}
-                <img src={`${asset.url}`} alt="Embedded Asset" />
+                <div class="rich-text__image-wrapper">
+                  <img class="rich-text__image" src={`${asset.url}`} alt="Embedded Asset" />
+                </div>
               {/if}
             {/each}
           {/if}
@@ -104,6 +106,21 @@
       display: flex;
       flex-direction: column;
       gap: 20px;
+    }
+
+    &__image-wrapper {
+      margin-top: 10px;
+      margin-bottom: 10px;
+      width: 100%;
+      height: 400px;
+      border-radius: 10px;
+      overflow: hidden;
+    }
+
+    &__image {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
     }
   }
 
