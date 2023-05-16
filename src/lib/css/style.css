@@ -567,6 +567,7 @@ header {
 @media (max-width: 992px) {
   .hero__image-wrapper {
     transform: rotateX(180deg);
+    height: 350px;
   }
 }
 
