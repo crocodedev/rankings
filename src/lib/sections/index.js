@@ -14,6 +14,7 @@ import Form from '$lib/sections/Form.svelte'
 import RichText from '$lib/sections/RichText.svelte'
 import Breadcrumps from '$lib/sections/Breadcrumps.svelte'
 import HeroImage from '$lib/sections/HeroImage.svelte'
+import Hubpage from '$lib/sections/Hubpage.svelte'
 
 export {
   Header,
@@ -23,6 +24,7 @@ export {
   RichText,
   Indicator,
   Seo,
+  Hubpage,
   HeroImage,
   Methods,
   Ourmethods,
