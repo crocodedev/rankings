@@ -1,7 +1,7 @@
 <script>
   import * as Sections from '$lib/sections'
   import '$lib/css/style.css'
-  import Container from '$lib/components/Container.svelte'
+  import Container from '../../lib/components/Container.svelte'
   import { page } from '$app/stores'
   export let data
 
