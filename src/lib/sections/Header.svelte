@@ -49,9 +49,16 @@
         <a
           href="/"
           class={isMenuOpen ? 'header__logotype header__logotype--active' : 'header__logotype'}
-          >Rankings</a
         >
-
+          <span class="header__logotype-icon-wrapper">
+            <img
+              src="../logo.svg"
+              alt="logotype-icon"
+              class="header__logotype-icon header__logotype-icon--contact"
+            />
+          </span>
+          Rankings
+        </a>
         <nav
           class={isMenuOpen ? 'header__nav-list header__nav-list--active' : 'header__nav-list'}
           bind
@@ -107,9 +114,12 @@
         <a
           href="/"
           class={isMenuOpen ? 'header__logotype header__logotype--active' : 'header__logotype'}
-          >Rankings</a
         >
-
+          <span class="header__logotype-icon-wrapper">
+            <img src="../logo.svg" alt="logotype-icon" class="header__logotype-icon" />
+          </span>
+          Rankings
+        </a>
         <nav
           class={isMenuOpen ? 'header__nav-list header__nav-list--active' : 'header__nav-list'}
           bind
