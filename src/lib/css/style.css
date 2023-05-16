@@ -546,6 +546,7 @@ header {
   display: flex;
   justify-content: flex-end;
   position: relative;
+  min-height: 250px;
 }
 
 @media (min-width: 993px) {
