@@ -8,37 +8,38 @@
 <section class="cases">
   <Container>
     <div class="cases__wrapper">
-      <h1 class="cases__title h1">{section.title}</h1>
-      {#if section.section == 'BlogList'}
+      <h1 class="cases__title h1">{data.section.title}</h1>
+      {#if section.title == 'Blog'}
         <div class="cases__tags" style="justify-content:center">
           <button
-            on:click={clearActive}
-            class={`cases__tag ${activeTags.length === 0 ? 'cases__tag--active' : ''}`}
+            on:click={data.clearActive}
+            class={`cases__tag ${data.activeTags.length === 0 ? 'cases__tag--active' : ''}`}
             >All topics</button
           >
-          {#each section.tags as tag}
+          {#each data.section.tags as tag}
             <button
-              on:click={() => handleTogleActive(tag)}
-              class={`cases__tag ${activeTags.includes(tag) ? 'cases__tag--active' : ''}`}
-              >{tag}</button
+              on:click={() => data.handleTogleActive(tag)}
+              class={`cases__tag ${data.activeTags.includes(tag) ? 'cases__tag--active' : ''}`}
+            >
+              {tag}</button
             >
           {/each}
         </div>
       {/if}
 
-      {#if section.section == 'CaseList'}
+      {#if section.title == 'Cases'}
         <div class="cases__tags">
           <button
-            on:click={clearActive}
+            on:click={data.clearActive}
             type="button"
-            class={`cases__tag ${activeTags.length === 0 ? 'cases__tag--active' : ''}`}
+            class={`cases__tag ${data.activeTags.length === 0 ? 'cases__tag--active' : ''}`}
             >All projects</button
           >
           {#each section.tags as tag}
             <button
               type="button"
-              on:click={() => handleTogleActive(tag)}
-              class={`cases__tag ${activeTags.includes(tag) ? 'cases__tag--active' : ''}`}
+              on:click={() => data.handleTogleActive(tag)}
+              class={`cases__tag ${data.activeTags.includes(tag) ? 'cases__tag--active' : ''}`}
               >{tag}</button
             >
           {/each}
@@ -46,8 +47,8 @@
       {/if}
 
       <div class="cases__items">
-        {#each section.cards as card}
-          {#if activeTags.length === 0 || card.tagList?.some((el) => activeTags.includes(el))}
+        {#each data.section.cards as card}
+          {#if data.activeTags.length === 0 || card.tagList?.some( (el) => data.activeTags.includes(el) )}
             <div class="cases__item {card.blogCardVariation}">
               <div class="cases__item-image-wrapper">
                 <img src={card.imageCard.url} alt="" class="cases__item-image" />
@@ -61,7 +62,7 @@
                   <a href={card.url} class="cases__item-category">{card.subtitleCard}</a>
                 {/if}
                 <div class="cases__item-tags">
-                  {#if section.section == 'CaseList'}
+                  {#if section.title == 'Cases'}
                     {#if card.tagList}
                       {#each card.tagList as tag}
                         <div class="cases__item-tag">{tag}</div>

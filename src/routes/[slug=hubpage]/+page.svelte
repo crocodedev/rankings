@@ -3,7 +3,6 @@
   import '$lib/css/style.css'
   import { page } from '$app/stores'
   export let data
-
   $: activeTags = []
   $: sections = [
     ...data.pageData.sectionsCollection.items,
@@ -23,9 +22,9 @@
     },
   ].sort((a, b) => a.position - b.position)
 
-  const clearActive = () => (activeTags = [])
+  $: clearActive = () => (activeTags = [])
 
-  const handleTogleActive = (tag) => {
+  $: handleTogleActive = (tag) => {
     activeTags = activeTags.includes(tag)
       ? activeTags.filter((el) => el !== tag)
       : [...activeTags, tag]
