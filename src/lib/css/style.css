@@ -63,6 +63,10 @@
   border-radius: 5px;
 }
 
+.btn:hover {
+  text-shadow: 0px 0px 1px white;
+}
+
 .h1,
 .h2,
 .h3 {
@@ -455,6 +459,40 @@ header {
 }
 
 /* herooo */
+
+@media (min-width: 993px) {
+  .hero__scroll-down {
+    cursor: pointer;
+    position: absolute;
+    display: flex;
+    align-items: flex-end;
+    justify-content: flex-start;
+    flex-direction: column;
+    bottom: 0;
+    right: 0;
+    transform: rotate(90deg);
+  }
+
+  .hero__scroll-text {
+    width: max-content;
+    transform: rotate(180deg);
+    color: #97a2b6;
+    font-size: 14px;
+  }
+
+  .hero__scroll-icon {
+    width: 35px;
+    height: 43px;
+    opacity: 0.3;
+  }
+}
+
+@media (max-width: 992px) {
+  .hero__scroll-down {
+    display: none;
+  }
+}
+
 .hero__title {
   font-size: 72px;
   color: #07124a;
@@ -462,6 +500,7 @@ header {
 }
 
 .hero__wrapper {
+  position: relative;
   justify-content: space-between;
   display: flex;
   gap: 80px;
@@ -534,7 +573,6 @@ header {
 
 .hero__arrow {
   width: 100%;
-  z-index: 1;
 }
 
 .hero__image-wrapper {

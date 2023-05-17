@@ -143,6 +143,10 @@
       border-radius: 5px;
     }
 
+    &__btn:hover {
+      text-shadow: 0 0 1px white;
+    }
+
     @media (min-width: 993px) {
       &__btn {
         align-self: flex-end;

@@ -142,9 +142,9 @@
               <div class="contact-form__input-wrapper">
                 <label for="email" class="contact-form__label">Your email</label>
                 <input
-                  type="text"
+                  type="email"
                   id="email"
-                  placeholder={data.inputEmail}
+                  placeholder="{data.inputEmail}*"
                   class="contact-form__input"
                   required
                 />
@@ -478,6 +478,10 @@
 
     &__nav-item {
       color: white;
+    }
+
+    &__nav-item:hover {
+      text-shadow: 0 0 1px white;
     }
 
     &__email {

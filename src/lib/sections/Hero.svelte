@@ -1,6 +1,25 @@
 <script>
   export let data = {}
   import Container from '$lib/components/Container.svelte'
+  import { onMount } from 'svelte'
+
+  let hero
+
+  function scrollDown() {
+    const height = hero.getBoundingClientRect().height
+
+    window.scrollTo({
+      top: height - 30,
+      behavior: 'smooth',
+    })
+  }
+
+  onMount(() => {
+    const scrollDownButton = document.querySelector('.hero__scroll-down')
+    hero = document.querySelector('.hero')
+
+    scrollDownButton.addEventListener('click', scrollDown)
+  })
 </script>
 
 <section class="hero" style="padding-top:90px">
@@ -37,6 +56,10 @@
           <a href={data.buttonLink} class="btn">{data.buttonText}</a>
         </div>
       </div>
+      <span on:click={scrollDown} class="hero__scroll-down">
+        <p class="hero__scroll-text">Scroll down</p>
+        <img class="hero__scroll-icon" src="../Group 109.svg" />
+      </span>
     </div>
   </Container>
 </section>
