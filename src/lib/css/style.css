@@ -743,7 +743,7 @@ header {
   }
 
   .arrow__point-3 {
-    transform: rotate(15deg) translateY(-10px);
+    transform: rotate(15deg) translateY(-5px);
   }
 }
 
