@@ -67,7 +67,7 @@
       <div class="contact-form__wrapper contact-form__wrapper--end contact-form__wrapper--contact">
         <div class="contact-form__inner">
           <form
-            action="/functions/contact-form.js"
+            action="../../functions/contact-form.js"
             name="contact-form"
             class="contact-form__form"
             method="post"
@@ -134,7 +134,7 @@
         </div>
         <div class="contact-form__inner">
           <form
-            action="/functions/contact-form.js"
+            action="../../functions/contact-form.js"
             class="contact-form__form"
             name="contact-form"
             method="post"
