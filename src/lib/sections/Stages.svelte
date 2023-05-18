@@ -80,6 +80,12 @@
       color: #07124a;
     }
 
+    @media (min-width: 993px) {
+      .stages__subtitle {
+        width: 48%;
+      }
+    }
+
     .stages__items {
       display: flex;
       justify-content: space-between;

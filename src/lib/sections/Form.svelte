@@ -66,7 +66,13 @@
       </div>
       <div class="contact-form__wrapper contact-form__wrapper--end contact-form__wrapper--contact">
         <div class="contact-form__inner">
-          <form action="submit" class="contact-form__form">
+          <form
+            action="submit"
+            name="contact-form"
+            class="contact-form__form"
+            method="post"
+            netlify
+          >
             <div class="contact-form__form-wrapper">
               <div class="contact-form__input-wrapper">
                 <label for="name" class="contact-form__label">Your name</label>
@@ -127,7 +133,13 @@
           </nav>
         </div>
         <div class="contact-form__inner">
-          <form action="submit" class="contact-form__form">
+          <form
+            action="submit"
+            class="contact-form__form"
+            name="contact-form"
+            method="post"
+            netlify
+          >
             <div class="contact-form__form-wrapper">
               <div class="contact-form__input-wrapper">
                 <label for="name" class="contact-form__label">Your name</label>

@@ -98,7 +98,9 @@
           {/if}
         </nav>
 
-        <button class="header__btn-menu header__btn-menu--contact" on:click={toggleMenu} />
+        <button class="header__btn-menu header__btn-menu--contact" on:click={toggleMenu}>
+          <div class="header__btn-menu-area" />
+        </button>
       </div>
     </Container>
   </header>
@@ -159,7 +161,9 @@
           {/if}
         </nav>
 
-        <button class="header__btn-menu" on:click={toggleMenu} />
+        <button class="header__btn-menu" on:click={toggleMenu}>
+          <div class="header__btn-menu-area" />
+        </button>
       </div>
     </Container>
   </header>

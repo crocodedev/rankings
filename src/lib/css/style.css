@@ -152,6 +152,14 @@ section:first-of-type:not(#shadow-host-companion) {
     background-color: #07124a;
   }
 
+  .header__btn-menu-area {
+    position: absolute;
+    content: '';
+    width: 27px;
+    height: 27px;
+    top: -10px;
+  }
+
   .header__btn-menu--contact {
     background-color: white;
   }
@@ -197,6 +205,7 @@ section:first-of-type:not(#shadow-host-companion) {
 
 @media (max-width: 992px) {
   .header__cross {
+    cursor: pointer;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -429,6 +438,7 @@ header {
   color: #07124a;
   font-size: 14px;
   width: max-content;
+  text-shadow: 0 0 0 white;
 }
 
 @media (min-width: 993px) {
@@ -475,7 +485,7 @@ header {
     align-items: flex-end;
     justify-content: flex-start;
     flex-direction: column;
-    bottom: 0;
+    bottom: 8px;
     right: 0;
     transform: rotate(90deg);
   }
@@ -529,6 +539,14 @@ header {
   .hero__leftside-inner,
   .hero__rightside-inner {
     gap: 130px;
+  }
+
+  .hero__rightside-inner {
+    justify-content: space-between;
+  }
+
+  .hero__text {
+    width: 260px;
   }
 }
 
@@ -595,10 +613,13 @@ header {
 }
 
 @media (min-width: 993px) {
-  .hero__arrow-animate,
-  .hero__arrow,
   .hero__image-wrapper {
     height: 370px;
+  }
+
+  .hero__arrow-animate,
+  .hero__arrow {
+    height: 300px;
   }
 }
 

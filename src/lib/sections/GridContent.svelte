@@ -22,70 +22,36 @@
           <p class="grid-content__subtitle">{data.subtitle}</p>
         </div>
         <div class="grid-content__items">
-          {#if data.title.toLowerCase() == 'our projects'}
-            {#each data.contentListCollection.items.slice(0, 4) as item}
-              <div class="card">
-                <div class="card__wrapper">
-                  <div class="card__image-wrapper">
-                    <img src={item.imageCard.url} alt="card" class="card__image" />
-                    <a href={item.url}>
-                      <img src="../feather-external-link.svg" alt="" class="card__image-icon" />
-                    </a>
-                  </div>
-                  <div class="card__text-wrapper">
-                    <div class="card__generaly-info">
-                      <span class="card__industry">{item.subtitleCard}</span>
-                      <p class="card__company">{item.titleCard}</p>
-                      <div class="card__categories-list">
-                        {#if item.tagList}
-                          {#each item.tagList as tag}
-                            <p class="card__category">
-                              {tag}
-                            </p>
-                          {/each}
-                        {/if}
-                      </div>
+          {#each data.contentListCollection.items.slice(0, 4) as item}
+            <div class="card">
+              <div class="card__wrapper">
+                <div class="card__image-wrapper">
+                  <img src={item.imageCard.url} alt="card" class="card__image" />
+                  <a href={item.url}>
+                    <img src="../feather-external-link.svg" alt="" class="card__image-icon" />
+                  </a>
+                </div>
+                <div class="card__text-wrapper">
+                  <div class="card__generaly-info">
+                    <span class="card__industry">{item.subtitleCard}</span>
+                    <p class="card__company">{item.titleCard}</p>
+                    <div class="card__categories-list">
+                      {#if item.tagList}
+                        {#each item.tagList as tag}
+                          <p class="card__category">
+                            {tag}
+                          </p>
+                        {/each}
+                      {/if}
                     </div>
-                    <p class="card__text">
-                      {item.textCard}
-                    </p>
                   </div>
+                  <p class="card__text">
+                    {item.textCard}
+                  </p>
                 </div>
               </div>
-            {/each}
-          {/if}
-          {#if data.title.toLowerCase() != 'our projects'}
-            {#each data.contentListCollection.items as item}
-              <div class="card">
-                <div class="card__wrapper">
-                  <div class="card__image-wrapper">
-                    <img src={item.imageCard.url} alt="card" class="card__image" />
-                    <a href={item.url}>
-                      <img src="../feather-external-link.svg" alt="" class="card__image-icon" />
-                    </a>
-                  </div>
-                  <div class="card__text-wrapper">
-                    <div class="card__generaly-info">
-                      <span class="card__industry">{item.subtitleCard}</span>
-                      <p class="card__company">{item.titleCard}</p>
-                      <div class="card__categories-list">
-                        {#if item.tagList}
-                          {#each item.tagList as tag}
-                            <p class="card__category">
-                              {tag}
-                            </p>
-                          {/each}
-                        {/if}
-                      </div>
-                    </div>
-                    <p class="card__text">
-                      {item.textCard}
-                    </p>
-                  </div>
-                </div>
-              </div>
-            {/each}
-          {/if}
+            </div>
+          {/each}
         </div>
         {#if data.linkMore}
           <a href={data.linkMore.link} class="grid-content__show-wrapper">
@@ -104,16 +70,24 @@
   <section class="seotext">
     <Container>
       <div class="seotext__wrapper">
-        <h2 class="h2">{data.title}</h2>
+        <div class="grid-content__title-wrapper">
+          <h2 class="h2">{data.title}</h2>
+          {#if data.subtitle !== null}
+            <p class="grid-content__subtitle">{data.subtitle}</p>
+          {:else if typeof data.subtitle === 'undefined'}
+            <p class="grid-content__subtitle">&nbsp;</p>
+          {/if}
+        </div>
         <div class="seotext__items">
           {#each data.contentListCollection.items as item}
             <div class="seotext__item">
               <div class="seotext__name-wrapper">
                 <p class="seotext__name">
-                  {#if item.title == null}
-                    {(item.title = ' ')}
+                  {#if item.title !== null}
+                    {item.title}
+                  {:else}
+                    {' '}
                   {/if}
-                  {item.title}
                 </p>
                 <span class="seotext__bar" />
               </div>
