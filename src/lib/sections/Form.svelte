@@ -431,7 +431,7 @@
     @media (max-width: 992px) {
       &__wrapper {
         flex-direction: column;
-        gap: 20px;
+        gap: 40px;
         padding: 20px;
       }
 

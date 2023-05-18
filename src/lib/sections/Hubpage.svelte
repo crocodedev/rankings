@@ -184,21 +184,15 @@
       }
     }
 
-    @media (min-width: 769px) {
-      &__items.cases__items--services {
-        justify-content: space-between;
-      }
-    }
-
     @media (min-width: 993px) {
       &__items {
-        justify-content: space-between;
         column-gap: 50px;
         row-gap: 150px;
       }
 
       &__items.cases__items--services &__item {
-        width: 29%;
+        flex: 1 1 auto;
+        max-width: 31%;
       }
     }
 

@@ -151,7 +151,6 @@
 
     @media (min-width: 993px) {
       &__items {
-        justify-content: space-between;
         column-gap: 50px;
         row-gap: 150px;
       }

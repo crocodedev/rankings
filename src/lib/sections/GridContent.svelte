@@ -111,13 +111,19 @@
           <p class="methods__subtitle">{data.subtitle}</p>
         </div>
         <div class="methods__items">
-          {#each data.contentListCollection.items as item}
-            <div class="methods__item">
-              <span class="methods__icon">
-                <img src={item.icon.url} alt="" class="methods__icon-img" />
-              </span>
-              <p class="methods__text">{item.text}</p>
-            </div>
+          {#each data.contentListCollection.items as item, index}
+            {#if index % 3 == 0}
+              <div class="methods__items-group">
+                {#each data.contentListCollection.items.slice(index, index + 3) as subItem, subIndex}
+                  <div class="methods__item">
+                    <span class="methods__icon">
+                      <img src={subItem.icon.url} alt="" class="methods__icon-img" />
+                    </span>
+                    <p class="methods__text">{subItem.text}</p>
+                  </div>
+                {/each}
+              </div>
+            {/if}
           {/each}
         </div>
       </div>
@@ -572,6 +578,12 @@
       display: flex;
       flex-direction: column;
       gap: 10px;
+    }
+
+    @media (min-width: 992px) {
+      &__title-wrapper {
+        width: 48%;
+      }
     }
 
     &__subtitle {
