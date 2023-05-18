@@ -703,8 +703,7 @@ header {
   align-items: center;
   gap: 18px;
   width: 120px;
-  transform: rotate(15deg);
-  top: -100px;
+
   left: 40px;
   justify-content: center;
   opacity: 0;
@@ -716,11 +715,36 @@ header {
 }
 
 .arrow__point-2 {
+  transform: rotate(15deg);
   animation: 1s ease-in-out 0.75s forwards down-point-2;
 }
 
 .arrow__point-3 {
   animation: 1s ease-in-out 1s forwards down-point-3;
+}
+
+@media (min-width: 769px) {
+  .arrow__point-1,
+  .arrow__point-3 {
+    transform: rotate(15deg) translateY(10px);
+  }
+}
+
+@media (max-width: 768px) {
+  .arrow__point-1,
+  .arrow__point-3 {
+    transform: rotate(15deg);
+  }
+}
+
+@media (max-width: 460px) {
+  .arrow__point-1 {
+    transform: rotate(15deg) translateY(10px);
+  }
+
+  .arrow__point-3 {
+    transform: rotate(15deg) translateY(-10px);
+  }
 }
 
 @keyframes down-point-1 {
