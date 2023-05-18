@@ -438,7 +438,7 @@ header {
   color: #07124a;
   font-size: 14px;
   width: max-content;
-  text-shadow: 0 0 0 white;
+  text-shadow: 0 0 0 rgba(255, 255, 255, 0);
 }
 
 @media (min-width: 993px) {

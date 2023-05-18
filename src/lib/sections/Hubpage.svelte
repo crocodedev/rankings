@@ -46,35 +46,68 @@
         </div>
       {/if}
 
-      <div class="cases__items">
-        {#each data.section.cards as card}
-          {#if data.activeTags.length === 0 || card.tagList?.some( (el) => data.activeTags.includes(el) )}
-            <div class="cases__item {card.blogCardVariation}">
-              <div class="cases__item-image-wrapper">
-                <img src={card.imageCard.url} alt="" class="cases__item-image" />
-                <a href={card.url}>
-                  <img src="feather-external-link.svg" alt="" class="card__image-icon" />
-                </a>
-              </div>
-              <div class="cases__text-wrapper">
-                <a href={card.url} class="cases__item-name">{card.titleCard}</a>
-                {#if card.subtitleCard != null}
-                  <a href={card.url} class="cases__item-category">{card.subtitleCard}</a>
-                {/if}
-                <div class="cases__item-tags">
-                  {#if section.title == 'Cases'}
-                    {#if card.tagList}
-                      {#each card.tagList as tag}
-                        <div class="cases__item-tag">{tag}</div>
-                      {/each}
-                    {/if}
+      {#if section.title == 'Services'}
+        <div class="cases__items cases__items--services">
+          {#each data.section.cards as card}
+            {#if data.activeTags.length === 0 || card.tagList?.some( (el) => data.activeTags.includes(el) )}
+              <div class="cases__item {card.blogCardVariation}">
+                <div class="cases__item-image-wrapper">
+                  <img src={card.imageCard.url} alt="" class="cases__item-image" />
+                  <a href={card.url}>
+                    <img src="feather-external-link.svg" alt="" class="card__image-icon" />
+                  </a>
+                </div>
+                <div class="cases__text-wrapper">
+                  <a href={card.url} class="cases__item-name">{card.titleCard}</a>
+                  {#if card.subtitleCard != null}
+                    <a href={card.url} class="cases__item-category">{card.subtitleCard}</a>
                   {/if}
+                  <div class="cases__item-tags">
+                    {#if section.title == 'Cases'}
+                      {#if card.tagList}
+                        {#each card.tagList as tag}
+                          <div class="cases__item-tag">{tag}</div>
+                        {/each}
+                      {/if}
+                    {/if}
+                  </div>
                 </div>
               </div>
-            </div>
-          {/if}
-        {/each}
-      </div>
+            {/if}
+          {/each}
+        </div>
+      {/if}
+      {#if section.title != 'Services'}
+        <div class="cases__items">
+          {#each data.section.cards as card}
+            {#if data.activeTags.length === 0 || card.tagList?.some( (el) => data.activeTags.includes(el) )}
+              <div class="cases__item {card.blogCardVariation}">
+                <div class="cases__item-image-wrapper">
+                  <img src={card.imageCard.url} alt="" class="cases__item-image" />
+                  <a href={card.url}>
+                    <img src="feather-external-link.svg" alt="" class="card__image-icon" />
+                  </a>
+                </div>
+                <div class="cases__text-wrapper">
+                  <a href={card.url} class="cases__item-name">{card.titleCard}</a>
+                  {#if card.subtitleCard != null}
+                    <a href={card.url} class="cases__item-category">{card.subtitleCard}</a>
+                  {/if}
+                  <div class="cases__item-tags">
+                    {#if section.title == 'Cases'}
+                      {#if card.tagList}
+                        {#each card.tagList as tag}
+                          <div class="cases__item-tag">{tag}</div>
+                        {/each}
+                      {/if}
+                    {/if}
+                  </div>
+                </div>
+              </div>
+            {/if}
+          {/each}
+        </div>
+      {/if}
     </div>
   </Container>
 </section>
@@ -151,11 +184,21 @@
       }
     }
 
+    @media (min-width: 769px) {
+      &__items.cases__items--services {
+        justify-content: space-between;
+      }
+    }
+
     @media (min-width: 993px) {
       &__items {
         justify-content: space-between;
         column-gap: 50px;
         row-gap: 150px;
+      }
+
+      &__items.cases__items--services &__item {
+        width: 29%;
       }
     }
 
@@ -166,7 +209,7 @@
     }
 
     @media (min-width: 769px) {
-      &__item {
+      &__items &__item {
         width: 47%;
       }
     }
@@ -180,13 +223,21 @@
     &__item-image-wrapper {
       position: relative;
       width: 100%;
-
       border-radius: 10px;
       overflow: hidden;
       transition: 0.3s ease-in-out;
     }
 
+    &__item-image-wrapper:hover {
+      .cases__item-image {
+        transform: scale(1);
+      }
+    }
+
     @media (min-width: 993px) {
+      &__items.cases__items--services &__item &__item-image-wrapper {
+        height: 388px;
+      }
       &__item-image-wrapper {
         height: 500px;
       }
@@ -205,6 +256,8 @@
     }
 
     &__item-image {
+      transition: 0.3s ease-in-out;
+      transform: scale(1.2);
       width: 100%;
       height: 100%;
       object-fit: cover;
