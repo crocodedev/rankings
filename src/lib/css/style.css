@@ -132,6 +132,7 @@
 }
 
 #shadow-host-companion {
+  padding-top: 0px;
   padding-bottom: 0px;
 }
 
@@ -703,7 +704,6 @@ header {
   align-items: center;
   gap: 18px;
   width: 120px;
-
   left: 40px;
   justify-content: center;
   opacity: 0;
@@ -730,7 +730,13 @@ header {
   }
 }
 
-@media (max-width: 768px) {
+@media (min-width: 600px) and (max-width: 992px) {
+  .arrow__point-2 {
+    transform: rotate(15deg) translateY(-10px);
+  }
+}
+
+@media (min-width: 461px) and (max-width: 768px) {
   .arrow__point-1,
   .arrow__point-3 {
     transform: rotate(15deg);
