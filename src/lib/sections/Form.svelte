@@ -412,11 +412,11 @@
 
     @media (min-width: 993px) {
       &__wrapper {
-        padding: 75px 55px 87px 75px;
+        padding: 0 55px 87px 75px;
       }
 
       &__wrapper--contact {
-        padding: 75px 0 0 0;
+        padding: 0 0 0 0;
       }
 
       &__wrapper--contact:last-of-type {
