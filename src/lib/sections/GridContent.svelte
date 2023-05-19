@@ -654,6 +654,7 @@
     padding-top: 0px;
     &__wrapper {
       display: flex;
+      column-gap: 20px;
       justify-content: space-between;
       flex-wrap: wrap;
       row-gap: 50px;

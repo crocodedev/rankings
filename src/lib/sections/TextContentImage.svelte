@@ -1,14 +1,26 @@
 <script>
   export let data = {}
   import Container from '$lib/components/Container.svelte'
+  import { onMount } from 'svelte'
   import { Lightbox } from 'svelte-lightbox'
 
   let cursor
   let m = { x: 0, y: 0 }
+  let enableClickToClose = false
 
   function handleMousemove(event) {
-    const rect = event.currentTarget.getBoundingClientRect()
-    m = { x: event.clientX - rect.left, y: event.clientY - rect.top }
+    if (!enableClickToClose) {
+      const rect = event.currentTarget.getBoundingClientRect()
+      m = { x: event.clientX - rect.left, y: event.clientY - rect.top }
+    }
+  }
+
+  function handleLightboxClose() {
+    enableClickToClose = false
+  }
+
+  function handleImageClick() {
+    enableClickToClose = true
   }
 </script>
 
@@ -20,8 +32,12 @@
         <p class="textContent__text">{data.text}</p>
       </div>
       {#if data.image}
-        <Lightbox description={data.title}>
-          <div class="textContent__image-wrapper" on:mousemove={handleMousemove}>
+        <Lightbox description={data.title} on:close={handleLightboxClose} {enableClickToClose}>
+          <div
+            class="textContent__image-wrapper"
+            on:mousemove={handleMousemove}
+            on:click={handleImageClick}
+          >
             <div
               class="textContent__cursor"
               style="left: {m.x - (cursor ? cursor.offsetWidth / 2 : 0)}px; top: {m.y -
@@ -120,10 +136,7 @@
   }
 
   .svelte-lightbox-body .textContent__image-wrapper .textContent__cursor {
-    display: none;
-  }
-
-  .svelte-lightbox-body .textContent__image-wrapper {
-    cursor: default;
+    cursor: pointer;
+    opacity: 0;
   }
 </style>
