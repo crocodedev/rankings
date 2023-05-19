@@ -10,6 +10,8 @@
     let pathname = window.location.pathname
     page = pathname.substring(pathname.lastIndexOf('/') + 1)
   })
+
+  console.log(data)
 </script>
 
 {#if page == 'contact-us'}
@@ -20,11 +22,6 @@
           <div class="contact-form__title-wrapper">
             <h1 class="h1 contact-form__title">Contact <span class="highlight">us</span></h1>
           </div>
-          <nav class="contact-form__nav">
-            {#each data.formNavigationCollection.items as items}
-              <a href={items.link} class="contact-form__nav-item"> {items.title} </a>
-            {/each}
-          </nav>
         </div>
         <div class="contact-form__inner contact-form__inner--contact">
           {#each data.contactItemsCollection.items as item}
@@ -45,7 +42,12 @@
                 {#if item.socialItemsCollection.items.length > 0}
                   <div class="contact-form__social-icons">
                     {#each item.socialItemsCollection.items as social}
-                      <a href={social.link}><img src={social.socialIcon.url} alt="" /></a>
+                      {#if social.socialIcon.url != null}
+                        <a href={social.link}><img src={social.socialIcon.url} alt="" /></a>
+                      {/if}
+                      {#if social.socialIcon.url == null}
+                        <a href={social.link} />
+                      {/if}
                     {/each}
                   </div>
                 {/if}
@@ -65,7 +67,7 @@
         </div>
       </div>
       <div class="contact-form__wrapper contact-form__wrapper--end contact-form__wrapper--contact">
-        <div class="contact-form__inner">
+        <div class="contact-form__inner contact-form__inner--grid">
           <form
             action="../../functions/contact-form.js"
             name="contact-form"
@@ -89,7 +91,7 @@
                 <input
                   type="text"
                   id="email"
-                  placeholder={data.inputEmail}
+                  placeholder="{data.inputEmail}*"
                   class="contact-form__input"
                   required
                 />
@@ -220,6 +222,12 @@
     @media (max-width: 992px) {
       .contact-form__arrow {
         transform: rotate(180deg);
+      }
+    }
+
+    @media (min-width: 993px) {
+      .contact-form__arrow {
+        align-self: baseline;
       }
     }
 
@@ -396,7 +404,8 @@
     }
 
     &__wrapper {
-      display: flex;
+      display: grid;
+
       justify-content: space-between;
       border-radius: 10px;
       background-color: #46506f;
@@ -412,10 +421,16 @@
 
     @media (min-width: 993px) {
       &__wrapper {
-        padding: 0 55px 87px 75px;
+        justify-items: start;
+        grid-template-columns: 0.85fr 1fr;
+        gap: 70px;
+        padding: 87px 55px 87px 75px;
       }
 
       &__wrapper--contact {
+        display: grid;
+        gap: 0;
+        grid-template-columns: repeat(2, 1fr);
         padding: 0 0 0 0;
       }
 
@@ -430,6 +445,7 @@
 
     @media (max-width: 992px) {
       &__wrapper {
+        grid-template-columns: 1fr;
         flex-direction: column;
         gap: 40px;
         padding: 20px;
@@ -453,11 +469,21 @@
       &--contact {
         gap: 55px;
       }
+
+      &--contact .contact-form__social-item:first-of-type .contact-form__social-image-wrapper {
+        transform: translateX(-5px);
+      }
     }
 
     @media (min-width: 993px) {
-      &__inner {
-        width: 45%;
+      .contact-form__inner {
+        grid-column-start: auto;
+      }
+      .contact-form__wrapper--contact .contact-form__inner--grid {
+        grid-column-start: 2;
+      }
+      .contact-form__wrapper--contact .contact-form__inner {
+        width: 100%;
       }
     }
 
@@ -580,6 +606,7 @@
 
     @media (min-width: 993px) {
       &__button-wrapper {
+        align-items: flex-end;
         gap: 25px;
       }
     }

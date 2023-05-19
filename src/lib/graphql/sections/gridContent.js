@@ -10,7 +10,7 @@ export const gridContentQuery = `... on SectionGridContent {
     title
     link
   }
-  contentListCollection(limit: 10) {
+  contentListCollection(limit: 20) {
     items {
       ... on EntityCard {
         seo {

@@ -38,6 +38,7 @@
   .breadcrumps {
     &--contact-us {
       background-color: #46506f;
+      padding-bottom: 150px;
     }
     &__wrapper {
       display: flex;
