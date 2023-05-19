@@ -151,6 +151,7 @@
       &__btn {
         align-self: flex-end;
         width: 32%;
+        min-width: 202px;
       }
     }
 

@@ -11,12 +11,18 @@
       return []
     })
   }
+  console.log(data)
 </script>
 
-<section>
+<section class="rich-text">
   <Container>
     <div class="rich-text__wrapper {data.variant}">
-      <h1 class="h1">{data.title}</h1>
+      {#if data.pageTitle == 'Page Title'}
+        <h1 class="h1 rich-text__title">{data.title}</h1>
+      {/if}
+      {#if data.pageTitle == 'Section Title'}
+        <h2 class="h2">{data.title}</h2>
+      {/if}
       {#if data.variant == 'HalfWidth'}
         <div class="rich-text__arrow">
           <div class="rich-text__arrow-1" />
@@ -30,7 +36,12 @@
             {#if paragraph.marks && paragraph.marks.some((mark) => mark.type === 'bold')}
               <p class="rich-text__text rich-text__text--semibold">{paragraph.value}</p>
             {:else}
-              <p class="rich-text__text">{paragraph.value}</p>
+              {#if data.pageTitle == 'Page Title'}
+                <p class="rich-text__text">{paragraph.value}</p>
+              {/if}
+              {#if data.pageTitle == 'Section Title'}
+                <p class="rich-text__text rich-text__text--secondary">{paragraph.value}</p>
+              {/if}
             {/if}
           {/if}
           {#if paragraph.nodeType === 'embedded-asset-block'}
@@ -98,7 +109,12 @@
       }
     }
 
+    &__text--secondary {
+      color: #46506f;
+    }
+
     &__text--semibold {
+      font-size: 24px;
       font-weight: 500;
     }
 

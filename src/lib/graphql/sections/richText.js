@@ -4,5 +4,6 @@ export const sectionRichTextQuery = `... on SectionRichText {
   sys {
     id
   }
+  pageTitle
 }
 `

@@ -11,6 +11,10 @@
       activeQuestions = [...activeQuestions, index]
     }
   }
+
+  // if(data.component === "Methods") {
+  //   data.contentListCollection.items = data.contentListCollection.items
+  // }
 </script>
 
 {#if data.component == 'Cards'}
@@ -112,18 +116,12 @@
         </div>
         <div class="methods__items">
           {#each data.contentListCollection.items as item, index}
-            {#if index % 3 == 0}
-              <div class="methods__items-group">
-                {#each data.contentListCollection.items.slice(index, index + 3) as subItem, subIndex}
-                  <div class="methods__item">
-                    <span class="methods__icon">
-                      <img src={subItem.icon.url} alt="" class="methods__icon-img" />
-                    </span>
-                    <p class="methods__text">{subItem.text}</p>
-                  </div>
-                {/each}
-              </div>
-            {/if}
+            <div class="methods__item" style={`--item-align: ${index}`}>
+              <span class="methods__icon">
+                <img src={item.icon.url} alt="" class="methods__icon-img" />
+              </span>
+              <p class="methods__text">{item.text}</p>
+            </div>
           {/each}
         </div>
       </div>
@@ -642,12 +640,11 @@
         & {
           gap: 35px;
         }
-        &:nth-of-type(1n + 4) {
-          flex-direction: row-reverse;
-        }
 
-        &:nth-of-type(4n + 3) {
-          flex-direction: row;
+        &:nth-child(6n + 5),
+        &:nth-child(6n + 6),
+        &:nth-child(6n + 4) {
+          flex-direction: row-reverse;
         }
       }
     }
@@ -834,7 +831,7 @@
       @media (min-width: 769px) {
         & {
           width: 608px;
-          font-size: 18px;
+          font-size: 16px;
         }
       }
 

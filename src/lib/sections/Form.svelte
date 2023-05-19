@@ -625,6 +625,12 @@
       padding: 20px 0;
     }
 
+    @media (max-width: 768px) {
+      &__input {
+        height: 60px;
+      }
+    }
+
     &__input::placeholder {
       color: #bfc8d6;
     }
