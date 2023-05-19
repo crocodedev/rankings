@@ -34,6 +34,7 @@
     &__wrapper {
       background-color: rgba(255, 0, 0, 0.205);
       padding-left: 20px;
+      padding-bottom: 20px;
       height: 270px;
       padding-top: 70px;
       display: flex;

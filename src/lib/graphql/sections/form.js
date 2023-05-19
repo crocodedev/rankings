@@ -29,6 +29,7 @@ export const formQuery = `... on SectionForm {
       socialItemsCollection(limit:5){
         items{
           link
+          title
           socialIcon{
             url
           }

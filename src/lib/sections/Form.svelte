@@ -42,11 +42,14 @@
                 {#if item.socialItemsCollection.items.length > 0}
                   <div class="contact-form__social-icons">
                     {#each item.socialItemsCollection.items as social}
-                      {#if social.socialIcon.url != null}
-                        <a href={social.link}><img src={social.socialIcon.url} alt="" /></a>
+                      {#if social.socialIcon != null}
+                        <a href={social.link}><img src={social.socialIcon.url} alt="" /> </a>
                       {/if}
-                      {#if social.socialIcon.url == null}
-                        <a href={social.link} />
+                      {#if social.socialIcon == null}
+                        <a href={social.link} class="contact-form__social-map">
+                          <span class="contact-form__social-text-map">{social.title}</span>
+                          <span class="contact-form__social-arrow" />
+                        </a>
                       {/if}
                     {/each}
                   </div>
@@ -374,6 +377,70 @@
     &__social-image {
       width: 32px;
       height: 32px;
+    }
+
+    &__social-map {
+      display: flex;
+      align-items: center;
+      gap: 15px;
+    }
+
+    &__social-text-map {
+      position: relative;
+      text-decoration: underline;
+      color: #97a2b6;
+
+      @media (max-width: 768px) {
+        & {
+          font-size: 12px;
+        }
+      }
+
+      @media (min-width: 769px) {
+        & {
+          font-size: 14px;
+        }
+      }
+    }
+
+    &__social-arrow {
+      display: flex;
+      align-items: center;
+      position: relative;
+      width: 8px;
+      height: 8px;
+
+      transform: rotate(-90deg);
+
+      &::before {
+        position: absolute;
+        content: '';
+        width: 9px;
+        height: 1px;
+        right: -0.5px;
+        transform: rotate(45deg);
+      }
+
+      @media (max-width: 768px) {
+        & {
+          border-right: 1px solid #0077ff;
+          border-bottom: 1px solid #0077ff;
+        }
+        &::before {
+          background-color: #0077ff;
+        }
+      }
+
+      @media (min-width: 769px) {
+        & {
+          border-right: 1px solid #97a2b6;
+          border-bottom: 1px solid #97a2b6;
+        }
+
+        &::before {
+          background-color: #97a2b6;
+        }
+      }
     }
 
     &__social-icons {

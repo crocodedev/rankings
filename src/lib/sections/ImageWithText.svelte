@@ -51,6 +51,13 @@
 <style lang="scss">
   .imagewithtext--contact {
     background-color: #46506f;
+
+    @media (min-width: 993px) {
+      & {
+        padding-top: 150px;
+        padding-bottom: 75px;
+      }
+    }
   }
   .imagewithtext {
     &__wrapper {

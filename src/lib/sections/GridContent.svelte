@@ -656,6 +656,7 @@
       display: flex;
       justify-content: space-between;
       flex-wrap: wrap;
+      row-gap: 50px;
       border-bottom: 2px solid #0077ff;
       @media (min-width: 993px) {
         & {
@@ -698,6 +699,7 @@
     &__wrapper {
       padding-left: 20px;
       padding-top: 70px;
+      padding-bottom: 20px;
       display: flex;
       flex-direction: column;
       justify-content: space-between;

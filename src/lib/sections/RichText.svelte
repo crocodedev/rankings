@@ -111,6 +111,18 @@
 
     &__text--secondary {
       color: #46506f;
+
+      @media (max-width: 768px) {
+        & {
+          font-size: 14px;
+        }
+      }
+
+      @media (min-width: 769px) {
+        & {
+          font-size: 16px;
+        }
+      }
     }
 
     &__text--semibold {
