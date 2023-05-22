@@ -152,14 +152,6 @@
     opacity: 0;
   }
 
-  :global(div.svelte-lightbox-body > *) {
-    height: 416px !important;
-  }
-
-  :global(.svelte-lightbox-thumbnail > *) {
-    height: 416px !important;
-  }
-
   :global(.svelte-lightbox-body) {
     pointer-events: none;
   }
