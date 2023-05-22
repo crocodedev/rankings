@@ -710,13 +710,20 @@
       }
     }
 
+    &__input-wrapper {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+      min-width: 45%;
+    }
+
     &__input {
       resize: none;
       outline: none;
       width: 100%;
       color: white;
       border-bottom: 1px solid #0077ff;
-      padding: 20px 0;
+      padding-bottom: 20px;
     }
 
     @media (max-width: 768px) {

@@ -1,26 +1,18 @@
 <script>
   export let data = {}
   import Container from '$lib/components/Container.svelte'
-  import { onMount } from 'svelte'
   import { Lightbox } from 'svelte-lightbox'
 
   let cursor
   let m = { x: 0, y: 0 }
-  let enableClickToClose = false
 
   function handleMousemove(event) {
-    if (!enableClickToClose) {
-      const rect = event.currentTarget.getBoundingClientRect()
-      m = { x: event.clientX - rect.left, y: event.clientY - rect.top }
-    }
+    const rect = event.currentTarget.getBoundingClientRect()
+    m = { x: event.clientX - rect.left, y: event.clientY - rect.top }
   }
 
-  function handleLightboxClose() {
-    enableClickToClose = false
-  }
-
-  function handleImageClick() {
-    enableClickToClose = true
+  function handleClose() {
+    dispatch('close')
   }
 </script>
 
@@ -32,18 +24,17 @@
         <p class="textContent__text">{data.text}</p>
       </div>
       {#if data.image}
-        <Lightbox description={data.title} on:close={handleLightboxClose} {enableClickToClose}>
-          <div
-            class="textContent__image-wrapper"
-            on:mousemove={handleMousemove}
-            on:click={handleImageClick}
-          >
+        <Lightbox description={data.title} on:click={handleClose}>
+          <!-- svelte-ignore a11y-click-events-have-key-events -->
+          <div class="textContent__image-wrapper" on:mousemove={handleMousemove}>
             <div
               class="textContent__cursor"
-              style="left: {m.x - (cursor ? cursor.offsetWidth / 2 : 0)}px; top: {m.y -
-                (cursor ? cursor.offsetHeight / 2 : 0)}px;"
+              style={`left: ${m.x - (cursor ? cursor.offsetWidth / 2 : 0)}px; top: ${
+                m.y - (cursor ? cursor.offsetHeight / 2 : 0)
+              }px;`}
               bind:this={cursor}
             />
+
             <img src={data.image.url} alt="" class="textContent__image" />
           </div>
         </Lightbox>
@@ -138,5 +129,9 @@
   .svelte-lightbox-body .textContent__image-wrapper .textContent__cursor {
     cursor: pointer;
     opacity: 0;
+  }
+
+  :global(.svelte-lightbox-body) {
+    pointer-events: none;
   }
 </style>
