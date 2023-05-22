@@ -2,18 +2,44 @@
   export let data = {}
   import Container from '$lib/components/Container.svelte'
   import { Lightbox } from 'svelte-lightbox'
+  import { onMount } from 'svelte'
 
   let cursor
-  let m = { x: -83, y: -83 }
+  let cursorX = 0
+  let cursorY = 0
+  let isImageOpen = false
+  let prevClientX = null
+  let prevClientY = null
 
   function handleMousemove(event) {
     const rect = event.currentTarget.getBoundingClientRect()
-    m = { x: event.clientX - rect.left, y: event.clientY - rect.top }
+    cursorX = event.clientX - rect.left
+    cursorY = event.clientY - rect.top
+
+    if (!isImageOpen) {
+      prevClientX = event.clientX
+      prevClientY = event.clientY
+    }
   }
 
-  function handleClose() {
-    dispatch('close')
+  function handleImageOpen() {
+    isImageOpen = true
   }
+
+  function handleImageClosed() {
+    isImageOpen = false
+
+    if (prevClientX !== null && prevClientY !== null) {
+      cursorX += prevClientX - cursorX
+      cursorY += prevClientY - cursorY
+      prevClientX = null
+      prevClientY = null
+    }
+  }
+
+  onMount(() => {
+    cursor = document.querySelector('.textContent__cursor')
+  })
 </script>
 
 <section class="textContent">
@@ -24,15 +50,18 @@
         <p class="textContent__text">{data.text}</p>
       </div>
       {#if data.image}
-        <Lightbox description={data.title} on:click={handleClose}>
+        <Lightbox
+          description={data.title}
+          on:opened={handleImageOpen}
+          on:closed={handleImageClosed}
+        >
           <!-- svelte-ignore a11y-click-events-have-key-events -->
           <div class="textContent__image-wrapper" on:mousemove={handleMousemove}>
             <div
               class="textContent__cursor"
-              style={`left: ${m.x - (cursor ? cursor.offsetWidth / 2 : 0)}px; top: ${
-                m.y - (cursor ? cursor.offsetHeight / 2 : 0)
+              style={`left: ${cursorX - (cursor ? cursor.clientWidth / 2 : 0)}px; top: ${
+                cursorY - (cursor ? cursor.clientHeight / 2 : 0)
               }px;`}
-              bind:this={cursor}
             />
 
             <img src={data.image.url} alt="" class="textContent__image" />
@@ -110,15 +139,6 @@
       }
     }
 
-    &__image-wrapper {
-      cursor: none;
-      position: relative;
-      width: 100%;
-      height: 416px;
-      border-radius: 10px;
-      overflow: hidden;
-    }
-
     &__image {
       width: 100%;
       height: 100%;
@@ -132,7 +152,24 @@
     opacity: 0;
   }
 
+  :global(div.svelte-lightbox-body > *) {
+    height: 416px !important;
+  }
+
+  :global(.svelte-lightbox-thumbnail > *) {
+    height: 416px !important;
+  }
+
   :global(.svelte-lightbox-body) {
     pointer-events: none;
+  }
+
+  :global(.textContent__image-wrapper) {
+    cursor: none;
+    position: relative;
+    max-width: 100%;
+    height: 416px;
+    border-radius: 10px;
+    overflow: hidden;
   }
 </style>
