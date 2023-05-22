@@ -72,11 +72,11 @@
       <div class="contact-form__wrapper contact-form__wrapper--end contact-form__wrapper--contact">
         <div class="contact-form__inner contact-form__inner--grid">
           <form
-            action="./functions/contact-form.js"
+            action="/functions/contact-form.js"
             name="contact-form"
             class="contact-form__form"
             method="post"
-            netlify
+            netlify="true"
           >
             <input type="hidden" name="form-name" value="contact-form" />
             <div class="contact-form__form-wrapper">
@@ -113,7 +113,7 @@
                 />
               </div>
               <div class="contact-form__button-wrapper">
-                <input type="submit" value={data.buttonText} class="btn" />
+                <button type="submit" class="btn">{data.buttonText}</button>
                 <p class="contact-form__form-policy">{data.policyText}</p>
               </div>
             </div>
@@ -140,11 +140,11 @@
         </div>
         <div class="contact-form__inner">
           <form
-            action="./functions/contact-form.js"
+            action="/functions/contact-form.js"
             class="contact-form__form"
             name="contact-form"
             method="post"
-            netlify
+            netlify="true"
           >
             <input type="hidden" name="form-name" value="contact-form" />
             <div class="contact-form__form-wrapper">
@@ -181,7 +181,7 @@
                 />
               </div>
               <div class="contact-form__button-wrapper">
-                <button type="submit" value={data.buttonText} class="btn" />
+                <button type="submit" class="btn">{data.buttonText}</button>
                 <p class="contact-form__form-policy">{data.policyText}</p>
               </div>
             </div>
