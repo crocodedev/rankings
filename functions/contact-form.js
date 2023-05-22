@@ -6,8 +6,15 @@ exports.handler = function (event, context, callback) {
     })
   }
 
+  // Разрешаем отправку формы с другого домена
+  const headers = {
+    'Access-Control-Allow-Origin': '*',
+    'Access-Control-Allow-Headers': 'Content-Type',
+  }
+
   callback(null, {
     statusCode: 200,
+    headers, // Добавляем заголовки в ответ
     body: JSON.stringify({ message: 'Form submitted successfully' }),
   })
 }
