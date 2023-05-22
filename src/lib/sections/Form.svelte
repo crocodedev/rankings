@@ -72,7 +72,7 @@
       <div class="contact-form__wrapper contact-form__wrapper--end contact-form__wrapper--contact">
         <div class="contact-form__inner contact-form__inner--grid">
           <form
-            action="/functions/contact-form.js"
+            action="/.netlify/functions/contact-form"
             name="contact-form"
             class="contact-form__form"
             method="post"
@@ -140,7 +140,7 @@
         </div>
         <div class="contact-form__inner">
           <form
-            action="/functions/contact-form.js"
+            action="/.netlify/functions/contact-form"
             class="contact-form__form"
             name="contact-form"
             method="post"
