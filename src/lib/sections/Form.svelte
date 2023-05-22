@@ -113,7 +113,7 @@
                 />
               </div>
               <div class="contact-form__button-wrapper">
-                <button type="submit" class="btn">{data.buttonText}</button>
+                <input type="submit" value={data.buttonText} class="btn" />
                 <p class="contact-form__form-policy">{data.policyText}</p>
               </div>
             </div>
@@ -181,7 +181,7 @@
                 />
               </div>
               <div class="contact-form__button-wrapper">
-                <button type="submit" class="btn">{data.buttonText}</button>
+                <input type="submit" value={data.buttonText} class="btn" />
                 <p class="contact-form__form-policy">{data.policyText}</p>
               </div>
             </div>
