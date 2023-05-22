@@ -4,7 +4,7 @@
   import { Lightbox } from 'svelte-lightbox'
 
   let cursor
-  let m = { x: 0, y: 0 }
+  let m = { x: -83, y: -83 }
 
   function handleMousemove(event) {
     const rect = event.currentTarget.getBoundingClientRect()
@@ -122,6 +122,7 @@
     &__image {
       width: 100%;
       height: 100%;
+      cursor: none;
       object-fit: cover;
     }
   }
