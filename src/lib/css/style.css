@@ -120,14 +120,13 @@
 }
 
 @media (max-width: 992px) {
-  section:not(.contact-form),
-  section:not(#shadow-host-companion) {
-    padding-top: 50px;
-    padding-bottom: 50px;
-  }
-
   section:is(.contact-form) {
     padding-top: 50px;
+    padding-bottom: 0;
+  }
+  section:not(.contact-form) {
+    padding-top: 50px;
+    padding-bottom: 50px;
   }
 }
 

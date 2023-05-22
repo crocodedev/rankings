@@ -84,6 +84,12 @@
 <style lang="scss">
   footer.footer--contact {
     background-color: #46506f;
+
+    @media (max-width: 992px) {
+      & {
+        padding-top: 30px;
+      }
+    }
   }
 
   .footer__wrapper--contact {
@@ -103,7 +109,18 @@
       padding-top: 20px;
       padding-bottom: 20px;
       display: flex;
-      justify-content: space-between;
+
+      @media (min-width: 993px) {
+        & {
+          justify-content: space-between;
+        }
+      }
+
+      @media (max-width: 992px) {
+        & {
+          justify-content: center;
+        }
+      }
     }
 
     .footer__links-wrapper {
@@ -118,6 +135,10 @@
 
     .footer__rights-text {
       text-align: center;
+
+      @media (max-width: 768px) {
+        font-size: 12px;
+      }
     }
 
     @media (min-width: 993px) and (max-width: 1100px) {

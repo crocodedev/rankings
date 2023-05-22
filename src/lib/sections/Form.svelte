@@ -538,7 +538,7 @@
       }
 
       &--contact .contact-form__social-item:first-of-type .contact-form__social-image-wrapper {
-        transform: translateX(-5px);
+        transform: translateX(-3px);
       }
     }
 

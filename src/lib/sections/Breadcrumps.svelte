@@ -38,7 +38,12 @@
   .breadcrumps {
     &--contact-us {
       background-color: #46506f;
-      padding-bottom: 150px;
+
+      @media (min-width: 993px) {
+        & {
+          padding-bottom: 130px;
+        }
+      }
     }
     &__wrapper {
       display: flex;
