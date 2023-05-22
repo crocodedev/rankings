@@ -25,22 +25,29 @@
       {/if}
       {#if data.variant == 'HalfWidth'}
         <div class="rich-text__arrow">
-          <div class="rich-text__arrow-1" />
-          <div class="rich-text__arrow-2" />
-          <div class="rich-text__arrow-3" />
+          <img src="../arrow-static.svg" alt="arrow" />
         </div>
       {/if}
       <div class="rich-text__text-wrapper">
         {#each getParagraphs(data.richText.json.content) as paragraph}
           {#if paragraph.nodeType === 'text'}
             {#if paragraph.marks && paragraph.marks.some((mark) => mark.type === 'bold')}
-              <p class="rich-text__text rich-text__text--semibold">{paragraph.value}</p>
-            {:else}
               {#if data.pageTitle == 'Page Title'}
-                <p class="rich-text__text">{paragraph.value}</p>
+                <p class="rich-text__text rich-text__text--semibold">{paragraph.value}</p>
               {/if}
               {#if data.pageTitle == 'Section Title'}
-                <p class="rich-text__text rich-text__text--secondary">{paragraph.value}</p>
+                <p class="rich-text__text rich-text__text--bold">{paragraph.value}</p>
+              {/if}
+            {:else}
+              {#if data.pageTitle == 'Page Title'}
+                {#if paragraph.value != ' '}
+                  <p class="rich-text__text">{paragraph.value}</p>
+                {/if}
+              {/if}
+              {#if data.pageTitle == 'Section Title'}
+                {#if paragraph.value != ' '}
+                  <p class="rich-text__text rich-text__text--secondary">{paragraph.value}</p>
+                {/if}
               {/if}
             {/if}
           {/if}
@@ -61,6 +68,9 @@
 
 <style lang="scss">
   .rich-text {
+    &__wrapper {
+      position: relative;
+    }
     &__wrapper.FullWidth {
       display: flex;
       flex-direction: column;
@@ -96,6 +106,10 @@
     &__text {
       color: #07124a;
 
+      &:first-of-type {
+        text-indent: 50px;
+      }
+
       @media (max-width: 768px) {
         & {
           font-size: 14px;
@@ -126,6 +140,11 @@
     }
 
     &__text--semibold {
+      font-size: 18px;
+      font-weight: 500;
+    }
+
+    &__text--bold {
       font-size: 24px;
       font-weight: 500;
     }
@@ -153,143 +172,17 @@
   }
 
   .rich-text__arrow {
-    display: flex;
-    position: absolute;
-    align-self: center;
-    width: max-content;
-  }
-
-  @media (max-width: 992px) {
-    .rich-text__arrow {
-      display: none;
-    }
-  }
-
-  .rich-text__arrow-1 {
-    background-color: #97a2b6;
-
-    @media (min-width: 993px) {
-      width: 85px;
-      height: 22px;
-    }
-
-    @media (max-width: 992px) {
-      width: 42px;
-      height: 10px;
-    }
-  }
-
-  .rich-text__arrow-2 {
-    position: absolute;
-    width: 31px;
-    transform: rotate(45deg);
-    right: 0;
-    top: -9px;
-    height: 41px;
-    transform: matrix(1, 0, -1, 1, 0, 0);
-
-    @media (min-width: 993px) {
-      &::before {
-        position: absolute;
-        content: '';
-        top: 20.5px;
-        width: 100%;
-        height: 100%;
-        background-color: #97a2b6;
-        left: 16px;
-      }
-
-      &::after {
-        position: absolute;
-        content: '';
-        top: -20.5px;
-        width: 100%;
-        height: 100%;
-        background-color: #97a2b6;
-        transform: matrix(1, 0, 2, 1, 0, 0);
-        right: 25px;
-      }
-    }
-    @media (max-width: 992px) {
-      &::before {
-        position: absolute;
-        content: '';
-        top: 13.5px;
-        width: 50%;
-        height: 50%;
-        background-color: #97a2b6;
-        left: 16px;
-      }
-
-      &::after {
-        position: absolute;
-        content: '';
-        top: -7.5px;
-        width: 50%;
-        height: 50%;
-        background-color: #97a2b6;
-        transform: matrix(1, 0, 2, 1, 0, 0);
-        right: 21px;
-      }
-    }
-  }
-
-  .rich-text__arrow-3 {
-    position: absolute;
-    width: 31px;
-    transform: rotate(45deg);
-    top: -9px;
-    height: 41px;
-    transform: matrix(1, 0, -1, 1, 0, 0);
-
     @media (min-width: 993px) {
       & {
-        left: calc(100% + 31px);
-      }
-      &::before {
+        top: 650px;
         position: absolute;
-        content: '';
-        top: 20.5px;
-        width: 100%;
-        height: 100%;
-        background-color: #97a2b6;
-        left: 16px;
-      }
-
-      &::after {
-        position: absolute;
-        content: '';
-        top: -20.5px;
-        width: 100%;
-        height: 100%;
-        background-color: #97a2b6;
-        transform: matrix(1, 0, 2, 1, 0, 0);
-        right: 25px;
+        width: max-content;
       }
     }
+
     @media (max-width: 992px) {
       & {
-        left: calc(100% + 10px);
-      }
-      &::before {
-        position: absolute;
-        content: '';
-        top: 13.5px;
-        width: 50%;
-        height: 50%;
-        background-color: #97a2b6;
-        left: 13px;
-      }
-
-      &::after {
-        position: absolute;
-        content: '';
-        top: -7.5px;
-        width: 50%;
-        height: 50%;
-        background-color: #97a2b6;
-        transform: matrix(1, 0, 2, 1, 0, 0);
-        right: 25px;
+        display: none;
       }
     }
   }

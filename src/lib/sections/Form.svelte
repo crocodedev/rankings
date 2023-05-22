@@ -63,9 +63,7 @@
         <div class="contact-form__inscription">
           <h2 class="h2 contact-form__title">Start a <br /> converstation</h2>
           <div class="contact-form__arrow">
-            <div class="contact-form__arrow-1" />
-            <div class="contact-form__arrow-2" />
-            <div class="contact-form__arrow-3" />
+            <img src="../arrow-static.svg" alt="arrow" class="contact-form__arrow-img" />
           </div>
         </div>
       </div>
@@ -222,6 +220,14 @@
       display: flex;
       position: relative;
       width: max-content;
+    }
+
+    .contact-form__arrow-img {
+      @media (max-width: 992px) {
+        & {
+          width: 100px;
+        }
+      }
     }
 
     @media (max-width: 992px) {
