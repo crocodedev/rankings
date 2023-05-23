@@ -205,6 +205,7 @@
       @media (min-width: 993px) {
         & {
           align-items: center;
+          justify-self: center;
         }
       }
 
@@ -565,7 +566,7 @@
     &__input-wrapper {
       display: flex;
       flex-direction: column;
-      gap: 20px;
+      gap: 10px;
       min-width: 45%;
     }
 
@@ -575,6 +576,7 @@
       width: 100%;
       color: white;
       border-bottom: 1px solid #0077ff;
+      padding-bottom: 10px;
       padding-bottom: 20px;
     }
 

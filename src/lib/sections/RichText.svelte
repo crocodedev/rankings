@@ -140,13 +140,27 @@
     }
 
     &__text--semibold {
-      font-size: 18px;
+      @media (min-width: 769px) {
+        font-size: 18px;
+      }
+
+      @media (max-width: 768px) {
+        font-size: 14px;
+      }
+
       font-weight: 500;
     }
 
     &__text--bold {
-      font-size: 24px;
-      font-weight: 500;
+      @media (min-width: 769px) {
+        font-size: 24px;
+        font-weight: 500;
+      }
+
+      @media (max-width: 768px) {
+        font-size: 16px;
+        font-weight: 400;
+      }
     }
 
     &__text-wrapper {

@@ -219,7 +219,7 @@
 
     @media (min-width: 769px) {
       &__items &__item {
-        width: 47%;
+        flex: 1 1 auto;
         gap: 25px;
       }
     }
@@ -311,6 +311,7 @@
       }
 
       &__item:is(.HalfHeight) {
+        max-width: 47%;
         min-height: 500px;
         .cases__item-image-wrapper {
           height: 250px;
