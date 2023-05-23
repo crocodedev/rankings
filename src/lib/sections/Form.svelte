@@ -10,8 +10,6 @@
     let pathname = window.location.pathname
     page = pathname.substring(pathname.lastIndexOf('/') + 1)
   })
-
-  console.log(data)
 </script>
 
 {#if page == 'contact-us'}

@@ -1,10 +1,10 @@
+body {
+  font-family: 'Lexend', sans-serif;
+}
+
 :root {
   --primary-blue: #0077ff;
   --dark-blue: #07124a;
-}
-
-* {
-  font-family: 'Lexend', sans-serif;
 }
 
 .btn {

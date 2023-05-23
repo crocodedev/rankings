@@ -1,7 +1,6 @@
 <script>
-  import Loader from '$lib/components/Loader.svelte'
-  import { fly } from 'svelte/transition'
   import '$lib/css/font.css'
+  import { fly } from 'svelte/transition'
   import { cubicIn, cubicOut } from 'svelte/easing'
   import { beforeNavigate, afterNavigate } from '$app/navigation'
 
@@ -21,9 +20,6 @@
 </script>
 
 {#key data.pathname}
-  <!-- {#if isLoading}
-    <Loader />
-  {/if} -->
   <div in:fly={transitionIn} out:fly={transitionOut}>
     <slot />
   </div>

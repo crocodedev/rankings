@@ -11,7 +11,6 @@
       return []
     })
   }
-  console.log(data)
 </script>
 
 <section class="rich-text">

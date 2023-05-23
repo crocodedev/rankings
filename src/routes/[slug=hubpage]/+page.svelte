@@ -1,7 +1,6 @@
 <script>
   import * as Sections from '$lib/sections'
   import '$lib/css/style.css'
-  import '$lib/css/font.css'
   import { page } from '$app/stores'
   export let data
   $: activeTags = []
