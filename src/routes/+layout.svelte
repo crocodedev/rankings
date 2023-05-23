@@ -1,6 +1,7 @@
 <script>
   import Loader from '$lib/components/Loader.svelte'
   import { fly } from 'svelte/transition'
+  import '$lib/css/font.css'
   import { cubicIn, cubicOut } from 'svelte/easing'
   import { beforeNavigate, afterNavigate } from '$app/navigation'
 
