@@ -48,7 +48,9 @@
                       {#if social.socialIcon == null}
                         <a href={social.link} class="contact-form__social-map">
                           <span class="contact-form__social-text-map">{social.title}</span>
-                          <span class="contact-form__social-arrow" />
+                          <span class="contact-form__social-arrow"
+                            ><img src="../map-arrow.svg" alt="" /></span
+                          >
                         </a>
                       {/if}
                     {/each}
@@ -242,135 +244,6 @@
       }
     }
 
-    .contact-form__arrow-1 {
-      background-color: #97a2b6;
-
-      @media (min-width: 993px) {
-        width: 85px;
-        height: 22px;
-      }
-
-      @media (max-width: 992px) {
-        width: 42px;
-        height: 10px;
-      }
-    }
-
-    .contact-form__arrow-2 {
-      position: absolute;
-      width: 31px;
-      transform: rotate(45deg);
-      right: 0;
-      top: -9px;
-      height: 41px;
-      transform: matrix(1, 0, -1, 1, 0, 0);
-
-      @media (min-width: 993px) {
-        &::before {
-          position: absolute;
-          content: '';
-          top: 20.5px;
-          width: 100%;
-          height: 100%;
-          background-color: #97a2b6;
-          left: 16px;
-        }
-
-        &::after {
-          position: absolute;
-          content: '';
-          top: -20.5px;
-          width: 100%;
-          height: 100%;
-          background-color: #97a2b6;
-          transform: matrix(1, 0, 2, 1, 0, 0);
-          right: 25px;
-        }
-      }
-      @media (max-width: 992px) {
-        &::before {
-          position: absolute;
-          content: '';
-          top: 13.5px;
-          width: 50%;
-          height: 50%;
-          background-color: #97a2b6;
-          left: 16px;
-        }
-
-        &::after {
-          position: absolute;
-          content: '';
-          top: -7.5px;
-          width: 50%;
-          height: 50%;
-          background-color: #97a2b6;
-          transform: matrix(1, 0, 2, 1, 0, 0);
-          right: 21px;
-        }
-      }
-    }
-
-    .contact-form__arrow-3 {
-      position: absolute;
-      width: 31px;
-      transform: rotate(45deg);
-      top: -9px;
-      height: 41px;
-      transform: matrix(1, 0, -1, 1, 0, 0);
-
-      @media (min-width: 993px) {
-        & {
-          left: calc(100% + 31px);
-        }
-        &::before {
-          position: absolute;
-          content: '';
-          top: 20.5px;
-          width: 100%;
-          height: 100%;
-          background-color: #97a2b6;
-          left: 16px;
-        }
-
-        &::after {
-          position: absolute;
-          content: '';
-          top: -20.5px;
-          width: 100%;
-          height: 100%;
-          background-color: #97a2b6;
-          transform: matrix(1, 0, 2, 1, 0, 0);
-          right: 25px;
-        }
-      }
-      @media (max-width: 992px) {
-        & {
-          left: calc(100% + 10px);
-        }
-        &::before {
-          position: absolute;
-          content: '';
-          top: 13.5px;
-          width: 50%;
-          height: 50%;
-          background-color: #97a2b6;
-          left: 13px;
-        }
-
-        &::after {
-          position: absolute;
-          content: '';
-          top: -7.5px;
-          width: 50%;
-          height: 50%;
-          background-color: #97a2b6;
-          transform: matrix(1, 0, 2, 1, 0, 0);
-          right: 25px;
-        }
-      }
-    }
-
     &__social-item {
       display: flex;
       gap: 50px;
@@ -413,40 +286,11 @@
 
     &__social-arrow {
       display: flex;
-      align-items: center;
-      position: relative;
-      width: 8px;
-      height: 8px;
-
-      transform: rotate(-90deg);
-
-      &::before {
-        position: absolute;
-        content: '';
-        width: 9px;
-        height: 1px;
-        right: -0.5px;
-        transform: rotate(45deg);
-      }
-
-      @media (max-width: 768px) {
-        & {
-          border-right: 1px solid #0077ff;
-          border-bottom: 1px solid #0077ff;
-        }
-        &::before {
-          background-color: #0077ff;
-        }
-      }
 
       @media (min-width: 769px) {
         & {
-          border-right: 1px solid #97a2b6;
-          border-bottom: 1px solid #97a2b6;
-        }
-
-        &::before {
-          background-color: #97a2b6;
+          filter: grayscale(1) brightness(37.5);
+          opacity: 0.5;
         }
       }
     }
@@ -504,7 +348,7 @@
 
       &__wrapper--contact {
         display: grid;
-        gap: 0;
+        gap: 40px;
         grid-template-columns: repeat(2, 1fr);
         padding: 0 0 0 0;
       }

@@ -14,7 +14,7 @@
 {#if page == 'contact-us'}
   <section class="imagewithtext imagewithtext--contact">
     <Container>
-      <div class="imagewithtext__wrapper">
+      <div class="imagewithtext__wrapper imagewithtext__wrapper--contact">
         <div class="imagewithtext__image-wrapper">
           <img src={data.image.url} alt="" class="imagewithtext__image" />
         </div>
@@ -84,6 +84,9 @@
     }
 
     @media (min-width: 993px) {
+      &__wrapper--contact {
+        gap: 40px;
+      }
       &__image-wrapper {
         width: 50%;
       }
