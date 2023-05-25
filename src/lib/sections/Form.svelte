@@ -61,7 +61,7 @@
       </div>
       <div class="contact-form__wrapper contact-form__wrapper--arrow">
         <div class="contact-form__inscription">
-          <h2 class="h2 contact-form__title">Start a <br /> converstation</h2>
+          <h2 class="h2 contact-form__title">Start a <br /> conversation</h2>
           <div class="contact-form__arrow">
             <img src="../arrow-static.svg" alt="arrow" class="contact-form__arrow-img" />
           </div>
@@ -195,15 +195,28 @@
     color: #0077ff;
   }
   .contact-form {
+    @media (min-width: 993px) {
+      &:not(.contact-form--contact) {
+        padding-top: 75px;
+      }
+    }
+
+    @media (max-width: 993px) {
+      &:not(.contact-form--contact) {
+        padding-top: 50px;
+      }
+    }
+
     &__inscription {
       display: flex;
       flex-direction: column;
-      gap: 58px;
+      gap: 25px;
 
       @media (min-width: 993px) {
         & {
           align-items: center;
           justify-self: center;
+          padding-left: 110px;
         }
       }
 
@@ -358,6 +371,7 @@
 
       &__wrapper--arrow {
         padding: 0;
+        gap: 0;
       }
     }
 
@@ -370,12 +384,15 @@
       }
 
       &__wrapper--contact {
-        padding: 20px 20px 0 20px;
+        padding: 20px 0 0 0;
       }
 
       &__wrapper--arrow {
         padding-top: 80px;
         padding-bottom: 34px;
+        padding-left: 0;
+
+        padding-right: 0;
       }
     }
 

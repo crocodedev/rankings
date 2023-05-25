@@ -130,7 +130,6 @@
     }
 
     &__items {
-      padding-top: 50px;
       display: flex;
       flex-wrap: wrap;
       border-top: 2px solid #0077ff;

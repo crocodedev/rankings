@@ -22,7 +22,7 @@
   })
 </script>
 
-<section class="hero" style="padding-top:90px">
+<section class="hero">
   <Container>
     <div class="hero__wrapper">
       <div class="hero__leftside-inner">

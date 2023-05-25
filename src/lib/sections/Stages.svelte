@@ -56,6 +56,19 @@
 </section>
 
 <style lang="scss">
+  @media (min-width: 993px) {
+    .stages {
+      padding-top: 75px;
+      padding-bottom: 75px;
+    }
+  }
+
+  @media (max-width: 992px) {
+    .stages {
+      padding-top: 50px;
+      padding-bottom: 50px;
+    }
+  }
   section * {
     .stages__wrapper {
       display: flex;

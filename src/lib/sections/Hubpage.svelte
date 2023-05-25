@@ -122,6 +122,7 @@
   }
 
   .cases {
+    padding-top: 150px;
     &__tags {
       display: flex;
       flex-wrap: wrap;
@@ -176,7 +177,7 @@
     }
 
     &__items {
-      padding-top: 50px;
+      padding-top: 20px;
       display: flex;
       flex-wrap: wrap;
       border-top: 2px solid #0077ff;
@@ -197,6 +198,7 @@
 
     @media (min-width: 993px) {
       &__items {
+        padding-top: 50px;
         column-gap: 50px;
         row-gap: 150px;
       }
@@ -327,6 +329,12 @@
         .cases__item-image-wrapper {
           height: 100%;
         }
+      }
+    }
+
+    &__item:is(.Default) {
+      @media (min-width: 769px) {
+        max-width: 48%;
       }
     }
   }

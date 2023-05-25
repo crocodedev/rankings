@@ -36,6 +36,20 @@
 
 <style lang="scss">
   .breadcrumps {
+    @media (min-width: 993px) {
+      & {
+        padding-top: 75px;
+        padding-bottom: 75px;
+      }
+    }
+
+    @media (max-width: 992px) {
+      & {
+        padding-top: 50px;
+        padding-bottom: 50px;
+      }
+    }
+
     &--contact-us {
       background-color: #46506f;
 

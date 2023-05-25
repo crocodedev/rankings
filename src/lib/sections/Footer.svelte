@@ -101,6 +101,12 @@
     .footer__inner {
       display: flex;
       gap: 100px;
+
+      @media (max-width: 768px) {
+        & {
+          justify-content: center;
+        }
+      }
     }
 
     .footer__wrapper {
@@ -138,6 +144,8 @@
 
       @media (max-width: 768px) {
         font-size: 12px;
+        width: 75%;
+        line-height: 20px;
       }
     }
 

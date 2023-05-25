@@ -1,26 +1,22 @@
 <script>
   import Container from '$lib/components/Container.svelte'
-
-  import { beforeUpdate, onMount } from 'svelte'
+  import { onMount, beforeUpdate, afterUpdate } from 'svelte'
+  import { page } from '$app/stores'
 
   let isMenuOpen = false
 
   function toggleMenu() {
     isMenuOpen = !isMenuOpen
   }
+
   let screenWidth
-  let page = ''
+  let currentPage = ''
 
   onMount(() => {
     screenWidth = window.innerWidth
     window.addEventListener('resize', () => {
       screenWidth = window.innerWidth
     })
-  })
-
-  beforeUpdate(() => {
-    const pathname = window.location.pathname
-    page = pathname.substring(pathname.lastIndexOf('/') + 1)
   })
 
   let navItem = []
@@ -39,10 +35,23 @@
     })
   }
 
+  afterUpdate(() => {
+    document.body.style.overflow = isMenuOpen ? 'hidden' : ''
+  })
+
+  beforeUpdate(() => {
+    const previousPage = currentPage
+    currentPage = page.url
+
+    if (previousPage && currentPage && previousPage !== currentPage) {
+      isMenuOpen = false
+    }
+  })
+
   export let data = {}
 </script>
 
-{#if page == 'contact-us'}
+{#if currentPage == 'contact-us'}
   <header class="header" bind:this={header}>
     <Container>
       <div class="header__wrapper header__wrapper--contact">
@@ -109,7 +118,7 @@
     on:click={toggleMenu}
   />
 {/if}
-{#if page != 'contact-us'}
+{#if currentPage != 'contact-us'}
   <header class="header" bind:this={header}>
     <Container>
       <div class="header__wrapper">

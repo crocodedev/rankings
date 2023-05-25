@@ -86,7 +86,11 @@
 
     &__bottom {
       border-bottom: 2px solid #0077ff;
-
+      @media (min-width: 993px) {
+        & {
+          padding-bottom: 70px;
+        }
+      }
       @media (max-width: 768px) {
         .hero-image__image-wrapper {
           padding-top: 100px;
@@ -113,6 +117,7 @@
     @media (min-width: 769px) {
       &__text-wrapper {
         width: 48%;
+        height: fit-content;
       }
     }
 

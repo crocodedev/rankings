@@ -59,7 +59,11 @@
         </div>
         {#if data.linkMore}
           <a href={data.linkMore.link} class="grid-content__show-wrapper">
-            <p class="grid-content__show-text">{data.linkMore.title}</p>
+            <span class="grid-content__texts">
+              {#each data.linkMore.title.replace('<br/>', '<br/>').split('<br/>') as line}
+                <p class="grid-content__show-text">{line}</p>
+              {/each}
+            </span>
             <span class="grid-content__show-icon"
               ><img src="../Group 109.svg" alt="arrow" class="" /></span
             >
@@ -181,16 +185,22 @@
 {/if}
 
 <style lang="scss">
-  section {
-    padding: 50px 0;
-  }
   .grid-content {
     &__wrapper {
       display: flex;
       flex-direction: column;
     }
 
+    @media (min-width: 993px) {
+      & {
+        padding-bottom: 75px;
+      }
+    }
+
     @media (max-width: 992px) {
+      & {
+        padding-bottom: 50px;
+      }
       &__wrapper {
         gap: 20px;
       }
@@ -266,16 +276,38 @@
 
     &__show-wrapper {
       display: flex;
-      align-self: flex-end;
       align-items: center;
       gap: 10px;
+
+      @media (min-width: 769px) {
+        & {
+          align-self: flex-end;
+        }
+      }
+
+      @media (max-width: 768px) {
+        & {
+          align-self: center;
+        }
+      }
     }
 
     &__show-text {
       display: flex;
       flex-direction: column;
       color: #97a2b6;
-      font-size: 14px;
+
+      @media (min-width: 769px) {
+        & {
+          font-size: 14px;
+        }
+      }
+
+      @media (max-width: 768px) {
+        & {
+          font-size: 12px;
+        }
+      }
     }
 
     &__show-icon {
@@ -420,6 +452,19 @@
     }
   }
   .seotext {
+    @media (min-width: 993px) {
+      & {
+        padding-top: 75px;
+        padding-bottom: 75px;
+      }
+    }
+
+    @media (max-width: 992px) {
+      & {
+        padding-top: 50px;
+        padding-bottom: 50px;
+      }
+    }
     &__wrapper {
       display: flex;
       flex-direction: column;
@@ -538,7 +583,7 @@
 
     @media (max-width: 786px) {
       &__items {
-        gap: 130px;
+        gap: 139px;
       }
       &__name-wrapper {
         font-size: 18px;
@@ -553,8 +598,25 @@
   .methods {
     background-color: #46506f;
     border-radius: 20px;
-    padding-top: 75px;
-    padding-bottom: 80px;
+
+    @media (min-width: 993px) {
+      & {
+        padding-top: 75px;
+        padding-bottom: 80px;
+        margin-top: 75px;
+        margin-bottom: 75px;
+      }
+    }
+
+    @media (max-width: 992px) {
+      & {
+        padding-top: 30px;
+        padding-bottom: 30px;
+        margin-top: 50px;
+        margin-bottom: 50px;
+      }
+    }
+
     &__wrapper {
       display: flex;
       flex-direction: column;
@@ -651,7 +713,7 @@
   }
 
   .indicators {
-    padding-top: 0px;
+    padding-top: 20px;
     &__wrapper {
       display: flex;
       column-gap: 20px;

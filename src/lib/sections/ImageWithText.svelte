@@ -54,7 +54,7 @@
 
     @media (min-width: 993px) {
       & {
-        padding-top: 150px;
+        padding-top: 75px;
         padding-bottom: 75px;
       }
     }
