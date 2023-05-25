@@ -591,7 +591,7 @@
       width: 100%;
       color: white;
       border-bottom: 1px solid #0077ff;
-      padding-bottom: 10px;
+      padding-top: 10px;
       padding-bottom: 20px;
     }
 
