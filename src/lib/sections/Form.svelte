@@ -70,11 +70,11 @@
       <div class="contact-form__wrapper contact-form__wrapper--end contact-form__wrapper--contact">
         <div class="contact-form__inner contact-form__inner--grid">
           <form
-            action="/.netlify/functions/contact-form"
-            name="contact-form"
+            method="POST"
+            netlify-honeypot="bot-field"
             class="contact-form__form"
-            method="post"
-            netlify="true"
+            name="contact-form"
+            data-netlify="true"
           >
             <input type="hidden" name="form-name" value="contact-form" />
             <div class="contact-form__form-wrapper">
