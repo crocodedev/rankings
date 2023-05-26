@@ -19,11 +19,17 @@ exports.handler = function (event, context, callback) {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <title>Form Submission</title>
         <style>
-          /* Add your custom CSS styles here */
+
+          @import url('https://fonts.googleapis.com/css2?family=Lexend:wght@400;500;600;700&display=swap');
+
           body {
-            font-family: 'Lexend', Arial, sans-serif;
+            font-family: 'Lexend', sans-serif;
             background-color: #0e1e25;
             padding: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 90vh;
           }
 
           .container {
@@ -38,6 +44,7 @@ exports.handler = function (event, context, callback) {
 
           h1 {
             font-size: 24px;
+            font-weight:700;
             color: #333333;
             margin-top: 0;
           }
@@ -49,6 +56,8 @@ exports.handler = function (event, context, callback) {
 
           .form__back{
             color:#05736a;
+            font-weight: 500;
+            text-decoration: none;
           }
         </style>
       </head>
