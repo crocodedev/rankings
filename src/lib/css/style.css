@@ -293,7 +293,7 @@ header {
     top: 0;
     z-index: 11;
     right: -150%;
-    overflow: scroll;
+    overflow: auto;
     justify-content: space-between;
     border-radius: 10px 0 0 10px;
     background-color: #46506f;
