@@ -63,6 +63,10 @@ body {
   font-weight: 600;
 }
 
+section:is(#shadow-host-companion) {
+  padding: 0;
+}
+
 @media (min-width: 993px) {
   section:first-of-type:not(.hero) {
     padding-top: 150px;
