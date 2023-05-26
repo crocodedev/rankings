@@ -137,13 +137,8 @@
           </nav>
         </div>
         <div class="contact-form__inner">
-          <form
-            action="/.netlify/functions/contact-form"
-            class="contact-form__form"
-            name="contact-form"
-            method="post"
-            netlify="true"
-          >
+          <!--  action="/.netlify/functions/contact-form" method="post"-->
+          <form class="contact-form__form" name="contact-form" netlify>
             <input type="hidden" name="form-name" value="contact-form" />
             <div class="contact-form__form-wrapper">
               <div class="contact-form__input-wrapper">
@@ -182,6 +177,7 @@
                 <input type="submit" value={data.buttonText} class="btn" />
                 <p class="contact-form__form-policy">{data.policyText}</p>
               </div>
+              <span class="contact-form__succes" />
             </div>
           </form>
         </div>
@@ -195,6 +191,37 @@
     color: #0077ff;
   }
   .contact-form {
+    &__succes {
+      width: 40px;
+      height: 40px;
+      border-radius: 100%;
+      border: 2px solid #0077ff;
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      animation: succes 1.5s ease-in-out;
+
+      &::before {
+        position: absolute;
+        width: 18px;
+        height: 10px;
+        content: '';
+        transform: rotate(130deg) translateX(-2px) translateY(1px);
+        border-top: 2px solid #0077ff;
+        border-right: 2px solid #0077ff;
+      }
+    }
+
+    @keyframes succes {
+      from {
+        transform: rotate(0deg);
+      }
+
+      to {
+        transform: rotate(360deg);
+      }
+    }
     @media (min-width: 993px) {
       &:not(.contact-form--contact) {
         padding-top: 75px;
