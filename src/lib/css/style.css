@@ -293,12 +293,12 @@ header {
     top: 0;
     z-index: 11;
     right: -150%;
-    overflow: auto;
+    overflow: scroll;
     justify-content: space-between;
     border-radius: 10px 0 0 10px;
     background-color: #46506f;
     height: 100vh;
-    position: absolute;
+    position: fixed;
     flex-direction: column;
     gap: 40px;
     transition: 0.3s ease-in-out;
@@ -312,7 +312,7 @@ header {
   }
 
   .header__nav-list.header__nav-list--active {
-    right: -25px;
+    right: 0;
   }
 }
 
@@ -439,14 +439,13 @@ header {
 @media (min-width: 993px) {
   .hero {
     padding-top: 90px;
-    padding-bottom: 160px;
+    padding-bottom: 85px;
   }
 }
 
 @media (max-width: 992px) {
   .hero {
     padding-top: 150px;
-    padding-bottom: 40px;
   }
 }
 

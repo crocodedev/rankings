@@ -30,11 +30,10 @@
 
 <style lang="scss">
   .card {
-    align-self: flex-end;
     color: white;
     border-radius: 10px;
-    overflow: hidden;
-
+    display: flex;
+    background-color: #46506f;
     &__wrapper {
       background-color: #46506f;
       display: flex;
