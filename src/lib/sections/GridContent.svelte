@@ -199,7 +199,7 @@
 
     @media (max-width: 992px) {
       &__wrapper {
-        gap: 40px;
+        gap: 20px;
       }
     }
 
@@ -216,6 +216,7 @@
     @media (max-width: 992px) {
       &__items {
         gap: 25px;
+        padding-bottom: 20px;
       }
     }
 
