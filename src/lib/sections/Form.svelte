@@ -137,8 +137,13 @@
           </nav>
         </div>
         <div class="contact-form__inner">
-          <!--  action="/.netlify/functions/contact-form" method="post"-->
-          <form class="contact-form__form" name="contact-form" data-netlify="true">
+          <form
+            action="/.netlify/functions/contact-form"
+            method="post"
+            class="contact-form__form"
+            name="contact-form"
+            data-netlify="true"
+          >
             <input type="hidden" name="form-name" value="contact-form" />
             <div class="contact-form__form-wrapper">
               <div class="contact-form__input-wrapper">
