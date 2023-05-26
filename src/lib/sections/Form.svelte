@@ -83,7 +83,7 @@
                 <input
                   type="text"
                   id="name"
-                  placeholder={data.inputName}
+                  placeholder="{data.inputName}*"
                   class="contact-form__input"
                   required
                 />
@@ -151,7 +151,7 @@
                 <input
                   type="text"
                   id="name"
-                  placeholder={data.inputName}
+                  placeholder="{data.inputName}*"
                   class="contact-form__input"
                   required
                 />
@@ -210,19 +210,20 @@
     &__inscription {
       display: flex;
       flex-direction: column;
-      gap: 25px;
 
       @media (min-width: 993px) {
         & {
           align-items: center;
           justify-self: center;
-          padding-left: 110px;
+          padding-left: 105px;
+          gap: 58px;
         }
       }
 
       @media (max-width: 992px) {
         & {
           align-items: flex-end;
+          gap: 25px;
         }
       }
     }
@@ -592,12 +593,18 @@
       color: white;
       border-bottom: 1px solid #0077ff;
       padding-top: 10px;
-      padding-bottom: 20px;
     }
 
     @media (max-width: 768px) {
       &__input {
         height: 60px;
+        padding-bottom: 10px;
+      }
+    }
+
+    @media (min-width: 769px) {
+      &__input {
+        padding-bottom: 20px;
       }
     }
 

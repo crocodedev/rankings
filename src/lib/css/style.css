@@ -99,6 +99,12 @@ section:is(section.contact-form) {
   padding-bottom: 0;
 }
 
+@media (max-width: 992px) {
+  section:is(.hero) + section {
+    padding-top: 40px;
+  }
+}
+
 /* header */
 
 @media (max-width: 992px) {
@@ -130,7 +136,7 @@ section:is(section.contact-form) {
     width: 100%;
     background-color: white;
     border-radius: 50px;
-    height: 100%;
+    height: 2.25px;
   }
 
   .header__btn-menu::after,
@@ -140,7 +146,7 @@ section:is(section.contact-form) {
     border-radius: 50px;
     width: 100%;
     background-color: #07124a;
-    height: 100%;
+    height: 2.25px;
   }
 
   .header__btn-menu::after {
@@ -172,7 +178,7 @@ section:is(section.contact-form) {
     justify-content: center;
     position: absolute;
     top: 45px;
-    right: 17px;
+    right: 21px;
     width: 27px;
     height: 27px;
     border-radius: 100%;
@@ -729,10 +735,27 @@ header {
   animation: 1s ease-in-out 1s forwards down-point-3;
 }
 
-@media (min-width: 769px) {
-  .arrow__point-1,
+@media (min-width: 993px) {
+  .arrow__point-1 {
+    transform: rotate(15deg) translateY(25px);
+  }
+
   .arrow__point-3 {
-    transform: rotate(15deg) translateY(10px);
+    transform: rotate(15deg) translateY(15px);
+  }
+
+  .arrow__point-2 {
+    transform: rotate(15deg) translateY(5px);
+  }
+}
+
+@media (min-width: 769px) and (max-width: 992px) {
+  .arrow__point-1 {
+    transform: rotate(15deg) translateY(0);
+  }
+
+  .arrow__point-3 {
+    transform: rotate(15deg) translateY(5px);
   }
 }
 

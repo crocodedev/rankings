@@ -187,7 +187,7 @@
   .rich-text__arrow {
     @media (min-width: 993px) {
       & {
-        align-self: center;
+        top: 498px;
         position: absolute;
         width: max-content;
       }

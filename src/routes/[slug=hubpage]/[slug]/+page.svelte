@@ -35,11 +35,9 @@
   {/if}
 </svelte:head>
 
-<div>
-  {#each sections.sort((a, b) => a.position - b.position) as section}
-    <svelte:component this={Sections[section?.component]} data={section} />
-  {/each}
-</div>
+{#each sections.sort((a, b) => a.position - b.position) as section}
+  <svelte:component this={Sections[section?.component]} data={section} />
+{/each}
 
 <style global lang="scss">
   @import 'destyle.css/destyle.css';

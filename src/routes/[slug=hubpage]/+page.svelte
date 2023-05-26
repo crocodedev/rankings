@@ -62,20 +62,18 @@
   {/if}
 </svelte:head>
 
-<div>
-  {#each sections.sort((a, b) => a.position - b.position) as section}
-    {#if Sections[section?.component]}
-      <svelte:component this={Sections[section?.component]} data={section} />
-    {/if}
+{#each sections.sort((a, b) => a.position - b.position) as section}
+  {#if Sections[section?.component]}
+    <svelte:component this={Sections[section?.component]} data={section} />
+  {/if}
 
-    {#if !Sections[section?.component]}
-      <svelte:component
-        this={Sections['Hubpage']}
-        data={{ section, clearActive, handleTogleActive, activeTags }}
-      />
-    {/if}
-  {/each}
-</div>
+  {#if !Sections[section?.component]}
+    <svelte:component
+      this={Sections['Hubpage']}
+      data={{ section, clearActive, handleTogleActive, activeTags }}
+    />
+  {/if}
+{/each}
 
 <style global lang="scss">
   @import 'destyle.css/destyle.css';

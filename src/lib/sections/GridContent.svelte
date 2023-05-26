@@ -198,17 +198,14 @@
     }
 
     @media (max-width: 992px) {
-      & {
-        padding-bottom: 50px;
-      }
       &__wrapper {
-        gap: 20px;
+        gap: 40px;
       }
     }
 
     @media (min-width: 993px) {
       &__wrapper {
-        gap: 50px;
+        gap: 53px;
       }
     }
 
@@ -748,6 +745,7 @@
     &::before {
       position: absolute;
       content: '';
+      background-repeat: no-repeat;
       background-image: url('../Graph 3.svg');
       width: 60px;
       height: 100%;

@@ -21,7 +21,7 @@
         <div class="imagewithtext__inner">
           <div class="imagewithtext__text-wrapper">
             <h3 class="h2 white">{data.imageTextTitle}</h3>
-            <p class="white">{data.imageTextText}</p>
+            <p class="imagewithtext__text white">{data.imageTextText}</p>
           </div>
           <a href={data.buttonLink} class="imagewithtext__btn">{data.buttonText}</a>
         </div>
@@ -39,7 +39,7 @@
         <div class="imagewithtext__inner">
           <div class="imagewithtext__text-wrapper">
             <h3 class="h2">{data.imageTextTitle}</h3>
-            <p>{data.imageTextText}</p>
+            <p class="imagewithtext__text">{data.imageTextText}</p>
           </div>
           <a href={data.buttonLink} class="imagewithtext__btn">{data.buttonText}</a>
         </div>
@@ -68,8 +68,13 @@
       &__wrapper {
         display: flex;
         flex-direction: column;
-        align-items: center;
         gap: 40px;
+
+        @media (min-width: 421px) {
+          & {
+            align-items: center;
+          }
+        }
       }
 
       &__image {
@@ -78,9 +83,14 @@
     }
 
     &__image-wrapper {
-      height: 270px;
       justify-content: center;
       display: flex;
+
+      @media (min-width: 421px) {
+        & {
+          height: 270px;
+        }
+      }
     }
 
     @media (min-width: 993px) {
@@ -109,14 +119,14 @@
       }
     }
 
-    &__title {
-      color: #07124a;
-      font-size: 32px;
-      font-weight: bold;
-    }
+    .imagewithtext__text {
+      @media (min-width: 769px) {
+        font-size: 18px;
+      }
+      @media (max-width: 768px) {
+        font-size: 16px;
+      }
 
-    p {
-      font-size: 18px;
       color: #07124a;
     }
 
