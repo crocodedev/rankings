@@ -6,23 +6,23 @@ exports.handler = function (event, context, callback) {
     })
   }
 
-  // Разрешаем отправку формы с другого домена
   const headers = {
     'Access-Control-Allow-Origin': '*',
     'Access-Control-Allow-Headers': 'Content-Type',
-    'Content-Type': 'text/html', // Set the content type to HTML
+    'Content-Type': 'text/html',
   }
 
   const response = `
     <!DOCTYPE html>
     <html>
       <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
         <title>Form Submission</title>
         <style>
           /* Add your custom CSS styles here */
           body {
-            font-family: Arial, sans-serif;
-            background-color: #f7f7f7;
+            font-family: 'Lexend', Arial, sans-serif;
+            background-color: #0e1e25;
             padding: 20px;
           }
 
@@ -31,7 +31,7 @@ exports.handler = function (event, context, callback) {
             margin: 0 auto;
             background-color: #ffffff;
             border: 1px solid #cccccc;
-            border-radius: 5px;
+            border-radius: 15px;
             padding: 40px;
             box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
           }
@@ -46,12 +46,17 @@ exports.handler = function (event, context, callback) {
             font-size: 16px;
             color: #666666;
           }
+
+          .form__back{
+            color:#05736a;
+          }
         </style>
       </head>
       <body>
         <div class="container">
           <h1>Form Submitted Successfully</h1>
           <p>Thank you for submitting the form. We have received your information.</p>
+          <a href="/" class="form__back">Back to our site</a>
         </div>
       </body>
     </html>
