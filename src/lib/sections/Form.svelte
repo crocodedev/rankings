@@ -138,8 +138,8 @@
         </div>
         <div class="contact-form__inner">
           <form
-            action="/.netlify/functions/contact-form"
-            method="post"
+            method="POST"
+            netlify-honeypot="bot-field"
             class="contact-form__form"
             name="contact-form"
             data-netlify="true"
