@@ -221,6 +221,7 @@ header {
   top: 0;
   width: 100%;
   -webkit-backdrop-filter: blur(10px);
+  backdrop-filter: blur(20px);
   z-index: 5;
   transition: 0.2s ease-in-out;
 }
@@ -239,6 +240,7 @@ header {
   height: 100vh;
   z-index: 4;
   -webkit-backdrop-filter: blur(20px);
+  backdrop-filter: blur(20px);
   transition: 0.3s ease-in-out;
 }
 
