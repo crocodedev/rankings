@@ -14,30 +14,6 @@
     let pathname = window.location.pathname
     page = pathname.substring(pathname.lastIndexOf('/') + 1)
   })
-
-  const handleSubmit = async (e) => {
-    e.preventDefault()
-
-    let myForm = document.querySelector('.contact-form__form')
-    let formData = new FormData(myForm)
-
-    try {
-      const response = await fetch('/.netlify/functions/contact-form', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(formData),
-      })
-      if (response.ok) {
-        console.log('Form successfully submitted')
-      } else {
-        throw new Error('Form submission failed')
-      }
-    } catch (error) {
-      alert(error)
-    }
-  }
-
-  console.log('done')
 </script>
 
 <!-- {#if page == 'contact-us'}
@@ -165,16 +141,8 @@
           </nav>
         </div>
         <div class="contact-form__inner">
-          <form
-            netlify-honeypot="bot-field"
-            class="contact-form__form"
-            name="contact-form"
-            id="contact-form"
-            on:submit|preventDefault={handleSubmit}
-            data-netlify="true"
-            netlify
-          >
-            <input type="hidden" name="form-name" value="contact-form" />
+          <form class="contact-form__form" name="contact-form__form" method="POST" netlify>
+            <input type="hidden" name="form-name" value="contact-form__form" />
             <div class="contact-form__form-wrapper">
               <div class="contact-form__input-wrapper">
                 <label for="name" class="contact-form__label">Your name</label>
