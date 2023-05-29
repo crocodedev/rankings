@@ -13,31 +13,30 @@
 
   let isSubmitting = false
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault() // Отменяем отправку формы по умолчанию
 
     let myForm = document.querySelector('.contact-form__form')
     let formData = new FormData(myForm)
     let isSubmitting = true // Добавлено объявление переменной
 
-    return fetch('/', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-      body: new URLSearchParams(formData).toString(),
-    })
-      .then((response) => {
-        if (response.ok) {
-          console.log('Form successfully submitted')
-          isSubmitting = false
-          myForm.reset()
-        } else {
-          throw new Error('Form submission failed')
-        }
+    try {
+      const response = await fetch('/', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+        body: new URLSearchParams(formData).toString(),
       })
-      .catch((error) => {
-        alert(error)
+      if (response.ok) {
+        console.log('Form successfully submitted')
         isSubmitting = false
-      })
+        myForm.reset()
+      } else {
+        throw new Error('Form submission failed')
+      }
+    } catch (error) {
+      alert(error)
+      isSubmitting = false
+    }
   }
 
   console.log('done')
@@ -175,6 +174,7 @@
             name="contact-form"
             onSubmit={handleSubmit}
             data-netlify="true"
+            netlify
           >
             <input type="hidden" name="form-name" value="contact-form" />
             <div class="contact-form__form-wrapper">
