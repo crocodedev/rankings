@@ -11,6 +11,8 @@ import { gridContentQuery } from '$lib/graphql/sections/gridContent'
 import { breadcrumpsQuery, formQuery, heroImageQuery } from '$lib/graphql/sections'
 import { sectionRichTextQuery } from '$lib/graphql/sections/richText'
 
+export const prerender = true
+
 const query = (slug) => `
 {
   pageCollection(where: {
