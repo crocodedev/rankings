@@ -9,9 +9,6 @@ export default {
   }),
   kit: {
     inlineStyleThreshold: Infinity,
-    adapter: adapter({
-      edge: false,
-      split: false,
-    }),
+    adapter: adapter(),
   },
 }
