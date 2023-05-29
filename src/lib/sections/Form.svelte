@@ -184,6 +184,11 @@
             </div>
           </form>
         </div>
+        <form name="test" netlify netlify-honeypot="bot-field" hidden>
+          <input type="text" name="name" />
+          <input type="email" name="email" />
+          <textarea name="message" />
+        </form>
       </div>
     </Container>
   </section>
