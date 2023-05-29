@@ -45,7 +45,6 @@
           {/each}
         </div>
       {/if}
-
       {#if section.title == 'Services'}
         <div class="cases__items cases__items--services">
           {#each data.section.cards as card}
@@ -209,7 +208,7 @@
       }
 
       &__items.cases__items--services &__item {
-        max-width: 31%;
+        max-width: 30.7%;
       }
     }
 

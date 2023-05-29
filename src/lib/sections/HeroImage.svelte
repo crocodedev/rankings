@@ -52,8 +52,14 @@
             {/each}
           </div>
         </div>
-        <div class="hero-image__image-wrapper ">
-          <img src={data.image.url} alt="" class="hero-image__image" />
+
+        <div class="hero-image__image-wrapper">
+          <img src={data.image.url} alt="" class="hero-image__image hero-image__image--service" />
+          {#if data.percent != null}
+            <span class="hero-image__circle" style="--percent: calc({data.percent} * 360 / 100);">
+              <div class="hero-image__circle-num">{data.percent}%</div>
+            </span>
+          {/if}
         </div>
       </div>
     </Container>
@@ -186,8 +192,57 @@
     }
 
     &__image-wrapper {
-      overflow: hidden;
       border-radius: 10px;
+      position: relative;
+    }
+
+    &__circle {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: absolute;
+      content: ' ';
+      border-radius: 100%;
+
+      z-index: 1;
+      background: conic-gradient(#0077ff 0deg calc(var(--percent) * 1deg), #07124a 30deg 360deg);
+    }
+
+    &__circle-num {
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 34px;
+      color: #07124a;
+      width: 114px;
+      z-index: 3;
+      height: 114px;
+      background-color: white;
+      border-radius: 100%;
+    }
+
+    @media (min-width: 993px) {
+      &__circle {
+        width: 195px;
+        height: 195px;
+        left: -97.5px;
+        bottom: 24px;
+      }
+    }
+
+    @media (min-width: 769px) and (max-width: 992px) {
+      &__circle {
+        width: 145px;
+        height: 145px;
+        left: -16.5px;
+        bottom: 65px;
+      }
+
+      &__circle-num {
+        width: 90px;
+        height: 90px;
+      }
     }
 
     @media (min-width: 769px) {
@@ -198,6 +253,18 @@
     }
 
     @media (max-width: 768px) {
+      &__circle {
+        width: 100px;
+        height: 100px;
+        left: -16.5px;
+        bottom: -33px;
+      }
+
+      &__circle-num {
+        font-size: 16px;
+        width: 60px;
+        height: 60px;
+      }
       &__image-wrapper {
         width: 100%;
         height: 267px;
@@ -226,6 +293,12 @@
     @media (max-width: 768px) {
       &__image {
         height: 100%;
+      }
+
+      &__image--service {
+        position: absolute;
+        height: 219px;
+        right: -25px;
       }
     }
   }

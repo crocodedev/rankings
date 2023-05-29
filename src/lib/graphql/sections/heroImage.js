@@ -6,6 +6,7 @@ export const heroImageQuery = ` ... on SectionHeroImage {
   component
   text
   title
+  percent
   image {
     url
   }
