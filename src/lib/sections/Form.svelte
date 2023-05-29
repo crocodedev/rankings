@@ -11,7 +11,36 @@
     page = pathname.substring(pathname.lastIndexOf('/') + 1)
   })
 
-  let isSubmitting = false
+  let name = ''
+  let email = ''
+  let message = ''
+
+  const handleSubmit = (e) => {
+    e.preventDefault()
+
+    const formData = {
+      name,
+      email,
+      message,
+    }
+
+    return fetch('/.netlify/functions/contact-form', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(formData),
+    })
+      .then((response) => {
+        if (response.ok) {
+          console.log('Form successfully submitted')
+          // Дополнительные действия при успешной отправке формы
+        } else {
+          throw new Error('Form submission failed')
+        }
+      })
+      .catch((error) => {
+        alert(error)
+      })
+  }
 
   console.log('done')
 </script>
@@ -159,6 +188,7 @@
                   id="name"
                   placeholder="{data.inputName}*"
                   class="contact-form__input"
+                  bind:value={name}
                   required
                 />
               </div>
@@ -169,6 +199,7 @@
                   id="email"
                   placeholder="{data.inputEmail}*"
                   class="contact-form__input"
+                  bind:value={email}
                   required
                 />
               </div>
@@ -181,6 +212,7 @@
                   id="message"
                   rows="5"
                   placeholder={data.inputMessage}
+                  bind:value={message}
                   class="contact-form__input"
                 />
               </div>
