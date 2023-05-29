@@ -30,6 +30,7 @@
       : [...activeTags, tag]
   }
   $: $page.url && clearActive()
+  export const prerender = true
 </script>
 
 <svelte:head>
