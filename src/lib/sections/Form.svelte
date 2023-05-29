@@ -10,9 +10,31 @@
     let pathname = window.location.pathname
     page = pathname.substring(pathname.lastIndexOf('/') + 1)
   })
+
+  let isSubmitting = false
+
+  const handleSubmit = (e) => {
+    let myForm = document.getElementById('test')
+    let formData = new FormData(myForm)
+    isSubmitting = true
+    return fetch('/', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+      body: new URLSearchParams(formData).toString(),
+    })
+      .then(() => {
+        console.log('Form successfully submitted')
+        isSubmitting = false
+        myForm.reset()
+      })
+      .catch((error) => {
+        alert(error)
+        isSubmitting = false
+      })
+  }
 </script>
 
-{#if page == 'contact-us'}
+<!-- {#if page == 'contact-us'}
   <section class="contact-form contact-form--contact">
     <Container>
       <div class="contact-form__wrapper contact-form__wrapper--contact">
@@ -120,7 +142,7 @@
       </div>
     </Container>
   </section>
-{/if}
+{/if} -->
 {#if page != 'contact-us'}
   <section class="contact-form">
     <Container>
