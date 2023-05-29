@@ -32,6 +32,8 @@
         isSubmitting = false
       })
   }
+
+  console.log('done')
 </script>
 
 <!-- {#if page == 'contact-us'}
