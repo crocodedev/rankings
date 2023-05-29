@@ -14,18 +14,25 @@
   let isSubmitting = false
 
   const handleSubmit = (e) => {
+    e.preventDefault() // Отменяем отправку формы по умолчанию
+
     let myForm = document.querySelector('.contact-form__form')
     let formData = new FormData(myForm)
-    isSubmitting = true
+    let isSubmitting = true // Добавлено объявление переменной
+
     return fetch('/', {
       method: 'POST',
       headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
       body: new URLSearchParams(formData).toString(),
     })
-      .then(() => {
-        console.log('Form successfully submitted')
-        isSubmitting = false
-        myForm.reset()
+      .then((response) => {
+        if (response.ok) {
+          console.log('Form successfully submitted')
+          isSubmitting = false
+          myForm.reset()
+        } else {
+          throw new Error('Form submission failed')
+        }
       })
       .catch((error) => {
         alert(error)
@@ -166,7 +173,7 @@
             netlify-honeypot="bot-field"
             class="contact-form__form"
             name="contact-form"
-            on:submit|preventDefault={handleSubmit}
+            onSubmit={handleSubmit}
             data-netlify="true"
           >
             <input type="hidden" name="form-name" value="contact-form" />
