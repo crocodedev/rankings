@@ -14,7 +14,7 @@
   let isSubmitting = false
 
   const handleSubmit = (e) => {
-    let myForm = document.getElementById('test')
+    let myForm = document.querySelector('.contact-form__form')
     let formData = new FormData(myForm)
     isSubmitting = true
     return fetch('/', {
@@ -166,6 +166,7 @@
             netlify-honeypot="bot-field"
             class="contact-form__form"
             name="contact-form"
+            on:submit|preventDefault={handleSubmit}
             data-netlify="true"
           >
             <input type="hidden" name="form-name" value="contact-form" />
