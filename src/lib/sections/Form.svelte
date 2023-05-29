@@ -189,7 +189,7 @@
           <input type="email" name="email" />
           <textarea name="message" />
         </form>
-        <form name="test" method="post" action="/success">
+        <form name="test" method="post">
           <input type="hidden" name="form-name" value="test" />
           <input type="text" name="bot-field" />
           <p>
