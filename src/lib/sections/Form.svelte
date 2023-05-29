@@ -1,3 +1,7 @@
+<script context="module">
+  export const prerender = true
+</script>
+
 <script>
   export let data = {}
 
@@ -11,35 +15,26 @@
     page = pathname.substring(pathname.lastIndexOf('/') + 1)
   })
 
-  let name = ''
-  let email = ''
-  let message = ''
-
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault()
 
-    const formData = {
-      name,
-      email,
-      message,
-    }
+    let myForm = document.querySelector('.contact-form__form')
+    let formData = new FormData(myForm)
 
-    return fetch('/.netlify/functions/contact-form', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify(formData),
-    })
-      .then((response) => {
-        if (response.ok) {
-          console.log('Form successfully submitted')
-          // Дополнительные действия при успешной отправке формы
-        } else {
-          throw new Error('Form submission failed')
-        }
+    try {
+      const response = await fetch('/.netlify/functions/contact-form', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(formData),
       })
-      .catch((error) => {
-        alert(error)
-      })
+      if (response.ok) {
+        console.log('Form successfully submitted')
+      } else {
+        throw new Error('Form submission failed')
+      }
+    } catch (error) {
+      alert(error)
+    }
   }
 
   console.log('done')
@@ -171,11 +166,11 @@
         </div>
         <div class="contact-form__inner">
           <form
-            method="POST"
             netlify-honeypot="bot-field"
             class="contact-form__form"
             name="contact-form"
-            onSubmit={handleSubmit}
+            id="contact-form"
+            on:submit|preventDefault={handleSubmit}
             data-netlify="true"
             netlify
           >
@@ -188,7 +183,6 @@
                   id="name"
                   placeholder="{data.inputName}*"
                   class="contact-form__input"
-                  bind:value={name}
                   required
                 />
               </div>
@@ -199,7 +193,6 @@
                   id="email"
                   placeholder="{data.inputEmail}*"
                   class="contact-form__input"
-                  bind:value={email}
                   required
                 />
               </div>
@@ -212,7 +205,6 @@
                   id="message"
                   rows="5"
                   placeholder={data.inputMessage}
-                  bind:value={message}
                   class="contact-form__input"
                 />
               </div>
