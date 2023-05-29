@@ -31,7 +31,7 @@
   }
 </script>
 
-<!-- {#if page == 'contact-us'}
+{#if page == 'contact-us'}
   <section class="contact-form contact-form--contact">
     <Container>
       <div class="contact-form__wrapper contact-form__wrapper--contact">
@@ -139,7 +139,7 @@
       </div>
     </Container>
   </section>
-{/if} -->
+{/if}
 {#if page != 'contact-us'}
   <section class="contact-form">
     <Container>
@@ -199,15 +199,6 @@
             </div>
           </form>
         </div>
-
-        <form data-netlify="true" name="pizzaOrder" method="post" onSubmit={handleSubmit}>
-          <input type="hidden" name="form-name" value="pizzaOrder" />
-          <label>
-            What order did the pizza give to the pineapple?
-            <input name="order" type="text" />
-          </label>
-          <input type="submit" />
-        </form>
       </div>
     </Container>
   </section>
