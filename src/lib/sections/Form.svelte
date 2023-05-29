@@ -164,6 +164,7 @@
                 <input
                   type="text"
                   id="name"
+                  name="name"
                   placeholder="{data.inputName}*"
                   class="contact-form__input"
                   required
@@ -174,6 +175,7 @@
                 <input
                   type="email"
                   id="email"
+                  name="email"
                   placeholder="{data.inputEmail}*"
                   class="contact-form__input"
                   required
