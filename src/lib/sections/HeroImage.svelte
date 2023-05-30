@@ -1,5 +1,7 @@
 <script>
   import Container from '$lib/components/Container.svelte'
+  import { onMount } from 'svelte'
+
   export let data = {}
 
   import { beforeUpdate } from 'svelte'
@@ -11,6 +13,26 @@
     let startIndex = pathname.indexOf('/') + 1
     let endIndex = pathname.indexOf('/', startIndex)
     page = pathname.substring(startIndex, endIndex)
+  })
+
+  console.log(data.diagramListCollection.items)
+  let values = []
+  data.diagramListCollection.items.forEach((el) => {
+    values.push(el.title)
+  })
+
+  let highestValue = Math.max(...values)
+
+  onMount(() => {
+    const heights = values.map((value) => `${(value * 100) / highestValue}%`)
+    const diagramElements = document.querySelectorAll('.hero-image__diagramm')
+
+    diagramElements.forEach((element, index) => {
+      if (data.diagramListCollection.items[index].diagramColor == 'Blue') {
+        element.classList.add('hero-image__diagramm--blue')
+      }
+      element.style.setProperty('--height', heights[index])
+    })
   })
 </script>
 
@@ -53,8 +75,19 @@
           </div>
         </div>
 
-        <div class="hero-image__image-wrapper">
+        <div class="hero-image__image-wrapper hero-image__image-wrapper--service">
           <img src={data.image.url} alt="" class="hero-image__image hero-image__image--service" />
+          <div class="hero-image__images">
+            <div class="hero-image__diagramm-wrapper">
+              {#each values as value}
+                <span class="hero-image__diagramm">
+                  {value}%
+                </span>
+              {/each}
+            </div>
+            <img src="../Group 242.svg" alt="" class="hero-image__images-item" />
+          </div>
+
           {#if data.percent != null}
             <span class="hero-image__circle" style="--percent: calc({data.percent} * 360 / 100);">
               <div class="hero-image__circle-num">{data.percent}%</div>
@@ -68,6 +101,91 @@
 
 <style lang="scss">
   .hero-image {
+    &__diagramm-wrapper {
+      display: flex;
+      width: max-content;
+      align-items: flex-end;
+      min-height: 150px;
+      max-height: 150px;
+      gap: 5px;
+      transform: translateY(-40%);
+    }
+
+    &__diagramm {
+      background-color: #bfc8d6;
+      display: flex;
+      width: 100%;
+      color: #07124a;
+      justify-content: center;
+      align-items: flex-end;
+      border-radius: 12px;
+      height: var(--height);
+
+      @media (min-width: 769px) {
+        padding: 10px 12px;
+      }
+
+      @media (max-width: 768px) {
+        padding: 5px 7px;
+        font-size: 10px;
+      }
+    }
+
+    &__diagramm:is(.hero-image__diagramm--blue) {
+      background-color: #0077ff;
+      color: white;
+    }
+
+    &__images {
+      display: flex;
+      right: 50px;
+      flex-direction: column;
+      height: 100%;
+      justify-content: space-between;
+      position: absolute;
+
+      @media (max-width: 768px) {
+        & {
+          top: 0;
+          right: 25px;
+        }
+      }
+
+      @media (min-width: 769px) {
+        & {
+          right: 50px;
+        }
+      }
+    }
+
+    &__images-item {
+      align-self: center;
+
+      @media (min-width: 993px) {
+        & {
+          width: 88px;
+          height: 182px;
+          transform: translateY(30%);
+        }
+      }
+
+      @media (max-width: 992px) {
+        & {
+          width: 38px;
+          height: 153px;
+          transform: translateY(31%);
+        }
+      }
+    }
+
+    @media (min-width: 769px) and (max-width: 992px) {
+      &__images-item {
+        width: 70px;
+        height: 172px;
+        transform: translateY(36%);
+      }
+    }
+
     &__wrapper {
       display: flex;
       justify-content: space-between;
@@ -94,15 +212,7 @@
       border-bottom: 2px solid #0077ff;
       @media (min-width: 993px) {
         & {
-          padding-bottom: 70px;
-        }
-      }
-      @media (max-width: 768px) {
-        .hero-image__image-wrapper {
-          padding-top: 100px;
-        }
-        & {
-          padding-bottom: 105px;
+          padding-bottom: 170px;
         }
       }
     }
@@ -203,7 +313,6 @@
       position: absolute;
       content: ' ';
       border-radius: 100%;
-
       z-index: 1;
       background: conic-gradient(#0077ff 0deg calc(var(--percent) * 1deg), #07124a 30deg 360deg);
     }
@@ -226,8 +335,9 @@
       &__circle {
         width: 195px;
         height: 195px;
-        left: -97.5px;
-        bottom: 24px;
+        left: calc(-195px / 2);
+
+        bottom: -53.5px;
       }
     }
 
@@ -235,8 +345,8 @@
       &__circle {
         width: 145px;
         height: 145px;
-        left: -16.5px;
-        bottom: 65px;
+        left: calc(-145px / 2);
+        bottom: calc(-145px / 3);
       }
 
       &__circle-num {
@@ -249,6 +359,12 @@
       &__image-wrapper {
         width: 48%;
         height: 500px;
+      }
+
+      &__image-wrapper--service {
+        height: 355px;
+        position: relative;
+        left: 50px;
       }
     }
 
@@ -269,6 +385,12 @@
         width: 100%;
         height: 267px;
       }
+
+      &__image-wrapper--service {
+        height: 219px;
+        position: relative;
+        left: 25px;
+      }
     }
 
     @media (min-width: 769px) {
@@ -288,6 +410,11 @@
       &__image {
         height: 75.4%;
       }
+
+      &__image--service {
+        position: absolute;
+        height: 100%;
+      }
     }
 
     @media (max-width: 768px) {
@@ -296,9 +423,27 @@
       }
 
       &__image--service {
-        position: absolute;
         height: 219px;
-        right: -25px;
+      }
+    }
+
+    @media (min-width: 769px) and (max-width: 992px) {
+      .hero-image__bottom {
+        padding-bottom: 75px;
+      }
+    }
+
+    @media (max-width: 768px) {
+      .hero-image__image-wrapper {
+        padding-top: 100px;
+      }
+
+      .hero-image__image-wrapper--service {
+        padding-top: 0;
+      }
+      .hero-image__bottom {
+        padding-bottom: 105px;
+        gap: 100px;
       }
     }
   }

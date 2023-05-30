@@ -67,7 +67,7 @@ const query = (slug) => `
         ogype
         twittercard
       }
-      sectionsCollection(limit: 100) {
+      sectionsCollection(limit: 90) {
         items {
           ${heroImageQuery}
           ${breadcrumpsQuery}

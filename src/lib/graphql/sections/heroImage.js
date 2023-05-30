@@ -26,5 +26,11 @@ export const heroImageQuery = ` ... on SectionHeroImage {
       link
     }
   }
+  diagramListCollection(limit:5){
+    items{
+      title
+      diagramColor
+    }
+  }
 }
   `

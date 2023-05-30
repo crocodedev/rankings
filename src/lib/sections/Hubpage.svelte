@@ -81,12 +81,22 @@
           {#each data.section.cards as card}
             {#if data.activeTags.length === 0 || card.tagList?.some( (el) => data.activeTags.includes(el) )}
               <div class="cases__item {card.blogCardVariation}">
-                <div class="cases__item-image-wrapper">
-                  <img src={card.imageCard.url} alt="" class="cases__item-image" />
-                  <a href={card.url}>
-                    <img src="feather-external-link.svg" alt="" class="card__image-icon" />
-                  </a>
-                </div>
+                {#if section.title == 'Blog'}
+                  <div class="cases__item-image-wrapper cases__item-image-wrapper--blog">
+                    <img src={card.imageCard.url} alt="" class="cases__item-image" />
+                    <a href={card.url}>
+                      <img src="feather-external-link.svg" alt="" class="card__image-icon" />
+                    </a>
+                  </div>
+                {/if}
+                {#if section.title != 'Blog'}
+                  <div class="cases__item-image-wrapper">
+                    <img src={card.imageCard.url} alt="" class="cases__item-image" />
+                    <a href={card.url}>
+                      <img src="feather-external-link.svg" alt="" class="card__image-icon" />
+                    </a>
+                  </div>
+                {/if}
                 <div class="cases__text-wrapper">
                   <a href={card.url} class="cases__item-name">{card.titleCard}</a>
                   {#if card.subtitleCard != null}
@@ -240,9 +250,11 @@
       transition: 0.3s ease-in-out;
     }
 
-    &__item-image-wrapper:hover {
-      .cases__item-image {
-        transform: scale(1);
+    &__item-image-wrapper:not(.cases__item-image-wrapper--blog) {
+      &:hover {
+        .cases__item-image {
+          transform: scale(1);
+        }
       }
     }
 
@@ -267,12 +279,14 @@
       }
     }
 
-    &__item-image {
-      transition: 0.3s ease-in-out;
-      transform: scale(1.2);
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
+    &__item-image-wrapper:not(.cases__item-image-wrapper--blog) {
+      .cases__item-image {
+        transition: 0.3s ease-in-out;
+        transform: scale(1.2);
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
     }
 
     &__text-wrapper {

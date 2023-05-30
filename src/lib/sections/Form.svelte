@@ -474,6 +474,12 @@
 
     &__title {
       color: var(--primary-blue);
+
+      @media (max-width: 992px) {
+        & {
+          text-align: end;
+        }
+      }
     }
 
     &__title-wrapper {

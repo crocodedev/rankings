@@ -34,7 +34,7 @@ const query = (slug) => `
       }
       name
       url
-      sectionsCollection (limit:100) {
+      sectionsCollection (limit:90) {
          items{
           ${headerQuery}
           ${heroQuery}

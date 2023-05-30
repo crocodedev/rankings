@@ -34,7 +34,7 @@ const query = (slug) => `
       pageName
       url
       contentType
-      sectionsCollection (limit:100){
+      sectionsCollection (limit:90){
         items {
           ${heroQuery}
           ${heroImageQuery}
