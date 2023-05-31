@@ -10,7 +10,7 @@ import { sectionRichTextQuery } from '$lib/graphql/sections/richText'
 import { footerQuery } from '$lib/graphql/sections/footer'
 import { gridContentQuery } from '$lib/graphql/sections/gridContent'
 import { breadcrumpsQuery, formQuery, heroImageQuery } from '$lib/graphql/sections'
-export const prerender = true
+
 const richTextQuery = (id) => `
 {
   sectionRichText(id: "${id}") {
