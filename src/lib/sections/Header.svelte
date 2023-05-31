@@ -219,7 +219,7 @@
           </nav>
         {/if}
         <button class="header__btn-menu" on:click={toggleMenu}>
-          <div class="header__btn-menu-area" />
+          <span class="header__btn-menu-area" />
         </button>
       </div>
     </Container>
