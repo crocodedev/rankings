@@ -95,7 +95,7 @@
             class="contact-form__form"
             name="contact-form-form-netlify"
             id="contact-first"
-            netlify
+            data-netlify="true"
           >
             <!-- on:submit|preventDefault={handleSubmit} -->
             <input type="hidden" name="form-name" value="contact-form-form-netlify" />
@@ -166,7 +166,7 @@
             class="contact-form__form"
             name="contact-form-form-netlify"
             id="contact-second"
-            netlify
+            data-netlify="true"
           >
             <!-- on:submit|preventDefault={handleSubmit} -->
 
