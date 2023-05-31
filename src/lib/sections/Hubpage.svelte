@@ -250,11 +250,9 @@
       transition: 0.3s ease-in-out;
     }
 
-    &__item-image-wrapper:not(.cases__item-image-wrapper--blog) {
+    &__item:is(.Default) .cases__item-image {
       &:hover {
-        .cases__item-image {
-          transform: scale(1);
-        }
+        transform: scale(1);
       }
     }
 
@@ -279,7 +277,7 @@
       }
     }
 
-    &__item-image-wrapper:not(.cases__item-image-wrapper--blog) {
+    &__item:is(.Default) {
       .cases__item-image {
         transition: 0.3s ease-in-out;
         transform: scale(1.2);
