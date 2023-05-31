@@ -1,6 +1,5 @@
 import { error } from '@sveltejs/kit'
 import contentfulFetch from '$lib/server/contentful-fetch'
-
 import { stagesQuery } from '$lib/graphql/sections/stages'
 import { heroQuery } from '$lib/graphql/sections/hero'
 import { SectionImageWithTextQuery } from '$lib/graphql/sections/sectionimagewithtext'
@@ -9,6 +8,8 @@ import { headerQuery } from '$lib/graphql/sections/header'
 import { footerQuery } from '$lib/graphql/sections/footer'
 import { gridContentQuery } from '$lib/graphql/sections/gridContent'
 import { breadcrumpsQuery, formQuery, heroImageQuery } from '$lib/graphql/sections'
+
+export const prerender = true
 
 const query = (slug) => `
 {
