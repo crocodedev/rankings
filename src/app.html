@@ -9,7 +9,13 @@
   </head>
   <body>
     <div style="overflow: hidden">%sveltekit.body%</div>
-    <form name="simpleContactForm" method="POST" id="simple-contact-form" class="contact-form">
+    <form
+      name="simpleContactForm"
+      method="POST"
+      id="simple-contact-form"
+      class="contact-form"
+      netlify
+    >
       <p class="form-row">
         <label id="contact-form-name-label" for="contact-form-name" class="form-label">Name</label>
         <input
