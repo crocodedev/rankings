@@ -93,11 +93,11 @@
           <form
             method="POST"
             class="contact-form__form"
-            name="contact-form"
+            name="contact-form-form-netlify"
             on:submit|preventDefault={handleSubmit}
             netlify
           >
-            <input type="hidden" name="form-name" value="contact-form" />
+            <input type="hidden" name="form-name" value="contact-form-form-netlify" />
             <div class="contact-form__form-wrapper">
               <div class="contact-form__input-wrapper">
                 <label for="name" class="contact-form__label">Your name</label>
@@ -163,11 +163,11 @@
           <form
             method="POST"
             class="contact-form__form"
-            name="contact-form"
+            name="contact-form-form-netlify"
             on:submit|preventDefault={handleSubmit}
             netlify
           >
-            <input type="hidden" name="form-name" value="contact-form" />
+            <input type="hidden" name="form-name" value="contact-form-form-netlify" />
             <div class="contact-form__form-wrapper">
               <div class="contact-form__input-wrapper">
                 <label for="name" class="contact-form__label">Your name</label>
