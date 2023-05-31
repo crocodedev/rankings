@@ -9,7 +9,7 @@ import { headerQuery } from '$lib/graphql/sections/header'
 import { footerQuery } from '$lib/graphql/sections/footer'
 import { gridContentQuery } from '$lib/graphql/sections/gridContent'
 import { breadcrumpsQuery, formQuery, heroImageQuery } from '$lib/graphql/sections'
-
+export const prerender = true
 const query = (slug) => `
 {
 	entityContentCategoryCollection(where: {

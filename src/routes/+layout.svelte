@@ -6,6 +6,7 @@
 
   export let data
 
+  export const prerender = true
   const duration = 300
   const delay = duration + 100
   const y = 1
