@@ -15,20 +15,20 @@
     page = pathname.substring(pathname.lastIndexOf('/') + 1)
   })
 
-  const handleSubmit = (event) => {
-    event.preventDefault()
+  // const handleSubmit = (event) => {
+  //   event.preventDefault()
 
-    const myForm = event.target
-    const formData = new FormData(myForm)
+  //   const myForm = event.target
+  //   const formData = new FormData(myForm)
 
-    fetch('/', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-      body: new URLSearchParams(formData).toString(),
-    })
-      .then(() => navigate('/thank-you/'))
-      .catch((error) => alert(error))
-  }
+  //   fetch('/', {
+  //     method: 'POST',
+  //     headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+  //     body: new URLSearchParams(formData).toString(),
+  //   })
+  //     .then(() => navigate('/thank-you/'))
+  //     .catch((error) => alert(error))
+  // }
 </script>
 
 {#if page == 'contact-us'}
@@ -95,9 +95,9 @@
             class="contact-form__form"
             name="contact-form-form-netlify"
             id="contact-first"
-            on:submit|preventDefault={handleSubmit}
             netlify
           >
+            <!-- on:submit|preventDefault={handleSubmit} -->
             <input type="hidden" name="form-name" value="contact-form-form-netlify" />
             <div class="contact-form__form-wrapper">
               <div class="contact-form__input-wrapper">
@@ -166,9 +166,10 @@
             class="contact-form__form"
             name="contact-form-form-netlify"
             id="contact-second"
-            on:submit|preventDefault={handleSubmit}
             netlify
           >
+            <!-- on:submit|preventDefault={handleSubmit} -->
+
             <input type="hidden" name="form-name" value="contact-form-form-netlify" />
             <div class="contact-form__form-wrapper">
               <div class="contact-form__input-wrapper">
