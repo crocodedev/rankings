@@ -80,7 +80,9 @@
       </div>
       <div class="contact-form__wrapper contact-form__wrapper--arrow">
         <div class="contact-form__inscription">
-          <h2 class="h2 contact-form__title">Start a <br /> conversation</h2>
+          <h2 class="h2 contact-form__title contact-form__title--start">
+            Start a <br /> conversation
+          </h2>
           <div class="contact-form__arrow">
             <img src="../arrow-static.svg" alt="arrow" class="contact-form__arrow-img" />
           </div>
@@ -93,7 +95,9 @@
             netlify-honeypot="bot-field"
             class="contact-form__form"
             name="contact-form"
+            onsubmit={handleSubmit}
             data-netlify="true"
+            netlify
           >
             <input type="hidden" name="form-name" value="contact-form" />
             <div class="contact-form__form-wrapper">
@@ -158,8 +162,16 @@
           </nav>
         </div>
         <div class="contact-form__inner">
-          <form class="contact-form__form" name="contact-form__form" method="POST" netlify>
-            <input type="hidden" name="form-name" value="contact-form__form" />
+          <form
+            method="POST"
+            netlify-honeypot="bot-field"
+            class="contact-form__form"
+            name="contact-form"
+            onsubmit={handleSubmit}
+            data-netlify="true"
+            netlify
+          >
+            <input type="hidden" name="form-name" value="contact-form" />
             <div class="contact-form__form-wrapper">
               <div class="contact-form__input-wrapper">
                 <label for="name" class="contact-form__label">Your name</label>
@@ -474,7 +486,9 @@
 
     &__title {
       color: var(--primary-blue);
+    }
 
+    &__title--start {
       @media (max-width: 992px) {
         & {
           text-align: end;

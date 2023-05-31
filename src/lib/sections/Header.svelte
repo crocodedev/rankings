@@ -117,8 +117,8 @@
           </nav>
         {/if}
 
-        <button class="header__btn-menu header__btn-menu--contact" on:click={toggleMenu}>
-          <div class="header__btn-menu-area" />
+        <button class="header__btn-menu" on:click={toggleMenu}>
+          <span class="header__btn-menu-area header__btn-menu--contact" />
         </button>
       </div>
     </Container>
