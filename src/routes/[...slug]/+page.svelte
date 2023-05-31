@@ -39,6 +39,8 @@
   <svelte:component this={Sections[section?.component]} data={section} />
 {/each}
 
+<div><input type="hidden" name="form-name" value="contact-form" /></div>
+
 <style global lang="scss">
   @import 'destyle.css/destyle.css';
 </style>
