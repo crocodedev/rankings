@@ -174,7 +174,6 @@
             {/each}
           </nav>
         </div>
-
         {#if isFormVisible}
           <div class="contact-form__inner">
             <form
@@ -183,8 +182,8 @@
               name="contact-form-form-netlify"
               id="contact-second"
               action="/"
-              data-netlify="true"
               on:submit|preventDefault={handleSubmit}
+              netlify
             >
               <input type="hidden" name="form-name" value="contact-form-form-netlify" />
               <div class="contact-form__form-wrapper">
