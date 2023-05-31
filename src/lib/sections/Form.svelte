@@ -94,7 +94,7 @@
             method="POST"
             class="contact-form__form"
             name="contact-form"
-            onsubmit={handleSubmit}
+            on:submit|preventDefault={handleSubmit}
             netlify
           >
             <input type="hidden" name="form-name" value="contact-form" />
@@ -164,7 +164,7 @@
             method="POST"
             class="contact-form__form"
             name="contact-form"
-            onsubmit={handleSubmit}
+            on:submit|preventDefault={handleSubmit}
             netlify
           >
             <input type="hidden" name="form-name" value="contact-form" />
