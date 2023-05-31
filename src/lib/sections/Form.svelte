@@ -96,7 +96,6 @@
             class="contact-form__form"
             name="contact-form"
             onsubmit={handleSubmit}
-            data-netlify="true"
             netlify
           >
             <input type="hidden" name="form-name" value="contact-form" />
@@ -168,7 +167,6 @@
             class="contact-form__form"
             name="contact-form"
             onsubmit={handleSubmit}
-            data-netlify="true"
             netlify
           >
             <input type="hidden" name="form-name" value="contact-form" />
