@@ -15,19 +15,27 @@
     page = pathname.substring(pathname.lastIndexOf('/') + 1)
   })
 
-  const handleSubmit = (event) => {
-    event.preventDefault()
+  let isSubmitting = false
 
-    const myForm = event.target
-    const formData = new FormData(myForm)
-
-    fetch('/', {
+  const handleSubmit = (e) => {
+    e.preventDefault()
+    let myForm = e.target
+    let formData = new FormData(myForm)
+    isSubmitting = true
+    return fetch('/', {
       method: 'POST',
       headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
       body: new URLSearchParams(formData).toString(),
     })
-      .then(() => console.log('Form successfully submitted'))
-      .catch((error) => alert(error))
+      .then(() => {
+        alert('Form successfully submitted')
+        isSubmitting = false
+        myForm.reset()
+      })
+      .catch((error) => {
+        alert(error)
+        isSubmitting = false
+      })
   }
 </script>
 
@@ -94,6 +102,7 @@
             method="POST"
             class="contact-form__form"
             name="contact-form-form-netlify"
+            action="/"
             id="contact-first"
             data-netlify="true"
             on:submit|preventDefault={handleSubmit}
@@ -166,6 +175,7 @@
             class="contact-form__form"
             name="contact-form-form-netlify"
             id="contact-second"
+            action="/"
             data-netlify="true"
             on:submit|preventDefault={handleSubmit}
           >
