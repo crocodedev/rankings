@@ -23,5 +23,3 @@
     <slot />
   </div>
 {/key}
-
-<div><input type="hidden" name="form-name" value="contact-form" /></div>
