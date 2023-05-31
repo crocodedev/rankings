@@ -92,10 +92,9 @@
         <div class="contact-form__inner contact-form__inner--grid">
           <form
             method="POST"
-            netlify-honeypot="bot-field"
             class="contact-form__form"
             name="contact-form"
-            onsubmit={handleSubmit}
+            onsubmit={handleSubmit()}
             netlify
           >
             <input type="hidden" name="form-name" value="contact-form" />
@@ -163,10 +162,9 @@
         <div class="contact-form__inner">
           <form
             method="POST"
-            netlify-honeypot="bot-field"
             class="contact-form__form"
             name="contact-form"
-            onsubmit={handleSubmit}
+            onsubmit={handleSubmit()}
             netlify
           >
             <input type="hidden" name="form-name" value="contact-form" />
