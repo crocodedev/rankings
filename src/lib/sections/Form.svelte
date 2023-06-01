@@ -110,7 +110,7 @@
             action="/"
             id="contact-first"
             data-netlify="true"
-            on:submit|preventDefault={handleSubmit}
+            S
           >
             <input type="hidden" name="form-name" value="contact-form-form-netlify" />
             <div class="contact-form__form-wrapper">
@@ -182,7 +182,6 @@
               name="contact-form-form-netlify"
               id="contact-second"
               action="/"
-              on:submit|preventDefault={handleSubmit}
               netlify
             >
               <input type="hidden" name="form-name" value="contact-form-form-netlify" />
