@@ -7,11 +7,6 @@ export default {
     preserve: ['ld+json'],
   }),
   kit: {
-    prerender: {
-      concurrency: 2,
-      crawl: true,
-      entries: ['/', '/cases', '/blog', '/services'],
-    },
     inlineStyleThreshold: Infinity,
     adapter: adapter(),
   },
