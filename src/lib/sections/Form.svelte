@@ -40,7 +40,7 @@
     try {
       return await fetch('/', {
         method: 'POST',
-        headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+        headers: { 'Access-Control-Allow-Origin': '/' },
         body: encodeData({
           name,
           email,
