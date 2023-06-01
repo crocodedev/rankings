@@ -17,7 +17,7 @@
         type="text"
         id="name"
         name="name"
-        placeholder="{data.inputName}*"
+        placeholder="ss"
         class="contact-form__input"
         required
       />
@@ -28,7 +28,7 @@
         type="email"
         id="email"
         name="email"
-        placeholder="{data.inputEmail}*"
+        placeholder="ss"
         class="contact-form__input"
         required
       />
@@ -37,17 +37,11 @@
   <div class="contact-form__form-wrapper contact-form__form-wrapper--column">
     <div class="contact-form__input-wrapper">
       <label for="message" class="contact-form__label">Tell us about your project</label>
-      <textarea
-        name="message"
-        id="message"
-        rows="5"
-        placeholder={data.inputMessage}
-        class="contact-form__input"
-      />
+      <textarea name="message" id="message" rows="5" placeholder="ss" class="contact-form__input" />
     </div>
     <div class="contact-form__button-wrapper">
-      <input type="submit" value={data.buttonText} class="btn" />
-      <p class="contact-form__form-policy">{data.policyText}</p>
+      <input type="submit" value="ss" class="btn" />
+      <p class="contact-form__form-policy">ss</p>
     </div>
     <span class="contact-form__succes" />
   </div>
