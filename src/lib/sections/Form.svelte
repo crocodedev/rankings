@@ -181,7 +181,7 @@
               name="contact-form-form-netlify"
               id="contact-second"
               on:submit|preventDefault={handleSubmit}
-              netlify
+              data-netlify="true"
             >
               <input type="hidden" name="form-name" value="contact-form-form-netlify" />
               <div class="contact-form__form-wrapper">
