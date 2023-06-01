@@ -8,7 +8,7 @@
   name="contact-form-form-netlify"
   data-netlify="true"
   netlify-honeypot="infoo"
-  style="opacity:0; height:0; overflow: hidden; width:0; pointer-events: none;"
+  style="opacity:0; height:0; overflow: hidden; width:0;"
 >
   <input type="hidden" name="form-name" value="contact-form-form-netlify" />
   <div class="contact-form__form-wrapper">

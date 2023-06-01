@@ -10,6 +10,16 @@
     message = '',
     honey = ''
 
+  function cons() {
+    console.log(1)
+  }
+
+  const formEncodeString = (str) => encodeURIComponent(str).replace(/%20/g, '+')
+  const encodeData = (obj) =>
+    Object.entries(obj)
+      .map((pair) => `${formEncodeString(pair[0])}=${formEncodeString(pair[1])}`)
+      .join('&')
+
   export let data = {}
 
   let isFormVisible = false
@@ -32,7 +42,7 @@
         method: 'POST',
         headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
         body: encodeData({
-          neme,
+          name,
           email,
           message,
           'form-name': 'contact-form-form-netlify',
@@ -40,13 +50,14 @@
         }),
       })
     } catch (error) {
+      console.log(error)
       return null
     }
   }
 
   const onSubmit = async (e) => {
     e.preventDefault()
-    await handleSubmit()
+    handleSubmit()
   }
 </script>
 
@@ -115,7 +126,7 @@
             name="contact-form-form-netlify"
             data-netlify="true"
             netlify-honeypot="infoo"
-            on:submit={onSubmit}
+            on:submit|preventDefault={handleSubmit}
           >
             <p style="opacity:1; position:absolute; top:0; left:0">
               <input
@@ -198,7 +209,7 @@
               name="contact-form-form-netlify"
               data-netlify="true"
               netlify-honeypot="infoo"
-              on:submit={onSubmit}
+              on:submit|preventDefault={handleSubmit}
             >
               <!-- on:submit|preventDefault={handleSubmit} -->
               <input type="hidden" name="form-name" value="contact-form-form-netlify" />
@@ -242,7 +253,7 @@
                   />
                 </div>
                 <div class="contact-form__button-wrapper">
-                  <input type="submit" value={data.buttonText} class="btn" />
+                  <input type="submit" on:click={cons} value={data.buttonText} class="btn" />
                   <p class="contact-form__form-policy">{data.policyText}</p>
                 </div>
                 <span class="contact-form__succes" />
