@@ -106,11 +106,13 @@
           <form
             method="POST"
             class="contact-form__form"
-            name="contact-form-contact-us"
+            name="contact-form-form-netlify"
+            action="/"
             id="contact-first"
             data-netlify="true"
+            on:submit|preventDefault={handleSubmit}
           >
-            <input type="hidden" name="form-name" value="contact-form-contact-us" />
+            <input type="hidden" name="form-name" value="contact-form-form-netlify" />
             <div class="contact-form__form-wrapper">
               <div class="contact-form__input-wrapper">
                 <label for="name" class="contact-form__label">Your name</label>
@@ -179,7 +181,9 @@
               class="contact-form__form"
               name="contact-form-form-netlify"
               id="contact-second"
-              data-netlify="true"
+              action="/"
+              on:submit|preventDefault={handleSubmit}
+              netlify
             >
               <input type="hidden" name="form-name" value="contact-form-form-netlify" />
               <div class="contact-form__form-wrapper">
