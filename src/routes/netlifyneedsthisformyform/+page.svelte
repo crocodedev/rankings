@@ -18,7 +18,7 @@
         type="text"
         id="name"
         name="name"
-        placeholder="{data.inputName}*"
+        placeholder="name*"
         class="contact-form__input"
         required
       />
@@ -29,7 +29,7 @@
         type="text"
         id="email"
         name="email"
-        placeholder="{data.inputEmail}*"
+        placeholder="email*"
         class="contact-form__input"
         required
       />
