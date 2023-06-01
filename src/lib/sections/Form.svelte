@@ -109,7 +109,6 @@
             name="contact-form-form-netlify"
             data-netlify="true"
             netlify-honeypot="bot-field"
-            on:submit|preventDefault={handleSubmit}
           >
             <input type="hidden" name="form-name" value="contact-form-form-netlify" />
             <div class="contact-form__form-wrapper">
@@ -180,9 +179,9 @@
               class="contact-form__form"
               name="contact-form-form-netlify"
               netlify-honeypot="bot-field"
-              on:submit|preventDefault={handleSubmit}
               data-netlify="true"
             >
+              <!-- on:submit|preventDefault={handleSubmit} -->
               <input type="hidden" name="form-name" value="contact-form-form-netlify" />
               <div class="contact-form__form-wrapper">
                 <div class="contact-form__input-wrapper">
