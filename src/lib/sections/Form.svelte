@@ -109,7 +109,6 @@
             name="contact-form-form-netlify"
             id="contact-first"
             data-netlify="true"
-            S
           >
             <input type="hidden" name="form-name" value="contact-form-form-netlify" />
             <div class="contact-form__form-wrapper">
