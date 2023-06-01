@@ -6,8 +6,9 @@
   method="POST"
   class="contact-form__form"
   name="contact-form-form-netlify"
-  style="display: none"
   data-netlify="true"
+  netlify-honeypot="infoo"
+  style="opacity:0; height:0; overflow: hidden; width:0; pointer-events: none;"
 >
   <input type="hidden" name="form-name" value="contact-form-form-netlify" />
   <div class="contact-form__form-wrapper">
@@ -17,7 +18,7 @@
         type="text"
         id="name"
         name="name"
-        placeholder="ss"
+        placeholder="{data.inputName}*"
         class="contact-form__input"
         required
       />
@@ -25,10 +26,10 @@
     <div class="contact-form__input-wrapper">
       <label for="email" class="contact-form__label">Your email</label>
       <input
-        type="email"
+        type="text"
         id="email"
         name="email"
-        placeholder="ss"
+        placeholder="{data.inputEmail}*"
         class="contact-form__input"
         required
       />
@@ -43,6 +44,5 @@
       <input type="submit" value="ss" class="btn" />
       <p class="contact-form__form-policy">ss</p>
     </div>
-    <span class="contact-form__succes" />
   </div>
 </form>

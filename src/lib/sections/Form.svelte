@@ -5,6 +5,10 @@
 <script>
   import Container from '$lib/components/Container.svelte'
   import { beforeUpdate, onMount } from 'svelte'
+  let name = '',
+    email = '',
+    message = '',
+    honey = ''
 
   export let data = {}
 
@@ -22,25 +26,27 @@
 
   let isSubmitting = false
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async () => {
+    try {
+      return await fetch('/', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+        body: encodeData({
+          neme,
+          email,
+          message,
+          'form-name': 'contact-form-form-netlify',
+          infoo: honey,
+        }),
+      })
+    } catch (error) {
+      return null
+    }
+  }
+
+  const onSubmit = async (e) => {
     e.preventDefault()
-    let myForm = e.target
-    let formData = new FormData(myForm)
-    isSubmitting = true
-    return fetch('/', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-      body: new URLSearchParams(formData).toString(),
-    })
-      .then(() => {
-        alert('Form successfully submitted')
-        isSubmitting = false
-        myForm.reset()
-      })
-      .catch((error) => {
-        alert(error)
-        isSubmitting = false
-      })
+    await handleSubmit()
   }
 </script>
 
@@ -108,13 +114,23 @@
             class="contact-form__form"
             name="contact-form-form-netlify"
             data-netlify="true"
-            netlify-honeypot="bot-field"
+            netlify-honeypot="infoo"
+            on:submit={onSubmit}
           >
+            <p style="opacity:1; position:absolute; top:0; left:0">
+              <input
+                style="width: 0; height: 0; zIndex: 0; "
+                name="description"
+                aria-label="description"
+                bind:value={honey}
+              />
+            </p>
             <input type="hidden" name="form-name" value="contact-form-form-netlify" />
             <div class="contact-form__form-wrapper">
               <div class="contact-form__input-wrapper">
                 <label for="name" class="contact-form__label">Your name</label>
                 <input
+                  bind:value={name}
                   type="text"
                   id="name"
                   name="name"
@@ -126,6 +142,7 @@
               <div class="contact-form__input-wrapper">
                 <label for="email" class="contact-form__label">Your email</label>
                 <input
+                  bind:value={email}
                   type="text"
                   id="email"
                   name="email"
@@ -139,6 +156,7 @@
               <div class="contact-form__input-wrapper">
                 <label for="message" class="contact-form__label">Tell us about your project</label>
                 <textarea
+                  bind:value={message}
                   name="message"
                   id="message"
                   rows="5"
@@ -178,8 +196,9 @@
               method="POST"
               class="contact-form__form"
               name="contact-form-form-netlify"
-              netlify-honeypot="bot-field"
               data-netlify="true"
+              netlify-honeypot="infoo"
+              on:submit={onSubmit}
             >
               <!-- on:submit|preventDefault={handleSubmit} -->
               <input type="hidden" name="form-name" value="contact-form-form-netlify" />
@@ -187,6 +206,7 @@
                 <div class="contact-form__input-wrapper">
                   <label for="name" class="contact-form__label">Your name</label>
                   <input
+                    bind:value={name}
                     type="text"
                     id="name"
                     name="name"
@@ -198,6 +218,7 @@
                 <div class="contact-form__input-wrapper">
                   <label for="email" class="contact-form__label">Your email</label>
                   <input
+                    bind:value={email}
                     type="email"
                     id="email"
                     name="email"
@@ -212,6 +233,7 @@
                   <label for="message" class="contact-form__label">Tell us about your project</label
                   >
                   <textarea
+                    bind:value={message}
                     name="message"
                     id="message"
                     rows="5"
