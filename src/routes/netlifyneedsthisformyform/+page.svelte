@@ -6,8 +6,8 @@
   method="POST"
   class="contact-form__form"
   name="contact-form-form-netlify"
-  netlify
   style="display: none"
+  netlify
 >
   <input type="hidden" name="form-name" value="contact-form-form-netlify" />
   <div class="contact-form__form-wrapper">
