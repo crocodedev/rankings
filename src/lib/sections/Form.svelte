@@ -107,7 +107,6 @@
             method="POST"
             class="contact-form__form"
             name="contact-form-form-netlify"
-            action="/"
             id="contact-first"
             data-netlify="true"
             on:submit|preventDefault={handleSubmit}
@@ -181,7 +180,6 @@
               class="contact-form__form"
               name="contact-form-form-netlify"
               id="contact-second"
-              action="/"
               on:submit|preventDefault={handleSubmit}
               netlify
             >
