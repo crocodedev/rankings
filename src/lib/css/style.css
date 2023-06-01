@@ -119,7 +119,7 @@ section:is(section.contact-form) {
 
   .header__btn-menu-area {
     width: 100%;
-    height: 2.25px;
+    height: 2.5px;
     background-color: #07124a;
     border-radius: 50px;
     box-shadow: 0 6.25px 0 0px #07124a, 0 -6.25px 0 0px #07124a;
