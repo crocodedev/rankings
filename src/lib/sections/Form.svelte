@@ -10,10 +10,6 @@
     message = '',
     honey = ''
 
-  function cons() {
-    console.log(1)
-  }
-
   const formEncodeString = (str) => encodeURIComponent(str).replace(/%20/g, '+')
   const encodeData = (obj) =>
     Object.entries(obj)
@@ -211,7 +207,6 @@
               netlify-honeypot="infoo"
               on:submit|preventDefault={handleSubmit}
             >
-              <!-- on:submit|preventDefault={handleSubmit} -->
               <input type="hidden" name="form-name" value="contact-form-form-netlify" />
               <div class="contact-form__form-wrapper">
                 <div class="contact-form__input-wrapper">
@@ -253,7 +248,7 @@
                   />
                 </div>
                 <div class="contact-form__button-wrapper">
-                  <input type="submit" on:click={cons} value={data.buttonText} class="btn" />
+                  <input type="submit" value={data.buttonText} class="btn" />
                   <p class="contact-form__form-policy">{data.policyText}</p>
                 </div>
                 <span class="contact-form__succes" />

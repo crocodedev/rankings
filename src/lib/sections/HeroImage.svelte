@@ -193,10 +193,9 @@
 
     &__button {
       border: 1px solid #0077ff;
-      padding: 10px 20px;
       border-radius: 5px;
       text-transform: uppercase;
-
+      padding: 10px 15px;
       &:first-of-type {
         background-color: #0077ff;
         color: white;
@@ -205,6 +204,11 @@
       &:last-of-type {
         background-color: white;
         color: #0077ff;
+      }
+      @media (min-width: 481px) {
+        & {
+          padding: 10px 20px;
+        }
       }
     }
 
