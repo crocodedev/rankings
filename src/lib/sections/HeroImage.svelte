@@ -89,7 +89,7 @@
           </div>
 
           {#if data.percent != null}
-            <span class="hero-image__circle" style="--percent: calc({data.percent} * 360 / 100);">
+            <span class="hero-image__circle" style="--percent: {data.percent}%;">
               <div class="hero-image__circle-num">{data.percent}%</div>
             </span>
           {/if}
@@ -314,7 +314,11 @@
       content: ' ';
       border-radius: 100%;
       z-index: 1;
-      background: conic-gradient(#0077ff 0deg calc(var(--percent) * 1deg), #07124a 30deg 360deg);
+
+      background: conic-gradient(
+        #0077ff 0% calc(var(--percent) + 0.2%),
+        #07124a calc(var(--percent) + 0.3%) 100%
+      );
     }
 
     &__circle-num {
