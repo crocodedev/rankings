@@ -107,8 +107,8 @@
             method="POST"
             class="contact-form__form"
             name="contact-form-form-netlify"
-            id="contact-first"
             data-netlify="true"
+            netlify-honeypot="bot-field"
             on:submit|preventDefault={handleSubmit}
           >
             <input type="hidden" name="form-name" value="contact-form-form-netlify" />
@@ -179,7 +179,7 @@
               method="POST"
               class="contact-form__form"
               name="contact-form-form-netlify"
-              id="contact-second"
+              netlify-honeypot="bot-field"
               on:submit|preventDefault={handleSubmit}
               data-netlify="true"
             >
