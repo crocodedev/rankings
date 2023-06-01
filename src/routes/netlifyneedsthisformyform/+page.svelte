@@ -1,3 +1,7 @@
+<script>
+  export const prerender = true
+</script>
+
 <svelte:head>
   <title>DevPage</title>
 </svelte:head>
@@ -7,7 +11,7 @@
   class="contact-form__form"
   name="contact-form-form-netlify"
   style="display: none"
-  netlify
+  data-netlify="true"
 >
   <input type="hidden" name="form-name" value="contact-form-form-netlify" />
   <div class="contact-form__form-wrapper">
