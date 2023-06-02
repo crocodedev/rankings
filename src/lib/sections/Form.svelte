@@ -30,6 +30,8 @@
     isFormVisible = true
   })
 
+  let isSuccess = false
+
   let isSubmitting = false
 
   const handleSubmit = async () => {
@@ -45,6 +47,10 @@
         method: 'POST',
         body: formData,
       })
+
+      if (response.ok) {
+        isSuccess = true // Устанавливаем флаг успешной отправки
+      }
     } catch (error) {
       console.log(error)
       return null
@@ -91,9 +97,9 @@
                       {#if social.socialIcon == null}
                         <a href={social.link} class="contact-form__social-map">
                           <span class="contact-form__social-text-map">{social.title}</span>
-                          <span class="contact-form__social-arrow"
-                            ><img src="../map-arrow.svg" alt="" /></span
-                          >
+                          <span class="contact-form__social-arrow">
+                            <img src="../map-arrow.svg" alt="" />
+                          </span>
                         </a>
                       {/if}
                     {/each}
@@ -248,10 +254,14 @@
                   />
                 </div>
                 <div class="contact-form__button-wrapper">
-                  <input type="submit" value={data.buttonText} class="btn" />
-                  <p class="contact-form__form-policy">{data.policyText}</p>
+                  {#if isSuccess}
+                    <span class="contact-form__succes" />
+                  {/if}
+                  {#if !isSuccess}
+                    <input type="submit" value={data.buttonText} class="btn" />
+                    <p class="contact-form__form-policy">{data.policyText}</p>
+                  {/if}
                 </div>
-                <span class="contact-form__succes" />
               </div>
             </form>
           </div>
@@ -267,8 +277,8 @@
   }
   .contact-form {
     &__succes {
-      width: 40px;
-      height: 40px;
+      min-width: 40px;
+      min-height: 40px;
       border-radius: 100%;
       border: 2px solid #0077ff;
       position: relative;
