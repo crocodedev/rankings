@@ -15,7 +15,6 @@
     page = pathname.substring(startIndex, endIndex)
   })
 
-  console.log(data.diagramListCollection.items)
   let values = []
   data.diagramListCollection.items.forEach((el) => {
     values.push(el.title)

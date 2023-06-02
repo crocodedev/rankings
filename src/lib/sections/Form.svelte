@@ -52,8 +52,6 @@
         email = ''
         message = ''
       }
-
-      // If we reach this point, the form submission was successful
     } catch (error) {
       console.log(error)
       return null

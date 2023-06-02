@@ -1,16 +1,26 @@
 <script>
-  export let data = {}
-
   import Container from '$lib/components/Container.svelte'
-  import { onMount } from 'svelte'
+  import { beforeUpdate, onMount } from 'svelte'
+
+  export let data = {}
   let screenWidth
   let showStages = false
+
+  let page = ''
+
+  beforeUpdate(() => {
+    let pathname = window.location.pathname
+    page = pathname.substring(pathname.lastIndexOf('/') + 1)
+  })
+
   function checkVisibility() {
-    if (showStages === false) {
-      const element = document.querySelector(`[data-id="${data.sys.id}"]`)
-      const rect = element.getBoundingClientRect()
-      const windowHeight = window.innerHeight
-      showStages = rect.top < windowHeight
+    if (page == '') {
+      if (showStages === false) {
+        const element = document.querySelector(`[data-id="${data.sys.id}"]`)
+        const rect = element.getBoundingClientRect()
+        const windowHeight = window.innerHeight
+        showStages = rect.top < windowHeight
+      }
     }
   }
 

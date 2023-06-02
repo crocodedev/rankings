@@ -11,10 +11,6 @@
       activeQuestions = [...activeQuestions, index]
     }
   }
-
-  // if(data.component === "Methods") {
-  //   data.contentListCollection.items = data.contentListCollection.items
-  // }
 </script>
 
 {#if data.component == 'Cards'}
