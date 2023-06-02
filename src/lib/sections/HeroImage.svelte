@@ -37,7 +37,7 @@
 </script>
 
 {#if page != 'services'}
-  <section class="hero-image">
+  <section class="hero-image hero-image--case">
     <Container>
       <div class="hero-image__wrapper">
         <div class="hero-image__text-wrapper">
@@ -101,6 +101,15 @@
 
 <style lang="scss">
   .hero-image {
+    &--case {
+      @media (min-width: 769px) {
+        padding-bottom: 2px;
+      }
+
+      @media (max-width: 768px) {
+        padding-bottom: 0;
+      }
+    }
     &__diagramm-wrapper {
       display: flex;
       width: max-content;
@@ -407,7 +416,11 @@
 
     @media (min-width: 992px) {
       &__image-wrapper {
-        width: 45%;
+        width: 48%;
+      }
+
+      &__image-wrapper--service {
+        width: 52%;
       }
     }
 
@@ -491,10 +504,6 @@
     }
 
     @media (max-width: 768px) {
-      .hero-image__image-wrapper {
-        padding-top: 100px;
-      }
-
       .hero-image__image-wrapper--service {
         padding-top: 0;
       }

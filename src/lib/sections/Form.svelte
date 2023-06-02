@@ -176,8 +176,13 @@
                 />
               </div>
               <div class="contact-form__button-wrapper">
-                <input type="submit" value={data.buttonText} class="btn" />
-                <p class="contact-form__form-policy">{data.policyText}</p>
+                {#if isSuccess}
+                  <span class="contact-form__succes" />
+                {/if}
+                {#if !isSuccess}
+                  <input type="submit" value={data.buttonText} class="btn" />
+                  <p class="contact-form__form-policy">{data.policyText}</p>
+                {/if}
               </div>
             </div>
           </form>
