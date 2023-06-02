@@ -178,6 +178,7 @@
               <div class="contact-form__button-wrapper">
                 {#if isSuccess}
                   <span class="contact-form__succes" />
+                  <p class="contact-form__form-policy">Message sent successfully</p>
                 {/if}
                 {#if !isSuccess}
                   <input type="submit" value={data.buttonText} class="btn" />
@@ -259,6 +260,7 @@
                 <div class="contact-form__button-wrapper">
                   {#if isSuccess}
                     <span class="contact-form__succes" />
+                    <p class="contact-form__form-policy">Message sent successfully</p>
                   {/if}
                   {#if !isSuccess}
                     <input type="submit" value={data.buttonText} class="btn" />
