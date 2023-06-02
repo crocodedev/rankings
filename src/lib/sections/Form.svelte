@@ -34,16 +34,16 @@
 
   const handleSubmit = async () => {
     try {
-      return await fetch('/src/netlifyneedsthisformyform/+page.server.js', {
+      const formData = new FormData()
+      formData.append('name', name)
+      formData.append('email', email)
+      formData.append('message', message)
+      formData.append('form-name', 'contact-form-form-netlify')
+      formData.append('infoo', honey)
+
+      return await fetch('/netlifyneedsthisformyform', {
         method: 'POST',
-        headers: { 'Access-Control-Allow-Origin': '/' },
-        body: encodeData({
-          name,
-          email,
-          message,
-          'form-name': 'contact-form-form-netlify',
-          infoo: honey,
-        }),
+        body: formData,
       })
     } catch (error) {
       console.log(error)
