@@ -32,8 +32,6 @@
 
   let isSuccess = false
 
-  let isSubmitting = false
-
   const handleSubmit = async () => {
     try {
       const formData = new FormData()
@@ -43,23 +41,20 @@
       formData.append('form-name', 'contact-form-form-netlify')
       formData.append('infoo', honey)
 
-      return await fetch('/netlifyneedsthisformyform', {
+      const response = await fetch('/netlifyneedsthisformyform', {
         method: 'POST',
         body: formData,
       })
 
       if (response.ok) {
-        isSuccess = true // Устанавливаем флаг успешной отправки
+        isSuccess = true
       }
+
+      // If we reach this point, the form submission was successful
     } catch (error) {
       console.log(error)
       return null
     }
-  }
-
-  const onSubmit = async (e) => {
-    e.preventDefault()
-    handleSubmit()
   }
 </script>
 
