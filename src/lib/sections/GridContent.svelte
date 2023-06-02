@@ -90,14 +90,18 @@
           {#each data.contentListCollection.items as item}
             <div class="seotext__item">
               <div class="seotext__name-wrapper">
-                <p class="seotext__name">
-                  {#if item.title !== null}
+                {#if item.title !== null}
+                  <p class="seotext__name">
                     {item.title}
-                  {:else}
+                  </p>
+                  <span class="seotext__bar " />
+                {/if}
+                {#if item.title === null}
+                  <p class="seotext__name">
                     {' '}
-                  {/if}
-                </p>
-                <span class="seotext__bar" />
+                  </p>
+                  <span class="seotext__bar seotext__bar--null" />
+                {/if}
               </div>
               <p class="seotext__text">
                 {item.text}
@@ -572,6 +576,14 @@
       width: 100%;
       height: 1px;
       background-color: #0077ff;
+
+      @media (max-width: 768px) {
+        &--null {
+          margin-left: auto;
+          margin-right: auto;
+          width: 50%;
+        }
+      }
     }
 
     &__text {
