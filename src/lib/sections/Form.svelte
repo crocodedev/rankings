@@ -48,6 +48,9 @@
 
       if (response.ok) {
         isSuccess = true
+        name = ''
+        email = ''
+        message = ''
       }
 
       // If we reach this point, the form submission was successful
@@ -296,9 +299,11 @@
     @keyframes succes {
       from {
         transform: rotate(0deg);
+        opacity: 0.25;
       }
 
       to {
+        opacity: 1;
         transform: rotate(360deg);
       }
     }
