@@ -544,6 +544,12 @@ header {
   color: #07124a;
 }
 
+@media (max-width: 768px) {
+  .hero__text {
+    text-align: center;
+  }
+}
+
 .hero__button {
   border-radius: 5px;
   background-color: #0077ff;

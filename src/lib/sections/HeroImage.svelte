@@ -68,7 +68,7 @@
           <h1 class="h1">{data.title}</h1>
           <p class="hero-image__text">{data.text}</p>
 
-          <div class="hero-image__categories">
+          <div class="hero-image__categories hero-image__categories--service">
             {#each data.buttonListCollection.items as button}
               <a href={button.link} class="hero-image__button">{button.title}</a>
             {/each}
@@ -195,15 +195,29 @@
       border: 1px solid #0077ff;
       border-radius: 5px;
       text-transform: uppercase;
-      padding: 10px 15px;
+      padding: 10px;
+      text-align: center;
+
       &:first-of-type {
         background-color: #0077ff;
         color: white;
+
+        @media (max-width: 480px) {
+          & {
+            width: 178px;
+          }
+        }
       }
 
       &:last-of-type {
         background-color: white;
         color: #0077ff;
+
+        @media (max-width: 480px) {
+          & {
+            width: 134px;
+          }
+        }
       }
       @media (min-width: 481px) {
         & {
@@ -231,13 +245,26 @@
     &__text-wrapper {
       display: flex;
       flex-direction: column;
+      height: fit-content;
+
       gap: 20px;
     }
 
     @media (min-width: 769px) {
       &__text-wrapper {
         width: 48%;
-        height: fit-content;
+      }
+    }
+
+    @media (min-width: 993px) {
+      &__text-wrapper {
+        transform: translateY(-18px);
+      }
+    }
+
+    @media (min-width: 769px) and (max-width: 992px) {
+      &__text-wrapper {
+        transform: translateY(-9px);
       }
     }
 
@@ -247,15 +274,9 @@
       color: #97a2b6;
     }
 
-    @media (min-width: 769px) and (max-width: 992px) {
-      &__text {
-        width: 80%;
-      }
-    }
-
     @media (min-width: 993px) {
       &__text {
-        width: 61%;
+        width: 65%;
       }
     }
 
@@ -290,10 +311,31 @@
       }
     }
 
-    &__categories {
+    &__categories:not(.hero-image__categories:is(.hero-image__categories--service)) {
       display: flex;
       flex-wrap: wrap;
       gap: 10px;
+    }
+
+    &__categories--service {
+      display: flex;
+
+      @media (max-width: 360px) {
+        & {
+          flex-wrap: wrap;
+        }
+      }
+      @media (max-width: 768px) {
+        & {
+          gap: 13px;
+        }
+      }
+
+      @media (min-width: 769px) {
+        & {
+          gap: 10px;
+        }
+      }
     }
 
     &__category {
@@ -363,12 +405,19 @@
       }
     }
 
-    @media (min-width: 769px) {
+    @media (min-width: 992px) {
       &__image-wrapper {
-        width: 48%;
-        height: 500px;
+        width: 45%;
       }
+    }
 
+    @media (min-width: 769px) and (max-width: 992px) {
+      &__image-wrapper {
+        width: 50%;
+      }
+    }
+
+    @media (min-width: 769px) {
       &__image-wrapper--service {
         height: 355px;
         position: relative;

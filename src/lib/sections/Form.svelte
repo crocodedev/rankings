@@ -34,7 +34,7 @@
 
   const handleSubmit = async () => {
     try {
-      return await fetch('/', {
+      return await fetch('/src/netlifyneedsthisformyform/+page.server.js', {
         method: 'POST',
         headers: { 'Access-Control-Allow-Origin': '/' },
         body: encodeData({
