@@ -337,12 +337,14 @@
       @media (max-width: 768px) {
         & {
           gap: 13px;
+          padding-top: 20px;
         }
       }
 
       @media (min-width: 769px) {
         & {
           gap: 10px;
+          padding-top: 55px;
         }
       }
     }
