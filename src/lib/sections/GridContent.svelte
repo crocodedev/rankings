@@ -167,7 +167,10 @@
                 <p class="faq__question">{item.title}</p>
                 <span
                   class={activeQuestions.includes(index) ? 'faq__icon active' : 'faq__icon'}
-                  on:click={() => toggleActive(index)}
+                  on:click={(event) => {
+                    event.stopPropagation()
+                    toggleActive(index)
+                  }}
                 >
                   <img src="../Group 109.svg" alt="" class="faq__icon-img" />
                 </span>

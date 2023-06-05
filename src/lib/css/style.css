@@ -351,6 +351,7 @@ header {
   .header__nav-item:hover .header__nav-item-stack::before {
     position: absolute;
     left: -60vw;
+    cursor: default;
     content: '';
     z-index: -3;
     background-color: rgba(0, 0, 0, 0);
