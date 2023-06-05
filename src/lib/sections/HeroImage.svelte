@@ -455,7 +455,7 @@
       &__circle {
         width: 100px;
         height: 100px;
-        left: -16.5px;
+        left: -25.5px;
         bottom: -33px;
       }
 
