@@ -322,10 +322,10 @@
     height: 100%;
     background-color: #46506f;
 
-    &__wrapper {
-      display: flex;
-      flex-direction: column;
-    }
+    // &__wrapper {
+    //   display: flex;
+    //   flex-direction: column;
+    // }
 
     &__image-wrapper {
       width: 100%;
