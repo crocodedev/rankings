@@ -142,6 +142,7 @@
 
       @media (min-width: 769px) {
         padding: 10px 12px;
+        font-size: 14px;
       }
 
       @media (max-width: 768px) {
