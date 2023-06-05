@@ -109,14 +109,25 @@
         padding-bottom: 0;
       }
     }
+
     &__diagramm-wrapper {
       display: flex;
       width: max-content;
       align-items: flex-end;
-      min-height: 150px;
-      max-height: 150px;
+
       gap: 5px;
-      transform: translateY(-40%);
+
+      @media (min-width: 993px) {
+        min-height: 150px;
+        max-height: 150px;
+        transform: translateY(-40%);
+      }
+
+      @media (max-width: 993px) {
+        min-height: 110px;
+        max-height: 110px;
+        transform: translateY(-46%);
+      }
     }
 
     &__diagramm {
@@ -181,7 +192,7 @@
         & {
           width: 38px;
           height: 153px;
-          transform: translateY(31%);
+          transform: translateY(44%);
         }
       }
     }
@@ -510,7 +521,7 @@
       }
       .hero-image__bottom {
         padding-bottom: 105px;
-        gap: 100px;
+        gap: 108px;
       }
     }
   }
