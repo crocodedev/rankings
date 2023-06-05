@@ -318,7 +318,6 @@
     align-self: flex-end;
     color: white;
     border-radius: 10px;
-    overflow: hidden;
     height: 100%;
     background-color: #46506f;
 
