@@ -168,8 +168,9 @@
                 <span
                   class={activeQuestions.includes(index) ? 'faq__icon active' : 'faq__icon'}
                   on:click={() => toggleActive(index)}
-                  ><img src="../Group 109.svg" alt="" class="faq__icon-img" /></span
                 >
+                  <img src="../Group 109.svg" alt="" class="faq__icon-img" />
+                </span>
               </div>
               <p class={activeQuestions.includes(index) ? 'faq__answer active' : 'faq__answer'}>
                 {item.text}
@@ -320,11 +321,6 @@
     border-radius: 10px;
     height: 100%;
     background-color: #46506f;
-
-    // &__wrapper {
-    //   display: flex;
-    //   flex-direction: column;
-    // }
 
     &__image-wrapper {
       width: 100%;
