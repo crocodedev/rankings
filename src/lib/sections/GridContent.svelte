@@ -24,31 +24,29 @@
         <div class="grid-content__items">
           {#each data.contentListCollection.items.slice(0, 4) as item}
             <div class="card">
-              <div class="card__wrapper">
-                <div class="card__image-wrapper">
-                  <img src={item.imageCard.url} alt="card" class="card__image" />
-                  <a href={item.url}>
-                    <img src="../feather-external-link.svg" alt="" class="card__image-icon" />
-                  </a>
-                </div>
-                <div class="card__text-wrapper">
-                  <div class="card__generaly-info">
-                    <span class="card__industry">{item.subtitleCard}</span>
-                    <p class="card__company">{item.titleCard}</p>
-                    <div class="card__categories-list">
-                      {#if item.tagList}
-                        {#each item.tagList as tag}
-                          <p class="card__category">
-                            {tag}
-                          </p>
-                        {/each}
-                      {/if}
-                    </div>
+              <div class="card__image-wrapper">
+                <img src={item.imageCard.url} alt="card" class="card__image" />
+                <a href={item.url}>
+                  <img src="../feather-external-link.svg" alt="" class="card__image-icon" />
+                </a>
+              </div>
+              <div class="card__text-wrapper">
+                <div class="card__generaly-info">
+                  <span class="card__industry">{item.subtitleCard}</span>
+                  <p class="card__company">{item.titleCard}</p>
+                  <div class="card__categories-list">
+                    {#if item.tagList}
+                      {#each item.tagList as tag}
+                        <p class="card__category">
+                          {tag}
+                        </p>
+                      {/each}
+                    {/if}
                   </div>
-                  <p class="card__text">
-                    {item.textCard}
-                  </p>
                 </div>
+                <p class="card__text">
+                  {item.textCard}
+                </p>
               </div>
             </div>
           {/each}
@@ -329,7 +327,7 @@
 
     &__image-wrapper {
       width: 100%;
-      height: 365px;
+      max-height: 365px;
       border-radius: 10px;
       overflow: hidden;
       position: relative;
