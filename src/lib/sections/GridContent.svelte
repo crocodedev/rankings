@@ -313,6 +313,8 @@
     }
   }
   .card {
+    display: flex;
+    flex-direction: column;
     align-self: flex-end;
     color: white;
     border-radius: 10px;
@@ -327,7 +329,7 @@
 
     &__image-wrapper {
       width: 100%;
-      max-height: 365px;
+      height: 365px;
       border-radius: 10px;
       overflow: hidden;
       position: relative;
