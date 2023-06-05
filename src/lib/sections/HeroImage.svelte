@@ -23,17 +23,18 @@
   let highestValue = Math.max(...values)
 
   onMount(() => {
-    if (page == 'services') {
-      const heights = values.map((value) => `${(value * 100) / highestValue}%`)
-      const diagramElements = document.querySelectorAll('.hero-image__diagramm')
+    let heights = values.map((value) => `${(value * 100) / highestValue}%`)
+    let diagramElements = document.querySelectorAll('.hero-image__diagramm')
 
-      diagramElements.forEach((element, index) => {
-        if (data.diagramListCollection.items[index].diagramColor == 'Blue') {
-          element.classList.add('hero-image__diagramm--blue')
-        }
-        element.style.setProperty('--height', heights[index])
-      })
-    }
+    diagramElements.forEach((element, index) => {
+      if (
+        data.diagramListCollection.items[index] &&
+        data.diagramListCollection.items[index].diagramColor == 'Blue'
+      ) {
+        element.classList.add('hero-image__diagramm--blue')
+      }
+      element.style.setProperty('--height', heights[index])
+    })
   })
 </script>
 
@@ -524,7 +525,7 @@
       }
       .hero-image__bottom {
         padding-bottom: 105px;
-        gap: 114px;
+        gap: 108px;
       }
     }
   }
