@@ -28,7 +28,7 @@
     navItem.forEach((el) => {
       if (el.childNodes.length > 3) {
         el.addEventListener('mouseover', () => {
-          header.style.paddingBottom = '143px'
+          header.style.paddingBottom = '108px'
         })
         el.addEventListener('mouseout', () => {
           header.style.paddingBottom = '0px'

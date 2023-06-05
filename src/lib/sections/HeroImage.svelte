@@ -23,15 +23,17 @@
   let highestValue = Math.max(...values)
 
   onMount(() => {
-    const heights = values.map((value) => `${(value * 100) / highestValue}%`)
-    const diagramElements = document.querySelectorAll('.hero-image__diagramm')
+    if (page == 'services') {
+      const heights = values.map((value) => `${(value * 100) / highestValue}%`)
+      const diagramElements = document.querySelectorAll('.hero-image__diagramm')
 
-    diagramElements.forEach((element, index) => {
-      if (data.diagramListCollection.items[index].diagramColor == 'Blue') {
-        element.classList.add('hero-image__diagramm--blue')
-      }
-      element.style.setProperty('--height', heights[index])
-    })
+      diagramElements.forEach((element, index) => {
+        if (data.diagramListCollection.items[index].diagramColor == 'Blue') {
+          element.classList.add('hero-image__diagramm--blue')
+        }
+        element.style.setProperty('--height', heights[index])
+      })
+    }
   })
 </script>
 
