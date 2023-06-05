@@ -524,7 +524,7 @@
       }
       .hero-image__bottom {
         padding-bottom: 105px;
-        gap: 108px;
+        gap: 114px;
       }
     }
   }

@@ -14,20 +14,20 @@
   })
 
   function checkVisibility() {
-    if (page == '') {
-      if (showStages === false) {
-        const element = document.querySelector(`[data-id="${data.sys.id}"]`)
-        const rect = element.getBoundingClientRect()
-        const windowHeight = window.innerHeight
-        showStages = rect.top < windowHeight
-      }
+    if (showStages === false) {
+      const element = document.querySelector(`[data-id="${data.sys.id}"]`)
+      const rect = element.getBoundingClientRect()
+      const windowHeight = window.innerHeight
+      showStages = rect.top < windowHeight
     }
   }
 
   onMount(() => {
     checkVisibility
     screenWidth = window.innerWidth
-    window.addEventListener('scroll', checkVisibility)
+    if (page == '') {
+      window.addEventListener('scroll', checkVisibility)
+    }
     window.addEventListener('resize', () => {
       screenWidth = window.innerWidth
     })
