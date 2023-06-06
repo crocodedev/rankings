@@ -1,7 +1,6 @@
 <script>
   import Container from '$lib/components/Container.svelte'
   import { onMount, beforeUpdate, afterUpdate } from 'svelte'
-  import { page } from '$app/stores'
 
   export let data = {}
   $: diagramElements = []

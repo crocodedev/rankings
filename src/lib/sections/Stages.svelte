@@ -25,9 +25,7 @@
   onMount(() => {
     checkVisibility
     screenWidth = window.innerWidth
-    if (page == '') {
-      window.addEventListener('scroll', checkVisibility)
-    }
+    window.addEventListener('scroll', checkVisibility)
     window.addEventListener('resize', () => {
       screenWidth = window.innerWidth
     })
