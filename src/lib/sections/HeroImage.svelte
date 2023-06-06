@@ -1,44 +1,37 @@
 <script>
   import Container from '$lib/components/Container.svelte'
-  import { onMount } from 'svelte'
+  import { onMount, beforeUpdate, afterUpdate } from 'svelte'
+  import { page } from '$app/stores'
 
   export let data = {}
-
-  import { beforeUpdate } from 'svelte'
-
-  let page = ''
+  $: diagramElements = []
+  let pageName = ''
 
   beforeUpdate(() => {
     let pathname = window.location.pathname
     let startIndex = pathname.indexOf('/') + 1
     let endIndex = pathname.indexOf('/', startIndex)
-    page = pathname.substring(startIndex, endIndex)
+    pageName = pathname.substring(startIndex, endIndex)
   })
 
   let values = []
-  data.diagramListCollection.items.forEach((el) => {
-    values.push(el.title)
-  })
+  let highestValue = 0
+  let heightsEl = []
 
-  let highestValue = Math.max(...values)
+  $: {
+    values = data.diagramListCollection.items.map((el) => parseFloat(el.title))
+    highestValue = Math.max(...values)
+    heightsEl = values.map((value) => (value * 100) / highestValue)
+  }
 
   onMount(() => {
-    let heights = values.map((value) => `${(value * 100) / highestValue}%`)
-    let diagramElements = document.querySelectorAll('.hero-image__diagramm')
-
-    diagramElements.forEach((element, index) => {
-      if (
-        data.diagramListCollection.items[index] &&
-        data.diagramListCollection.items[index].diagramColor == 'Blue'
-      ) {
-        element.classList.add('hero-image__diagramm--blue')
-      }
-      element.style.setProperty('--height', heights[index])
+    diagramElements.forEach((el, idx) => {
+      el.style.height = `${heightsEl[idx]}%`
     })
   })
 </script>
 
-{#if page != 'services'}
+{#if pageName != 'services'}
   <section class="hero-image hero-image--case">
     <Container>
       <div class="hero-image__wrapper">
@@ -62,7 +55,7 @@
   </section>
 {/if}
 
-{#if page == 'services'}
+{#if pageName == 'services'}
   <section class="hero-image">
     <Container>
       <div class="hero-image__wrapper hero-image__bottom">
@@ -81,10 +74,20 @@
           <img src={data.image.url} alt="" class="hero-image__image hero-image__image--service" />
           <div class="hero-image__images">
             <div class="hero-image__diagramm-wrapper">
-              {#each values as value}
-                <span class="hero-image__diagramm">
-                  {value}%
-                </span>
+              {#each data.diagramListCollection.items as value, index}
+                {#if value.diagramColor != 'Blue'}
+                  <span bind:this={diagramElements[index]} class="hero-image__diagramm">
+                    {value.title}%
+                  </span>
+                {/if}
+                {#if value.diagramColor == 'Blue'}
+                  <span
+                    bind:this={diagramElements[index]}
+                    class="hero-image__diagramm hero-image__diagramm--blue"
+                  >
+                    {value.title}%
+                  </span>
+                {/if}
               {/each}
             </div>
             <img src="../Group 242.svg" alt="" class="hero-image__images-item" />
@@ -141,7 +144,6 @@
       justify-content: center;
       align-items: flex-end;
       border-radius: 12px;
-      height: var(--height);
 
       @media (min-width: 769px) {
         padding: 10px 12px;
