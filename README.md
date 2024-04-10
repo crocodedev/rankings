@@ -1,5 +1,3 @@
-# Contentful and Sveltekit starter
-
 [![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https%3A%2F%2Fgithub.com%2Fcontentful%2Fsveltekit-starter)
 
 Everything you need to build a [SvelteKit](https://kit.svelte.dev/) project with Contentful. This starter shows you how to:
